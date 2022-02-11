@@ -9,7 +9,7 @@ export const Header = () => {
                     <DirectionsCarIcon sx={{ color: "#FF2D20" }} />
                 </div>
                 <div className='relative w-auto self-center'>
-                    <p className='text-xl font-semibold font-serif text-secundaryColor'> Acompany Seguros </p>
+                    <p className='text-xl font-semibold font-serif text-secundaryColor lg:flex hidden'> Acompany Seguros </p>
                 </div>
             </nav>
            
