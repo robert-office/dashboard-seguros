@@ -1,40 +1,12 @@
 import { Header } from "../Header";
 import { MenuItens } from "../../components/menuItens/MenuItens";
-
-import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import LocalPoliceIcon from '@mui/icons-material/LocalPolice';
-
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { Container } from "../../components/container/Container";
+import { menus } from "../../utils/MenuHeaderItens";
 
 interface LayoutProps {
     children?: React.ReactNode;
 }
-
-const menus = [
-    {
-        text: "Dashboard",
-        href: "#",
-        icon: <DashboardIcon className="self-center" sx={{ color: "#C9D1D9" }} />
-    },
-    {
-        text: "Clientes",
-        href: "#",
-        icon: <PeopleAltIcon className="self-center" sx={{ color: "#C9D1D9" }} />
-    },
-    {
-        text: "Veiculos",
-        href: "#",
-        icon: <LocalShippingIcon className="self-center" sx={{ color: "#C9D1D9" }} />
-    },
-    {
-        text: "Seguros",
-        href: "#",
-        icon: <LocalPoliceIcon className="self-center" sx={{ color: "#C9D1D9" }} />
-    }
-]
 
 export const BaseLayout = ({ children }: LayoutProps) => {
     const LGmatches = useMediaQuery('(min-width:1024px)');
@@ -49,7 +21,7 @@ export const BaseLayout = ({ children }: LayoutProps) => {
                 }}>
                     <div className='relative w-full h-full flex flex-col'>
                         {menus.map((menuItem, id) => {
-                            return <MenuItens key={id} text={menuItem.text} href={menuItem.href} > {menuItem.icon} </MenuItens>
+                            return <MenuItens key={id} text={menuItem.text} sub={menuItem.sub} href={menuItem.href} icon={menuItem.icon} ></MenuItens>
                         })}
                     </div>
                 </aside>
