@@ -17,7 +17,7 @@ export const BaseLayout = ({ children }: LayoutProps) => {
 
             <main className="w-full flex flex-row">
                 <aside className="relative h-screen bg-primaryColor overflow-y-scroll" style={{
-                    minWidth: LGmatches ? "320px" : "100px"
+                    minWidth: LGmatches ? "250px" : "100px"
                 }}>
                     <div className='relative w-full h-full flex flex-col'>
                         {menus.map((menuItem, id) => {

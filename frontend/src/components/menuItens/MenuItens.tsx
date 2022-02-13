@@ -2,6 +2,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { NavLink } from 'react-router-dom';
 import { IheaderMenuItens } from '../../utils/MenuHeaderItens';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { useState } from 'react';
 import styled from "styled-components";
 
@@ -38,7 +39,7 @@ export const MenuItens = ({ text, icon, href, sub }: IheaderMenuItens) => {
 
                             <div style={{ width: "6%" }} className="h-full flex">
                                 <p className="text-fontColor text-left font-sans font-medium text-base self-center">
-                                    <ArrowDropDownIcon className={dropdownIcon ? "rotate-180 transition-transform self-center" : "transition-transform self-center"} sx={{ color: "#C9D1D9" }} />
+                                    <ArrowDropDownIcon className={dropdownIcon ? "rotate-180 transition-transform self-center" : "transition-transform self-center"} sx={{ color: "#FF2D20" }} />
                                 </p>
                             </div>
                         </button>
@@ -49,7 +50,7 @@ export const MenuItens = ({ text, icon, href, sub }: IheaderMenuItens) => {
                                     <NavLink key={`${id}_subMenu`} to={subItem.href} className={"w-full flex flex-row h-14 border-collapse bg-containerColor hover:bg-primaryColorHovered justify-between px-8"}>
 
                                         <div style={{ width: "24%" }} className="h-full flex">
-                                            
+                                            <FiberManualRecordIcon className="self-center" sx={{ color: "#FF2D20" }}/>
                                         </div>
 
                                         <div style={{ width: "70%" }} className="h-full flex">
@@ -85,7 +86,7 @@ export const MenuItens = ({ text, icon, href, sub }: IheaderMenuItens) => {
 
                             <div style={{ width: "100%" }}>
                                 <p className="text-fontColor text-center font-sans font-medium text-[8px] self-center">
-                                    <ArrowDropDownIcon className={dropdownIcon ? "rotate-180 transition-transform self-center" : "transition-transform self-center"} sx={{ color: "#C9D1D9" }} />
+                                    <ArrowDropDownIcon className={dropdownIcon ? "rotate-180 transition-transform self-center" : "transition-transform self-center"} sx={{ color: "#FF2D20" }} />
                                 </p>
                             </div>
                         </button>
@@ -96,7 +97,7 @@ export const MenuItens = ({ text, icon, href, sub }: IheaderMenuItens) => {
                                     <NavLink key={`${id}_subMenu`} to={subItem.href} className={"w-full flex flex-col border-collapse bg-containerColor hover:bg-primaryColorHovered justify-center space-y-3 px-4 py-2"}>
 
                                         <div style={{ width: "100%" }} className="flex justify-center">
-                                            {subItem.icon}
+                                            <FiberManualRecordIcon className="self-center" sx={{ color: "#FF2D20" }}/>
                                         </div>
 
                                         <div style={{ width: "100%" }}>
