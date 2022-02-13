@@ -14,7 +14,9 @@ class VeiculoController extends Controller
      */
     public function index()
     {
-        //
+        $result = veiculo::with('cliente')->with('tipo')->get();
+
+        return response(['result' => $result], 200);
     }
 
     /**

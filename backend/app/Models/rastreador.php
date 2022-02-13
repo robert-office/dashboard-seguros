@@ -18,4 +18,8 @@ class rastreador extends Model
         'id_operadora',
         'serial_number'
     ];
+
+    public function operadora() {
+        return $this->hasOne(operadoras::class, 'id', 'id_operadora');
+    }
 }

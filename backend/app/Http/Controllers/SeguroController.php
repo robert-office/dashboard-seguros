@@ -14,7 +14,13 @@ class SeguroController extends Controller
      */
     public function index()
     {
-        //
+        $result = seguro::with('vendedor')->
+        with('rastreador')->
+        with('veiculo')->
+        with('cliente')->
+        get();
+
+        return response(['result' => $result], 200);
     }
 
     /**

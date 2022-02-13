@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('rastreadores', function (Blueprint $table) {
+        Schema::create('rastreadors', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_operadora')->nullable();
             $table->string('serial_number')->nullable();
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rastreadores');
+        Schema::dropIfExists('rastreadors');
     }
 };

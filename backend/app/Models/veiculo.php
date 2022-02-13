@@ -20,4 +20,12 @@ class veiculo extends Model
         'valor',
         'nome'
     ];
+
+    public function cliente() {
+        return $this->hasOne(cliente::class, 'id', 'id_cliente');
+    }
+
+    public function tipo() {
+        return $this->hasOne(tipo_veiculo::class, 'id', 'tipo');
+    }
 }

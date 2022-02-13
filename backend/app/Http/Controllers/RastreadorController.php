@@ -14,7 +14,9 @@ class RastreadorController extends Controller
      */
     public function index()
     {
-        //
+        $result = rastreador::with('operadora')->get();
+
+        return response(['result' => $result], 200);
     }
 
     /**
