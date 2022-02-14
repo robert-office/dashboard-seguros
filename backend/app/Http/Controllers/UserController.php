@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     public function index(){
 
-        $result = User::with('roles')->get();
+        $result = User::with('roles')->paginate(15);
 
         return response(['result' => $result], 200);
 

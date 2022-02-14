@@ -30,8 +30,30 @@ class seguro extends Model
         return $this->hasOne(rastreador::class, 'id', 'id_rastreador');
     }
 
+    public function rastreadorOperadora(){
+        return $this->hasOneThrough(
+            operadoras::class,
+            rastreador::class,
+            'id',
+            'id',
+            'id_rastreador',
+            'id_operadora'
+        );
+    }
+
     public function veiculo() {
         return $this->hasOne(veiculo::class, 'id', 'id_veiculo');
+    }
+
+    public function veiculoTipo(){
+        return $this->hasOneThrough(
+            tipo_veiculo::class,
+            veiculo::class,
+            'id',
+            'id',
+            'id_cliente',
+            'tipo'
+        );
     }
 
     public function cliente() {

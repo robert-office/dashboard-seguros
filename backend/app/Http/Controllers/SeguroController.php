@@ -14,11 +14,15 @@ class SeguroController extends Controller
      */
     public function index()
     {
+
+        /// retorna todos os seguros e todas as informações já vinculadas a ela
         $result = seguro::with('vendedor')->
         with('rastreador')->
+        with('rastreadorOperadora')->
         with('veiculo')->
+        with('veiculoTipo')->
         with('cliente')->
-        get();
+        paginate(15);
 
         return response(['result' => $result], 200);
     }
