@@ -4,6 +4,6 @@ interface TypProps {
 
 export const SectionTitle = ({ text }: TypProps) => {
     return (
-        <p className='text-lg font-semibold font-serif text-secundaryColor flex'> {text} </p>
+        <p className='sm:text-lg text-sm font-semibold font-serif text-secundaryColor flex sm:text-left text-center'> {text} </p>
     );
 }

@@ -20,7 +20,7 @@ export interface IheadeSubMenu {
 export const menus: IheaderMenuItens[] = [
     {
         text: "Dashboard",
-        href: "#",
+        href: "/",
         icon: <DashboardIcon className="self-center" sx={{ color: "#C9D1D9" }} />
     },
     {
@@ -30,7 +30,7 @@ export const menus: IheaderMenuItens[] = [
         sub: [
             {
                 text: "Vendedores",
-                href: "#",
+                href: "/vendedores",
                 icon: <PeopleAltIcon className="self-center" sx={{ color: "#C9D1D9" }} />
             },
             {
@@ -42,7 +42,7 @@ export const menus: IheaderMenuItens[] = [
     },
     {
         text: "Clientes",
-        href: "#",
+        href: "/clientes",
         icon: <PeopleAltIcon className="self-center" sx={{ color: "#C9D1D9" }} />
     },
     {

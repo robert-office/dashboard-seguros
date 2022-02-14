@@ -3,7 +3,7 @@ import { UserAvatar } from '../components/userAvatar/UserAvatar';
 
 export const Header = () => {
     return (
-        <header className="relative bg-primaryColor h-14 w-full flex flex-row">
+        <header className="sticky bg-primaryColor h-14 w-full flex flex-row">
             <nav className="relative w-80 flex justify-between px-8">
                 <div className='relative w-auto self-center'>
                     <DirectionsCarIcon sx={{ color: "#FF2D20" }} />

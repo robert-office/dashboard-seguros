@@ -4,7 +4,7 @@ interface ContainerProps {
 
 export const Container = ({ children }: ContainerProps) => {
     return (
-        <div className="relative mt-4 mx-4 min-w-max max-w-screen-xl bg-containerColor p-10">
+        <div className="relative sm:mt-4 sm:mx-4 mt-1 mx-1 min-w-max max-w-screen-xl bg-containerColor sm:p-10 p-4">
             {children}
         </div>
     );

@@ -12,12 +12,12 @@ export const BaseLayout = ({ children }: LayoutProps) => {
     const LGmatches = useMediaQuery('(min-width:1024px)');
 
     return (
-        <>
+        <main className="relative">
             <Header />
 
             <main className="w-full flex flex-row">
                 <aside className="relative h-screen bg-primaryColor overflow-y-scroll" style={{
-                    minWidth: LGmatches ? "250px" : "100px"
+                    minWidth: LGmatches ? "300px" : "100px"
                 }}>
                     <div className='relative w-full h-full flex flex-col'>
                         {menus.map((menuItem, id) => {
@@ -27,10 +27,10 @@ export const BaseLayout = ({ children }: LayoutProps) => {
                 </aside>
                 <section className="relative w-full">
                     <Container>
-                        { children }
+                        {children}
                     </Container>
                 </section>
             </main>
-        </>
+        </main>
     );
 }
