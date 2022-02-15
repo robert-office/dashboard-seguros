@@ -1,0 +1,41 @@
+foreach ( range(40, 50) as $iteration ) {
+    cliente::factory()->count(20)->create(['id_user' => $iteration, 'id_role' => 2 ]);
+}
+
+
+
+cliente::factory()->count(20)->create();
+
+
+veiculo::factory()->count(20)->create();
+
+foreach ( range(1, 20) as $iteration ) {
+    $type = rand(1, 4);
+    veiculo::factory()->create(['id_cliente' => $iteration, 'tipo' => $type, 'nome' => 'ford KA', 'valor' => 12000.90 ]);
+    $type = rand(1, 4);
+    veiculo::factory()->create(['id_cliente' => $iteration, 'tipo' => $type, 'nome' => 'ford KA', 'valor' => 12000.90 ]);
+}
+
+
+
+foreach ( range(1, 40) as $iteration ) {
+    $type = rand(1, 4);
+    rastreador::factory()->create(['id_operadora' => $iteration, 'serial_number' => $type ]);
+}
+
+
+foreach ( range(1, 20) as $iteration ) {
+    $id_vendedor = rand(1, 20);
+
+
+    $id_rastreador = $iteration;
+    $id_veiculo = $iteration + 80;
+    $id_cliente = $iteration;
+    $valor = 20000.00;
+
+    seguro::factory()->create(['id_vendedor' => $id_vendedor, 'id_rastreador' => $id_rastreador, 'id_veiculo' => $id_veiculo, 'id_cliente' => $id_cliente, 'valor' => $valor ]);
+    
+    $id_veiculo = $id_veiculo + 1;
+
+    seguro::factory()->create(['id_vendedor' => $id_vendedor, 'id_rastreador' => $id_rastreador, 'id_veiculo' => $id_veiculo, 'id_cliente' => $id_cliente, 'valor' => $valor ]);
+}
