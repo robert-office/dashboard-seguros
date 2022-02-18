@@ -140,7 +140,7 @@ export interface LaravelSeguro {
 export interface IPaginateSeguros {
     "result": {
         "current_page": number,
-        "data": LaravelVeiculo[],
+        "data": LaravelSeguro[],
         "from": number,
         "last_page": number,
         "links": IPaginateLinks[],
