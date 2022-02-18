@@ -3,34 +3,6 @@ import { datatableHOption } from '../../utils/DatatablesUtils/datableHOptions';
 import { Box, Pagination, PaginationItem, Stack, styled, useMediaQuery } from '@mui/material';
 import { useState } from 'react';
 
-const columns: GridColDef[] = [
-  {
-    field: 'id', headerName: 'ID', width: 70, ...datatableHOption
-  },
-  {
-    field: 'firstName', headerName: 'First name', width: 130, ...datatableHOption
-  },
-  {
-    field: 'lastName', headerName: 'Last name', width: 130, ...datatableHOption
-  },
-  {
-    field: 'age',
-    headerName: 'Age',
-    type: 'number',
-    width: 90,
-    ...datatableHOption
-  },
-  {
-    field: 'fullName',
-    headerName: 'Full name',
-    description: 'This column has a value getter and is not sortable.',
-    sortable: false,
-    width: 160,
-    valueGetter: (params: GridValueGetterParams) => `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-    ...datatableHOption
-  },
-];
-
 const StyledGridOverlay = styled(GridOverlay)(({ theme }) => ({
   flexDirection: 'column',
   '& .ant-empty-img-1': {
@@ -51,9 +23,14 @@ const StyledGridOverlay = styled(GridOverlay)(({ theme }) => ({
   },
 }));
 
-export default function DataTable() {
+
+export interface IDatatable {
+  columns: GridColDef[],
+  rows: any[]
+}
+
+export default function DataTable( { columns, rows } : IDatatable ) {
   const matches = useMediaQuery('(min-width:600px)');
-  const [rows, setRows] = useState([]);
 
   function CustomNoRowsOverlay() {
     return (
@@ -97,43 +74,19 @@ export default function DataTable() {
             </g>
           </g>
         </svg>
-        <Box sx={{ mt: 1 }}>No Rows</Box>
+        <Box sx={{ mt: 1, color: 'white' }}>Não foi achado nenhum registro</Box>
       </StyledGridOverlay>
     );
   }
 
-  function CustomPagination() {
-    return (
-      <Stack
-        direction={'row'}
-        justifyContent={ matches ? 'right' :'center'}
-        paddingX={ matches ? '5px' : '0px' }
-        width={'100%'}>
-
-        <Pagination
-          variant="outlined"
-          count={10}
-          size="small"
-          hidePrevButton
-          hideNextButton
-          renderItem={(item) => (
-            <PaginationItem sx={{ color: '#FF2D20', borderColor: "white" }}
-              {...item}
-            />
-          )} />
-      </Stack>
-    );
-  }
-
   return (
-    <div style={{ height: 400, width: '100%' }}>
-
+    <div style={{ height: 600, width: '100%' }}>
       <DataGrid
         rows={rows}
         columns={columns}
         pageSize={15}
         rowsPerPageOptions={[5]}
-        components={{ Pagination: CustomPagination, NoRowsOverlay: CustomNoRowsOverlay }}
+        components={{ NoRowsOverlay: CustomNoRowsOverlay }}
       />
     </div>
   );

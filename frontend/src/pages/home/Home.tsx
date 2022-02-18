@@ -12,14 +12,19 @@ import {
     VerticalBarSeries
 } from 'react-vis';
 
-export default function Example() {
-    
-    return (
-        <></>
-    );
-}
+import { DatatableDashboardOptions } from "../../utils/DatatablesUtils/datatableGeneralOptions";
+import { useEffect, useState } from "react";
 
 export const Home = () => {
+
+    const [rows, setRows] = useState<any[]>([]);
+
+    useEffect(() => {
+        DatatableDashboardOptions.getRowsFN().then((response) => {
+            setRows(DatatableDashboardOptions.formatData( response.data.result.data ))
+        })
+    })
+
     return (
         <>
             <BaseLayout>
@@ -32,8 +37,7 @@ export const Home = () => {
                     spacing={2}
                     justifyContent="space-between"
                 >
-                    <Example />
-                    <Example />
+
                 </Stack>
 
                 <Stack
@@ -41,10 +45,11 @@ export const Home = () => {
                     divider={<Divider orientation="vertical" flexItem />}
                     className="mt-4"
                 >
-                    <DataTable />
-
+                    <DataTable
+                        rows={rows}
+                        columns={DatatableDashboardOptions.columns}
+                    />
                 </Stack>
-
             </BaseLayout>
         </>
     );
