@@ -17,4 +17,15 @@ class role extends Model
     protected $fillable = [
         'role'
     ];
+
+    public function rolesUsersRoles(){
+        return $this->hasManyThrough(
+            User::class,
+            userRole::class,
+            'id_role',
+            'id',
+            'id',
+            'id_user',
+        );
+    }
 }

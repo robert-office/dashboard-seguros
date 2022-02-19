@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/rastreadores/show/{page}', [RastreadorController::class, 'index']);
 
 /// users
-Route::get('/users/show/{page}', [UserController::class, 'index']);
+Route::get('/users/show/{page}/{role}', [UserController::class, 'index']);
 
 /// veiculos
 Route::get('/veiculos/show/{page}', [VeiculoController::class, 'index']);
