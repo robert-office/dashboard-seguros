@@ -12,7 +12,7 @@ class SeguroController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($page)
     {
 
         /// retorna todos os seguros e todas as informações já vinculadas a ela
@@ -22,7 +22,7 @@ class SeguroController extends Controller
         with('veiculo')->
         with('veiculoTipo')->
         with('cliente')->
-        paginate(15);
+        paginate(15, ['*'], 'page', $page);
 
         return response(['result' => $result], 200);
     }

@@ -12,9 +12,9 @@ class RastreadorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($page)
     {
-        $result = rastreador::with('operadora')->paginate(15);
+        $result = rastreador::with('operadora')->paginate(15, ['*'], 'page', $page);
 
         return response(['result' => $result], 200);
     }

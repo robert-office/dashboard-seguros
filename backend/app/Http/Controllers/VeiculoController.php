@@ -12,9 +12,9 @@ class VeiculoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($page)
     {
-        $result = veiculo::with('cliente')->with('tipo')->paginate(15);
+        $result = veiculo::with('cliente')->with('tipo')->paginate(15, ['*'], 'page', $page);
 
         return response(['result' => $result], 200);
     }

@@ -1,7 +1,6 @@
-import { DataGrid, GridColDef, GridOverlay, GridToolbar, GridToolbarContainer, GridToolbarExport, GridToolbarFilterButton, GridValueGetterParams } from '@mui/x-data-grid';
-import { datatableHOption } from '../../utils/DatatablesUtils/datableHOptions';
-import { Box, Pagination, PaginationItem, Stack, styled, useMediaQuery } from '@mui/material';
-import { useState } from 'react';
+import { DataGrid, GridColDef, GridOverlay } from '@mui/x-data-grid';
+import { Box, styled, useMediaQuery } from '@mui/material';
+import PaginationLink from '../paginationLink/PaginationLink';
 
 const StyledGridOverlay = styled(GridOverlay)(({ theme }) => ({
   flexDirection: 'column',
@@ -26,10 +25,12 @@ const StyledGridOverlay = styled(GridOverlay)(({ theme }) => ({
 
 export interface IDatatable {
   columns: GridColDef[],
-  rows: any[]
+  rows: any[],
+  tableName: string
 }
 
-export default function DataTable( { columns, rows } : IDatatable ) {
+export default function DataTable({ columns, rows, tableName }: IDatatable) {
+  //// responsividade
   const matches = useMediaQuery('(min-width:600px)');
 
   function CustomNoRowsOverlay() {
@@ -79,6 +80,17 @@ export default function DataTable( { columns, rows } : IDatatable ) {
     );
   }
 
+  function CustomFooter() {
+    return (
+      <div>
+        <PaginationLink
+          content={tableName}
+          totalPages={"500"}
+        />
+      </div>
+    );
+  }
+
   return (
     <div style={{ height: 600, width: '100%' }}>
       <DataGrid
@@ -86,7 +98,7 @@ export default function DataTable( { columns, rows } : IDatatable ) {
         columns={columns}
         pageSize={15}
         rowsPerPageOptions={[5]}
-        components={{ NoRowsOverlay: CustomNoRowsOverlay }}
+        components={{ NoRowsOverlay: CustomNoRowsOverlay, Pagination: CustomFooter}}
       />
     </div>
   );

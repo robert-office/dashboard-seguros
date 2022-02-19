@@ -3,6 +3,7 @@ import { getAllSeguros } from "../LaravelUtils/requests/seguro/getAllSeguros";
 import { datatableHOption } from "./datableHOptions";
 
 export const DatatableDashboardOptions = {
+    tableName: "seguros",
     columns:
         [
             { field: 'id', headerName: 'ID', width: 70, ...datatableHOption },
@@ -25,11 +26,11 @@ export const DatatableDashboardOptions = {
                 "id" :              seguro.id,
                 "Valor":            seguro.valor,
                 "Criado em":        seguro.created_at,
-                "Vendedor":         seguro.vendedor.nome,
-                "Veículo":          seguro.veiculo.nome,
-                "Valor do Veículo": seguro.veiculo.valor,
-                "Rastreador":       seguro.rastreador.serial_number,
-                "Operadora":        seguro.rastreador_operadora.nome
+                "Vendedor":         seguro.vendedor?.nome || "",
+                "Veículo":          seguro.veiculo?.nome || "",
+                "Valor do Veículo": seguro.veiculo?.valor || "",
+                "Rastreador":       seguro.rastreador?.serial_number || "",
+                "Operadora":        seguro.rastreador_operadora?.nome || ""
             });
         });
 
