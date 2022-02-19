@@ -1,7 +1,7 @@
 import { httpService } from "../../http"
 import { IPaginateVeiculos } from "../../LaravelTypes";
 
-export const getAllVeiculos = () => {
+export const getAllVeiculos = ( PageAtual: number ) => {
 
     const config = {
         headers: {
@@ -10,5 +10,5 @@ export const getAllVeiculos = () => {
         }
     }
 
-    return httpService.get<IPaginateVeiculos>("/veiculos/show", config);
+    return httpService.get<IPaginateVeiculos>(`/veiculos/show/${PageAtual}`, config);
 }

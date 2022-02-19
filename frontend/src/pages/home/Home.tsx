@@ -15,6 +15,7 @@ import {
 
 import { DatatableDashboardOptions } from "../../utils/DatatablesUtils/datatableGeneralOptions";
 import { useEffect, useState } from "react";
+import { Subtitle } from '../../components/typografy/Subtitle';
 
 export const Home = () => {
 
@@ -51,10 +52,12 @@ export const Home = () => {
 
                 </Stack>
 
+                <Subtitle text='Todos os Seguros' />
+
                 <Stack
                     direction="row"
                     divider={<Divider orientation="vertical" flexItem />}
-                    className="mt-4"
+                    className="lg:mt-4 mt-1"
                 >
                     <DataTable
                         tableName={DatatableDashboardOptions.tableName}

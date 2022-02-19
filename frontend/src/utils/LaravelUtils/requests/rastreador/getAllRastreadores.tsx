@@ -1,7 +1,7 @@
 import { httpService } from "../../http"
 import { IPaginateRastreadores } from "../../LaravelTypes";
 
-export const getAllRastreadores = () => {
+export const getAllRastreadores = ( PageAtual: number ) => {
 
     const config = {
         headers: {
@@ -10,5 +10,5 @@ export const getAllRastreadores = () => {
         }
     }
 
-    return httpService.get<IPaginateRastreadores>("/rastreadores/show", config);
+    return httpService.get<IPaginateRastreadores>(`/rastreadores/show/${PageAtual}`, config);
 }

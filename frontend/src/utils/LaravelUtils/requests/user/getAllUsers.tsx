@@ -1,7 +1,7 @@
 import { httpService } from "../../http"
 import { IPaginateUsers } from "../../LaravelTypes";
 
-export const getAllUsers = () => {
+export const getAllUsers = ( PageAtual: number ) => {
 
     const config = {
         headers: {
@@ -10,5 +10,5 @@ export const getAllUsers = () => {
         }
     }
 
-    return httpService.get<IPaginateUsers>("/users/show", config);
+    return httpService.get<IPaginateUsers>(`/users/show/${PageAtual}`, config);
 }

@@ -16,7 +16,7 @@ export const BaseLayout = ({ children }: LayoutProps) => {
             <Header />
 
             <main className="w-full flex flex-row">
-                <aside className="relative h-screen bg-primaryColor overflow-y-scroll" style={{
+                <aside className="relative min-h-screen bg-primaryColor overflow-y-scroll" style={{
                     minWidth: LGmatches ? "300px" : "100px"
                 }}>
                     <div className='relative w-full h-full flex flex-col'>

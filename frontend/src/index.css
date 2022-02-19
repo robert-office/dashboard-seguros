@@ -20,4 +20,7 @@ html {
 
 body, html {
     background-color: #171923;
+    min-height: 100% !important;
+    height: 100%;
+    position: relative;
 }
