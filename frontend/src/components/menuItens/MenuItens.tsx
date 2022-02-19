@@ -45,13 +45,13 @@ export const MenuItens = ({ text, icon, href, sub }: IheaderMenuItens) => {
                                 </p>
                             </div>
 
-                            <div style={{ width: "10%" }} className="relative h-full flex flex-row">
+                            <div style={{ width: "16%" }} className="relative h-full flex flex-row">
                                 <p className="text-left font-sans font-medium text-base self-center">
                                     <ArrowDropDownIcon className={dropdownIcon ? "rotate-180 transition-transform self-center" : "transition-transform self-center"} sx={{ color: "#FF2D20" }} />
                                 </p>
                             </div>
 
-                            <span className={`relative h-full ${colorClassBG}`} style={{ width: "10%" }}></span>
+                            <span className={`relative h-full ${colorClassBG}`} style={{ width: "4%" }}></span>
 
                         </button>
                         <SubItenDropdown className={dropdown ? "max-h-96 flex flex-col" : "max-h-0"}>
@@ -154,10 +154,10 @@ export const MenuItens = ({ text, icon, href, sub }: IheaderMenuItens) => {
                         {text}
                     </p>
                 </div>
-                <div style={{ width: LGmatches ? "10%" : "100%" }}></div>
+                <div style={{ width: LGmatches ? "16%" : "100%" }}></div>
 
                 {LGmatches ? (
-                    <span className={`relative h-full ${colorClassBG}`} style={{ width: "10%" }}></span>
+                    <span className={`relative h-full ${colorClassBG}`} style={{ width: "4%" }}></span>
                 ) : (
                     <></>
                 )}

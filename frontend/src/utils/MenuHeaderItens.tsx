@@ -29,13 +29,23 @@ export const menus: IheaderMenuItens[] = [
         icon: <PeopleAltIcon className="self-center" sx={{ color: "#C9D1D9" }} />,
         sub: [
             {
+                text: "Administradores",
+                href: "/administradores",
+                icon: <PeopleAltIcon className="self-center" sx={{ color: "#C9D1D9" }} />
+            },
+            {
                 text: "Vendedores",
                 href: "/vendedores",
                 icon: <PeopleAltIcon className="self-center" sx={{ color: "#C9D1D9" }} />
             },
             {
                 text: "Telemarketing",
-                href: "#",
+                href: "/telemarketing",
+                icon: <PeopleAltIcon className="self-center" sx={{ color: "#C9D1D9" }} />
+            },
+            {
+                text: "Desenvolvedores",
+                href: "/desenvolvedores",
                 icon: <PeopleAltIcon className="self-center" sx={{ color: "#C9D1D9" }} />
             }
         ]
@@ -47,17 +57,17 @@ export const menus: IheaderMenuItens[] = [
     },
     {
         text: "Veiculos",
-        href: "#",
+        href: "/veiculos",
         icon: <LocalShippingIcon className="self-center" sx={{ color: "#C9D1D9" }} />
     },
     {
         text: "Seguros",
-        href: "#",
+        href: "/seguros",
         icon: <LocalPoliceIcon className="self-center" sx={{ color: "#C9D1D9" }} />
     },
     {
         text: "Configurações",
-        href: "#",
+        href: "/configuracoes",
         icon: <SettingsIcon className="self-center" sx={{ color: "#C9D1D9" }} />
     }
 ]
