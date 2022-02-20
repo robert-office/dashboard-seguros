@@ -1,5 +1,6 @@
-import { LaravelSeguro } from "../LaravelUtils/LaravelTypes";
+import { LaravelSeguro, LaravelUser, LaravelUserByRole } from "../LaravelUtils/LaravelTypes";
 import { getAllSeguros } from "../LaravelUtils/requests/seguro/getAllSeguros";
+import { getAllUserByRole } from "../LaravelUtils/requests/user/getAllUserByRole";
 import { datatableHOption } from "./datableHOptions";
 
 export const DatatableDashboardOptions = {
@@ -20,18 +21,48 @@ export const DatatableDashboardOptions = {
 
     formatData: (data: LaravelSeguro[]) => {
         let finalData: any[] = [];
-        
-        data.map( (seguro) => {
+
+        data.map((seguro) => {
             finalData.push({
-                "id" :              seguro.id,
-                "Valor":            seguro.valor,
-                "Criado em":        seguro.created_at,
-                "Vendedor":         seguro.vendedor?.nome || "",
-                "Veículo":          seguro.veiculo?.nome || "",
+                "id": seguro.id,
+                "Valor": seguro.valor,
+                "Criado em": seguro.created_at,
+                "Vendedor": seguro.vendedor?.nome || "",
+                "Veículo": seguro.veiculo?.nome || "",
                 "Valor do Veículo": seguro.veiculo?.valor || "",
-                "Rastreador":       seguro.rastreador?.serial_number || "",
-                "Operadora":        seguro.rastreador_operadora?.nome || ""
+                "Rastreador": seguro.rastreador?.serial_number || "",
+                "Operadora": seguro.rastreador_operadora?.nome || ""
             });
+        });
+
+        return finalData;
+    }
+}
+
+export const DatatableAdmOptions = {
+    tableName: "adminstradores",
+    columns:
+        [
+            { field: 'id', headerName: 'id', width: 70, ...datatableHOption },
+            { field: 'Nome', headerName: 'Nome', width: 130, ...datatableHOption },
+            { field: 'E-mail', headerName: 'E-mail', width: 150, ...datatableHOption },
+            { field: 'Criado em', headerName: 'Criado em', width: 150, ...datatableHOption },
+        ],
+
+    getRowsFN: getAllUserByRole,
+
+    formatData: (data: LaravelUserByRole[]) => {
+        let finalData: any[] = [];
+
+        data.map((users) => {
+            users.roles_users_roles?.map((user) => {
+                finalData.push({
+                    "id": user.id,
+                    "Nome": user.nome,
+                    "E-mail": user.email,
+                    "Criado em": user.created_at
+                });
+            })
         });
 
         return finalData;

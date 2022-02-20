@@ -10,5 +10,5 @@ export const getAllClientes = ( PageAtual: number ) => {
         }
     }
 
-    return httpService.get<IPaginateUsers>(`/clientes/show/${PageAtual}`, config);
+    return httpService.get<IPaginateUsers>(`/clientes/showAll/${PageAtual}`, config);
 }

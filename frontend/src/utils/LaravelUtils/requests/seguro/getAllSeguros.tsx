@@ -10,5 +10,5 @@ export const getAllSeguros = ( PageAtual: number ) => {
         }
     }
 
-    return httpService.get<IPaginateSeguros>(`/seguros/show/${PageAtual}`, config); 
+    return httpService.get<IPaginateSeguros>(`/seguros/showAll/${PageAtual}`, config); 
 }

@@ -12,6 +12,8 @@ export interface IPaginateLinks {
 export interface LaravelUser {
     "id": number,
     "nome": string,
+    "email": string,
+    "created_at": string,
     "roles": LaravelUserRoles[]
 }
 
@@ -22,10 +24,29 @@ export interface LaravelUserRoles {
     "updated_at": string
 }
 
+export interface LaravelUserByRole {
+    "id": 1,
+    "roles_users_roles": LaravelUser[],
+}
+
 export interface IPaginateUsers {
     "result": {
         "current_page": number,
         "data": LaravelUser[],
+        "from": number,
+        "last_page": number,
+        "links": IPaginateLinks[],
+        "per_page": number,
+        "prev_page_url": boolean,
+        "to": number,
+        "total": number
+    }
+}
+
+export interface IPaginateUsersByRole {
+    "result": {
+        "current_page": number,
+        "data": LaravelUserByRole[],
         "from": number,
         "last_page": number,
         "links": IPaginateLinks[],

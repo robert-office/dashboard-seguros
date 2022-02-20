@@ -7,13 +7,15 @@ use App\Http\Controllers\VeiculoController;
 use Illuminate\Support\Facades\Route;
 
 /// rastreadores
-Route::get('/rastreadores/show/{page}', [RastreadorController::class, 'index']);
+Route::get('/rastreadores/showAll/{page}', [RastreadorController::class, 'index']);
 
 /// users
-Route::get('/users/show/{page}/{role}', [UserController::class, 'index']);
+Route::get('/users/showAll/{page}', [UserController::class, 'getAllUsers']);
+/// users by role
+Route::get('/users/showAllByRole/{page}/{role}', [UserController::class, 'getUsersByRole']);
 
 /// veiculos
-Route::get('/veiculos/show/{page}', [VeiculoController::class, 'index']);
+Route::get('/veiculos/showAll/{page}', [VeiculoController::class, 'index']);
 
 // seguros
-Route::get('/seguros/show/{page}', [SeguroController::class, 'index']);
+Route::get('/seguros/showAll/{page}', [SeguroController::class, 'index']);

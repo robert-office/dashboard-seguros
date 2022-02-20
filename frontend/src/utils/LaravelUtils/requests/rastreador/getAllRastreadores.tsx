@@ -10,5 +10,5 @@ export const getAllRastreadores = ( PageAtual: number ) => {
         }
     }
 
-    return httpService.get<IPaginateRastreadores>(`/rastreadores/show/${PageAtual}`, config);
+    return httpService.get<IPaginateRastreadores>(`/rastreadores/showAll/${PageAtual}`, config);
 }
