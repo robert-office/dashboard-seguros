@@ -11,6 +11,7 @@ Route::get('/rastreadores/showAll/{page}', [RastreadorController::class, 'index'
 
 /// users
 Route::get('/users/showAll/{page}', [UserController::class, 'getAllUsers']);
+
 /// users by role
 Route::get('/users/showAllByRole/{page}/{role}', [UserController::class, 'getUsersByRole']);
 

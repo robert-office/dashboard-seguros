@@ -39,7 +39,7 @@ export const DatatableDashboardOptions = {
     }
 }
 
-export const DatatableAdmOptions = {
+export const DatatableUsersByRolesOptions = {
     tableName: "adminstradores",
     columns:
         [

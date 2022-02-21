@@ -3,7 +3,7 @@ import { Divider, Stack } from "@mui/material";
 import DataTable from "../../components/datatable/Datatable";
 import { SectionTitle } from "../../components/typografy/SectionTitle";
 import { BaseLayout } from "../../layouts/baseLayout/BaseLayout";
-import { DatatableDashboardOptions } from "../../utils/DatatablesUtils/datatableGeneralOptions";
+import { DatatableUsersByRolesOptions } from "../../utils/DatatablesUtils/datatableGeneralOptions";
 import { useEffect, useState } from "react";
 import { Subtitle } from '../../components/typografy/Subtitle';
 
@@ -15,13 +15,13 @@ export const Dev = () => {
 
     /// paginação da tabela
     const search = useLocation().search;
-    const page = Number(new URLSearchParams(search).get(`${DatatableDashboardOptions.tableName}Page`));
+    const page = Number(new URLSearchParams(search).get(`${DatatableUsersByRolesOptions.tableName}Page`));
     const PageAtual = page ? page : 1;
 
     /// puxando dados da tabela
     useEffect(() => {
-        DatatableDashboardOptions.getRowsFN(PageAtual).then((response) => {
-            setRows(DatatableDashboardOptions.formatData(response.data.result.data));
+        DatatableUsersByRolesOptions.getRowsFN(PageAtual, 4).then((response) => {
+            setRows(DatatableUsersByRolesOptions.formatData(response.data.result.data));
         });
     }, [PageAtual]);
 
@@ -48,9 +48,9 @@ export const Dev = () => {
                     className="lg:mt-4 mt-1"
                 >
                     <DataTable
-                        tableName={DatatableDashboardOptions.tableName}
+                        tableName={DatatableUsersByRolesOptions.tableName}
                         rows={rows}
-                        columns={DatatableDashboardOptions.columns}
+                        columns={DatatableUsersByRolesOptions.columns}
                     />
                 </Stack>
             </BaseLayout>
