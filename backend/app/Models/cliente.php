@@ -17,4 +17,14 @@ class cliente extends Model
     protected $fillable = [
         'nome'
     ];
+
+    public function ultimoVeiculo()
+    {
+        return $this->hasOne(veiculo::class, 'id_cliente')->latest();
+    }
+
+    public function ultimoSeguro()
+    {
+        return $this->hasOne(seguro::class, 'id_cliente')->latest();
+    }
 }

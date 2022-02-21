@@ -3,7 +3,7 @@ import { Divider, Stack } from "@mui/material";
 import DataTable from "../../components/datatable/Datatable";
 import { SectionTitle } from "../../components/typografy/SectionTitle";
 import { BaseLayout } from "../../layouts/baseLayout/BaseLayout";
-import { DatatableDashboardOptions } from "../../utils/DatatablesUtils/datatableGeneralOptions";
+import { DatatableClientesOptions } from "../../utils/DatatablesUtils/datatableGeneralOptions";
 import { useEffect, useState } from "react";
 import { Subtitle } from '../../components/typografy/Subtitle';
 
@@ -15,13 +15,13 @@ export const Cli = () => {
 
     /// paginação da tabela
     const search = useLocation().search;
-    const page = Number(new URLSearchParams(search).get(`${DatatableDashboardOptions.tableName}Page`));
+    const page = Number(new URLSearchParams(search).get(`${DatatableClientesOptions.tableName}Page`));
     const PageAtual = page ? page : 1;
 
     /// puxando dados da tabela
     useEffect(() => {
-        DatatableDashboardOptions.getRowsFN(PageAtual).then((response) => {
-            setRows(DatatableDashboardOptions.formatData(response.data.result.data));
+        DatatableClientesOptions.getRowsFN(PageAtual).then((response) => {
+            setRows(DatatableClientesOptions.formatData(response.data.result.data));
         });
     }, [PageAtual]);
 
@@ -48,9 +48,9 @@ export const Cli = () => {
                     className="lg:mt-4 mt-1"
                 >
                     <DataTable
-                        tableName={DatatableDashboardOptions.tableName}
+                        tableName={DatatableClientesOptions.tableName}
                         rows={rows}
-                        columns={DatatableDashboardOptions.columns}
+                        columns={DatatableClientesOptions.columns}
                     />
                 </Stack>
             </BaseLayout>

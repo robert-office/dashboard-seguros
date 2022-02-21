@@ -1,6 +1,8 @@
-import { LaravelSeguro, LaravelUser, LaravelUserByRole } from "../LaravelUtils/LaravelTypes";
+import { LaravelClienteSeguroVeiculo, LaravelSeguro, LaravelUser, LaravelUserByRole } from "../LaravelUtils/LaravelTypes";
+import { getAllClientes } from "../LaravelUtils/requests/cliente/getAllClientes";
 import { getAllSeguros } from "../LaravelUtils/requests/seguro/getAllSeguros";
 import { getAllUserByRole } from "../LaravelUtils/requests/user/getAllUserByRole";
+import { formatarData, formatarDinheiro } from "../utils";
 import { datatableHOption } from "./datableHOptions";
 
 export const DatatableDashboardOptions = {
@@ -25,11 +27,11 @@ export const DatatableDashboardOptions = {
         data.map((seguro) => {
             finalData.push({
                 "id": seguro.id,
-                "Valor": seguro.valor,
-                "Criado em": seguro.created_at,
+                "Valor": formatarDinheiro(seguro.valor),
+                "Criado em": formatarData(seguro.created_at),
                 "Vendedor": seguro.vendedor?.nome || "",
                 "Veículo": seguro.veiculo?.nome || "",
-                "Valor do Veículo": seguro.veiculo?.valor || "",
+                "Valor do Veículo": formatarDinheiro(seguro.veiculo?.valor) || "",
                 "Rastreador": seguro.rastreador?.serial_number || "",
                 "Operadora": seguro.rastreador_operadora?.nome || ""
             });
@@ -60,9 +62,43 @@ export const DatatableUsersByRolesOptions = {
                     "id": user.id,
                     "Nome": user.nome,
                     "E-mail": user.email,
-                    "Criado em": user.created_at
+                    "Criado em": formatarData(user.created_at)
                 });
             })
+        });
+
+        return finalData;
+    }
+}
+
+export const DatatableClientesOptions = {
+    tableName: "clientes",
+    columns:
+        [
+            { field: 'id', headerName: 'id', width: 70, ...datatableHOption },
+            { field: 'Nome', headerName: 'Nome', width: 130, ...datatableHOption },
+            { field: 'Entrou em', headerName: 'Entrou em', width: 150, ...datatableHOption },
+            { field: 'Ultimo Veiculo', headerName: 'Ultimo Veiculo', width: 150, ...datatableHOption },
+            { field: 'Valor Veiculo', headerName: 'Valor Veiculo', width: 150, ...datatableHOption },
+            { field: 'Ultimo Seguro ID', headerName: 'Ultimo Seguro ID', width: 150, ...datatableHOption },
+            { field: 'Valor Seguro', headerName: 'Valor Seguro', width: 150, ...datatableHOption },
+        ],
+
+    getRowsFN: getAllClientes,
+
+    formatData: (data: LaravelClienteSeguroVeiculo[]) => {
+        let finalData: any[] = [];
+
+        data.map((user) => {
+            finalData.push({
+                "id": user.id,
+                "Nome": user.nome,
+                "Entrou em": formatarData(user.created_at),
+                "Ultimo Veiculo": user.ultimo_veiculo?.nome || "",
+                'Valor Veiculo' : formatarDinheiro(user.ultimo_veiculo?.valor) || "",
+                "Ultimo Seguro ID" : user.ultimo_seguro?.id || "",
+                "Valor Seguro" : formatarDinheiro(user.ultimo_seguro?.valor) || ""
+            });
         });
 
         return finalData;

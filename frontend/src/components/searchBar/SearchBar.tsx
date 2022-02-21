@@ -4,8 +4,8 @@ interface Props {
 }
 export const SearchBar = ({ value, setSearchValue }: Props) => {
     return (
-        <div className="px-1 py-6">
-            <div className="flex justify-between bg-gray-100 p-4 pr-5 w-full rounded-lg">
+        <div className=" w-full relative flex justify-between">
+            <div className="relative flex justify-between bg-gray-100 p-4 pl-8" style={{ width: "96%" }}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6 opacity-30"
@@ -23,13 +23,14 @@ export const SearchBar = ({ value, setSearchValue }: Props) => {
                 <input
                     className="bg-gray-100 outline-none"
                     type="text"
-                    placeholder="Filtre os menus"
+                    placeholder="Filtre os menus...."
                     value={value}
                     onChange={(value) => {
                         setSearchValue(value.target.value);
                     }}
                 />
             </div>
+            <div style={{ width: "4%" }} className='relative bg-secundaryColor min-h-max'></div>
         </div>
     );
 };

@@ -21,7 +21,7 @@ export const BaseLayout = ({ children }: LayoutProps) => {
 
             <main className="w-full flex flex-row">
                 <aside className="relative min-h-screen bg-primaryColor overflow-y-scroll" style={{
-                    minWidth: LGmatches ? "300px" : "100px"
+                    minWidth: LGmatches ? "320px" : "100px"
                 }}>
                     <div className='relative w-full h-full flex flex-col'>
                         <div className="w-full lg:block hidden">

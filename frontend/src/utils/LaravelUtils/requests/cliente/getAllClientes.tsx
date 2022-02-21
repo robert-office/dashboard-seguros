@@ -1,5 +1,5 @@
 import { httpService } from "../../http"
-import { IPaginateUsers } from "../../LaravelTypes";
+import { IPaginateClientes, IPaginateUsers } from "../../LaravelTypes";
 
 export const getAllClientes = ( PageAtual: number ) => {
 
@@ -10,5 +10,5 @@ export const getAllClientes = ( PageAtual: number ) => {
         }
     }
 
-    return httpService.get<IPaginateUsers>(`/clientes/showAll/${PageAtual}`, config);
+    return httpService.get<IPaginateClientes>(`/clientes/showAll/${PageAtual}`, config);
 }

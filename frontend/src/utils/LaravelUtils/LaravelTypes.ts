@@ -171,3 +171,25 @@ export interface IPaginateSeguros {
         "total": number
     }
 }
+
+
+//// clientes
+
+export interface LaravelClienteSeguroVeiculo extends LaravelCliente {
+    "ultimo_veiculo" : LaravelVeiculo,
+    "ultimo_seguro"  : LaravelSeguro
+}
+
+export interface IPaginateClientes {
+    "result": {
+        "current_page": number,
+        "data": LaravelClienteSeguroVeiculo[],
+        "from": number,
+        "last_page": number,
+        "links": IPaginateLinks[],
+        "per_page": number,
+        "prev_page_url": boolean,
+        "to": number,
+        "total": number
+    } 
+}
