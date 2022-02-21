@@ -10,6 +10,7 @@ import { Subtitle } from '../../components/typografy/Subtitle';
 export const Vende = () => {
     /// rows da tabela
     const [rows, setRows] = useState<any[]>([]);
+    const [totalPages, setTotalPages] = useState(0);
 
     /// paginação da tabela
     const search = useLocation().search;
@@ -20,6 +21,7 @@ export const Vende = () => {
     useEffect(() => {
         DatatableUsersByRolesOptions.getRowsFN(PageAtual, 2).then((response) => {
             setRows(DatatableUsersByRolesOptions.formatData(response.data.result.data));
+            setTotalPages(response.data.result.total);
         });
     }, [PageAtual]);
 
@@ -46,6 +48,7 @@ export const Vende = () => {
                     className="lg:mt-4 mt-1"
                 >
                     <DataTable
+                        totalPages={totalPages}
                         tableName={DatatableUsersByRolesOptions.tableName}
                         rows={rows}
                         columns={DatatableUsersByRolesOptions.columns}

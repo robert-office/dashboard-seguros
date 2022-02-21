@@ -24,6 +24,7 @@ export const Segu = () => {
 
     /// rows da tabela
     const [rows, setRows] = useState<any[]>([]);
+    const [totalPages, setTotalPages] = useState(0);
 
     /// paginação da tabela
     const search = useLocation().search;
@@ -34,6 +35,7 @@ export const Segu = () => {
     useEffect(() => {
         DatatableDashboardOptions.getRowsFN(PageAtual).then((response) => {
             setRows(DatatableDashboardOptions.formatData(response.data.result.data));
+            setTotalPages(response.data.result.total);
         });
     }, [PageAtual]);
 
@@ -60,6 +62,7 @@ export const Segu = () => {
                     className="lg:mt-4 mt-1"
                 >
                     <DataTable
+                        totalPages={totalPages}
                         tableName={DatatableDashboardOptions.tableName}
                         rows={rows}
                         columns={DatatableDashboardOptions.columns}

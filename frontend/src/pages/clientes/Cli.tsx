@@ -12,6 +12,7 @@ export const Cli = () => {
 
     /// rows da tabela
     const [rows, setRows] = useState<any[]>([]);
+    const [totalPages, setTotalPages] = useState(0);
 
     /// paginação da tabela
     const search = useLocation().search;
@@ -22,6 +23,7 @@ export const Cli = () => {
     useEffect(() => {
         DatatableClientesOptions.getRowsFN(PageAtual).then((response) => {
             setRows(DatatableClientesOptions.formatData(response.data.result.data));
+            setTotalPages(response.data.result.total);
         });
     }, [PageAtual]);
 
@@ -48,6 +50,7 @@ export const Cli = () => {
                     className="lg:mt-4 mt-1"
                 >
                     <DataTable
+                        totalPages={totalPages}
                         tableName={DatatableClientesOptions.tableName}
                         rows={rows}
                         columns={DatatableClientesOptions.columns}

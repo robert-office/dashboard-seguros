@@ -26,10 +26,11 @@ const StyledGridOverlay = styled(GridOverlay)(({ theme }) => ({
 export interface IDatatable {
   columns: GridColDef[],
   rows: any[],
-  tableName: string
+  tableName: string,
+  totalPages: number
 }
 
-export default function DataTable({ columns, rows, tableName }: IDatatable) {
+export default function DataTable({ columns, rows, tableName, totalPages }: IDatatable) {
   //// responsividade
   const matches = useMediaQuery('(min-width:600px)');
 
@@ -81,11 +82,13 @@ export default function DataTable({ columns, rows, tableName }: IDatatable) {
   }
 
   function CustomFooter() {
+    const totalp = String(Math.ceil(totalPages / 15));
+
     return (
       <div>
         <PaginationLink
           content={tableName}
-          totalPages={"500"}
+          totalPages={totalp}
         />
       </div>
     );

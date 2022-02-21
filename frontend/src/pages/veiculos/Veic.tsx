@@ -10,6 +10,7 @@ import { Subtitle } from '../../components/typografy/Subtitle';
 export const Veic = () => {
     /// rows da tabela
     const [rows, setRows] = useState<any[]>([]);
+    const [totalPages, setTotalPages] = useState(0);
 
     /// paginação da tabela
     const search = useLocation().search;
@@ -20,6 +21,7 @@ export const Veic = () => {
     useEffect(() => {
         DatatableVeiculosOptions.getRowsFN(PageAtual).then((response) => {
             setRows(DatatableVeiculosOptions.formatData(response.data.result.data));
+            setTotalPages(response.data.result.total);
         });
     }, [PageAtual]);
 
@@ -46,6 +48,7 @@ export const Veic = () => {
                     className="lg:mt-4 mt-1"
                 >
                     <DataTable
+                        totalPages={totalPages}
                         tableName={DatatableVeiculosOptions.tableName}
                         rows={rows}
                         columns={DatatableVeiculosOptions.columns}
