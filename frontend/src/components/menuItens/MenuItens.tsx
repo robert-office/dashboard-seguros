@@ -7,7 +7,7 @@ import { useState } from 'react'
 import styled from "styled-components"
 
 const SubItenDropdown = styled.div`
-transition: max-height 0.5s ease-in-out
+transition: max-height 0.3s ease-in-out
 `;
 
 export const MenuItens = ({ text, icon, href, sub }: IheaderMenuItens) => {

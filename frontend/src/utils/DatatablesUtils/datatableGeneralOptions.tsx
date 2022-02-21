@@ -1,7 +1,8 @@
-import { LaravelClienteSeguroVeiculo, LaravelSeguro, LaravelUser, LaravelUserByRole } from "../LaravelUtils/LaravelTypes";
+import { LaravelClienteSeguroVeiculo, LaravelSeguro, LaravelUser, LaravelUserByRole, LaravelVeiculo } from "../LaravelUtils/LaravelTypes";
 import { getAllClientes } from "../LaravelUtils/requests/cliente/getAllClientes";
 import { getAllSeguros } from "../LaravelUtils/requests/seguro/getAllSeguros";
 import { getAllUserByRole } from "../LaravelUtils/requests/user/getAllUserByRole";
+import { getAllVeiculos } from "../LaravelUtils/requests/veiculo/getAllVeiculos";
 import { formatarData, formatarDinheiro } from "../utils";
 import { datatableHOption } from "./datableHOptions";
 
@@ -98,6 +99,38 @@ export const DatatableClientesOptions = {
                 'Valor Veiculo' : formatarDinheiro(user.ultimo_veiculo?.valor) || "",
                 "Ultimo Seguro ID" : user.ultimo_seguro?.id || "",
                 "Valor Seguro" : formatarDinheiro(user.ultimo_seguro?.valor) || ""
+            });
+        });
+
+        return finalData;
+    }
+}
+
+export const DatatableVeiculosOptions = {
+    tableName: "veiculos",
+    columns:
+        [
+            { field: 'id', headerName: 'id', width: 70, ...datatableHOption },
+            { field: 'Nome', headerName: 'Nome', width: 130, ...datatableHOption },
+            { field: 'Tipo', headerName: 'Tipo', width: 130, ...datatableHOption },
+            { field: 'Valor Veiculo', headerName: 'Valor Veiculo', width: 150, ...datatableHOption },
+            { field: 'Cadastrado em', headerName: 'Cadastrado em', width: 150, ...datatableHOption },
+            { field: 'Nome Cliente', headerName: 'Nome Cliente', width: 150, ...datatableHOption },
+        ],
+
+    getRowsFN: getAllVeiculos,
+
+    formatData: (data: LaravelVeiculo[]) => {
+        let finalData: any[] = [];
+
+        data.map((veiculo) => {
+            finalData.push({
+                "id": veiculo.id,
+                "Nome": veiculo.nome,
+                "Tipo": veiculo.tipo?.tipo || "",
+                'Valor Veiculo' : formatarDinheiro(veiculo.valor),
+                "Cadastrado em": formatarData(veiculo.created_at),
+                "Nome Cliente": veiculo.cliente?.nome || ""
             });
         });
 

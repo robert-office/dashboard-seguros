@@ -10,5 +10,5 @@ export const getAllVeiculos = ( PageAtual: number ) => {
         }
     }
 
-    return httpService.get<IPaginateVeiculos>(`/veiculos/show/${PageAtual}`, config);
+    return httpService.get<IPaginateVeiculos>(`/veiculos/showAll/${PageAtual}`, config);
 }
