@@ -5,12 +5,13 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
 import { useState } from 'react'
 import styled from "styled-components"
+import React from 'react'
 
 const SubItenDropdown = styled.div`
 transition: max-height 0.3s ease-in-out
 `;
 
-export const MenuItens = ({ text, icon, href, sub }: IheaderMenuItens) => {
+const MenuItensNoMemorized = ({ text, icon, href, sub }: IheaderMenuItens) => {
     const params = useLocation()
     const activeA = params.pathname === href ? true : false
 
@@ -40,7 +41,7 @@ export const MenuItens = ({ text, icon, href, sub }: IheaderMenuItens) => {
                             </div>
 
                             <div style={{ width: "56%" }} className="h-full flex">
-                                <p className={`${colorClass} text-left font-sans font-medium text-base self-center`}>
+                                <p className={`${colorClass} text-left font-sans font-medium text-xs self-center`}>
                                     {text}
                                 </p>
                             </div>
@@ -70,7 +71,7 @@ export const MenuItens = ({ text, icon, href, sub }: IheaderMenuItens) => {
                                         </div>
 
                                         <div style={{ width: "70%" }} className="h-full flex">
-                                            <p className={`${colorClass} text-left font-sans font-medium text-base self-center`}>
+                                            <p className={`${colorClass} text-left font-sans font-medium text-xs self-center`}>
                                                 {subItem.text}
                                             </p>
                                         </div>
@@ -150,7 +151,7 @@ export const MenuItens = ({ text, icon, href, sub }: IheaderMenuItens) => {
                 </div>
 
                 <div style={{ width: LGmatches ? "56%" : "100%" }} className="h-full flex lg:justify-start justify-center">
-                    <p className={`${colorClass} lg:text-left text-center font-sans font-medium lg:text-base text-[8px] self-center`}>
+                    <p className={`${colorClass} lg:text-left text-center font-sans font-medium lg:text-xs text-[8px] self-center`}>
                         {text}
                     </p>
                 </div>
@@ -166,3 +167,5 @@ export const MenuItens = ({ text, icon, href, sub }: IheaderMenuItens) => {
     }
 
 }
+
+export const MenuItens = React.memo(MenuItensNoMemorized);

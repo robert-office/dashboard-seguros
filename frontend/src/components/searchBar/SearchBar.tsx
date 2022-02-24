@@ -4,8 +4,8 @@ interface Props {
 }
 export const SearchBar = ({ value, setSearchValue }: Props) => {
     return (
-        <div className=" w-full relative flex justify-between">
-            <div className="relative flex justify-between bg-gray-100 p-4 pl-8" style={{ width: "96%" }}>
+        <div className="w-full relative flex justify-between">
+            <div className="relative flex justify-between bg-gray-100 p-4 pl-8" style={{ width: "96.8%" }}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6 opacity-30"
@@ -30,7 +30,7 @@ export const SearchBar = ({ value, setSearchValue }: Props) => {
                     }}
                 />
             </div>
-            <div style={{ width: "4%" }} className='relative bg-secundaryColor min-h-max'></div>
+            <div style={{ width: "3.2%" }} className='relative bg-secundaryColor min-h-max'></div>
         </div>
     );
 };
