@@ -22,7 +22,7 @@ class SeguroController extends Controller
         with('veiculo')->
         with('veiculoTipo')->
         with('cliente')->
-        paginate(15, ['*'], 'page', $page);
+        paginate(100, ['*'], 'page', $page);
 
         return response(['result' => $result], 200);
     }

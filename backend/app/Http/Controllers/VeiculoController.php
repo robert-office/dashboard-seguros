@@ -14,7 +14,7 @@ class VeiculoController extends Controller
      */
     public function index($page)
     {
-        $result = veiculo::with('cliente')->with('tipo')->paginate(15, ['*'], 'page', $page);
+        $result = veiculo::with('cliente')->with('tipo')->paginate(100, ['*'], 'page', $page);
 
         return response(['result' => $result], 200);
     }

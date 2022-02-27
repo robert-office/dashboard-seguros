@@ -82,7 +82,7 @@ export default function DataTable({ columns, rows, tableName, totalPages }: IDat
   }
 
   function CustomFooter() {
-    const totalp = String(Math.ceil(totalPages / 15));
+    const totalp = String(Math.ceil(totalPages / 100));
 
     return (
       <div>
@@ -99,8 +99,8 @@ export default function DataTable({ columns, rows, tableName, totalPages }: IDat
       <DataGrid
         rows={rows}
         columns={columns}
-        pageSize={15}
-        rowsPerPageOptions={[5]}
+        pageSize={100}
+        rowsPerPageOptions={[15, 25, 50, 100]}
         components={{ NoRowsOverlay: CustomNoRowsOverlay, Pagination: CustomFooter}}
       />
     </div>

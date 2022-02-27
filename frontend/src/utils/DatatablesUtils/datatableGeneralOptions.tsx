@@ -6,6 +6,8 @@ import { getAllVeiculos } from "../LaravelUtils/requests/veiculo/getAllVeiculos"
 import { formatarData, formatarDinheiro } from "../utils";
 import { datatableHOption } from "./datableHOptions";
 
+import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
+
 export const DatatableDashboardOptions = {
     tableName: "seguros",
     columns:
@@ -18,6 +20,7 @@ export const DatatableDashboardOptions = {
             { field: 'Valor do Veículo', headerName: 'Valor do Veículo', width: 150, ...datatableHOption },
             { field: 'Rastreador', headerName: 'Rastreador', width: 150, ...datatableHOption },
             { field: 'Operadora', headerName: 'Operadora', width: 100, ...datatableHOption },
+            { field: 'ação', headerName: 'ação', width: 100, ...datatableHOption },
         ],
 
     getRowsFN: getAllSeguros,
@@ -34,7 +37,8 @@ export const DatatableDashboardOptions = {
                 "Veículo": seguro.veiculo?.nome || "",
                 "Valor do Veículo": formatarDinheiro(seguro.veiculo?.valor) || "",
                 "Rastreador": seguro.rastreador?.serial_number || "",
-                "Operadora": seguro.rastreador_operadora?.nome || ""
+                "Operadora": seguro.rastreador_operadora?.nome || "",
+                'ação': <button> <ModeEditOutlinedIcon/> </button>
             });
         });
 

@@ -14,7 +14,7 @@ class RastreadorController extends Controller
      */
     public function index($page)
     {
-        $result = rastreador::with('operadora')->paginate(15, ['*'], 'page', $page);
+        $result = rastreador::with('operadora')->paginate(100, ['*'], 'page', $page);
 
         return response(['result' => $result], 200);
     }

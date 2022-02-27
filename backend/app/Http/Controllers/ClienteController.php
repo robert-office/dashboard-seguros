@@ -14,7 +14,7 @@ class ClienteController extends Controller
      */
     public function index($page)
     {
-        $response = cliente::with('ultimoVeiculo')->with('ultimoSeguro')->paginate(15, ['*'], 'page', $page);
+        $response = cliente::with('ultimoVeiculo')->with('ultimoSeguro')->paginate(100, ['*'], 'page', $page);
 
         return response(['result' => $response], 200);
     }

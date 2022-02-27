@@ -25,6 +25,8 @@ const MenuItensNoMemorized = ({ text, icon, href, sub }: IheaderMenuItens) => {
 
     const colorClassBG = activeA ? "bg-secundaryColor" : "bg-fontColor";
 
+    const colorClassBGRounded = activeA ? "border-secundaryColor" : "border-fontColor";
+
     if (sub) {
         return (
 
@@ -35,9 +37,11 @@ const MenuItensNoMemorized = ({ text, icon, href, sub }: IheaderMenuItens) => {
                             setDropdown(!dropdown);
                             setDropdownIcon(!dropdownIcon);
                         }}
-                            className={"w-full flex flex-row h-14 border-collapse border-y border-borderColor bg-primaryColor hover:bg-primaryColorHovered justify-between pl-8"}>
-                            <div style={{ width: "24%" }} className="h-full flex">
-                                {icon}
+                            className={"w-full flex flex-row h-14 border-collapse bg-primaryColor hover:bg-primaryColorHovered justify-between pl-8"}>
+                            <div style={{ width: "24%" }} className={`h-full w-full flex`}>
+                                <span className={`w-auto h-9 border rounded-full p-1 flex align-middle my-auto ${colorClassBGRounded}`}>
+                                    {icon}
+                                </span>
                             </div>
 
                             <div style={{ width: "56%" }} className="h-full flex">
@@ -90,9 +94,11 @@ const MenuItensNoMemorized = ({ text, icon, href, sub }: IheaderMenuItens) => {
                             setDropdown(!dropdown);
                             setDropdownIcon(!dropdownIcon);
                         }}
-                            className={"w-full flex flex-col space-y-3 border-collapse border-y border-borderColor bg-primaryColor hover:bg-primaryColorHovered justify-center px-4 py-2"}>
+                            className={"w-full flex flex-col space-y-3 border-collapse bg-primaryColor hover:bg-primaryColorHovered justify-center px-4 py-2"}>
                             <div style={{ width: "100%" }} className="flex justify-center">
-                                {icon}
+                                <span className={`w-auto h-9 border rounded-full p-1 flex align-middle my-auto ${colorClassBGRounded}`}>
+                                    {icon}
+                                </span>
                             </div>
 
                             <div style={{ width: "100%" }}>
@@ -144,10 +150,12 @@ const MenuItensNoMemorized = ({ text, icon, href, sub }: IheaderMenuItens) => {
     }
     else {
         return (
-            <NavLink to={href} className={"w-full flex lg:flex-row flex-col lg:h-14 h-auto border-collapse border-y border-borderColor bg-primaryColor hover:bg-primaryColorHovered justify-between lg:pl-8 lg:space-y-0 space-y-3 py-2 lg:py-0 "}>
+            <NavLink to={href} className={"w-full flex lg:flex-row flex-col lg:h-14 h-auto bg-primaryColor hover:bg-primaryColorHovered justify-between lg:pl-8 lg:space-y-0 space-y-3 py-2 lg:py-0 "}>
 
                 <div style={{ width: LGmatches ? "24%" : "100%" }} className="flex lg:justify-start justify-center">
-                    {icon}
+                    <span className={`w-auto h-9 border rounded-full p-1 flex align-middle my-auto ${colorClassBGRounded}`}>
+                        {icon}
+                    </span>
                 </div>
 
                 <div style={{ width: LGmatches ? "56%" : "100%" }} className="h-full flex lg:justify-start justify-center">
