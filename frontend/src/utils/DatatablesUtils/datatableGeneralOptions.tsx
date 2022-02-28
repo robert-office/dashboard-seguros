@@ -5,7 +5,6 @@ import { getAllUserByRole } from "../LaravelUtils/requests/user/getAllUserByRole
 import { getAllVeiculos } from "../LaravelUtils/requests/veiculo/getAllVeiculos";
 import { formatarData, formatarDinheiro } from "../utils";
 import { datatableHOption } from "./datableHOptions";
-
 import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
 
 export const DatatableDashboardOptions = {
@@ -47,7 +46,7 @@ export const DatatableDashboardOptions = {
 }
 
 export const DatatableUsersByRolesOptions = {
-    tableName: "adminstradores",
+    tableName: "users",
     columns:
         [
             { field: 'id', headerName: 'id', width: 70, ...datatableHOption },
