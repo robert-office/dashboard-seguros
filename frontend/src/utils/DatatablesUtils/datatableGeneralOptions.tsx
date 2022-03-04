@@ -6,6 +6,24 @@ import { getAllVeiculos } from "../LaravelUtils/requests/veiculo/getAllVeiculos"
 import { formatarData, formatarDinheiro } from "../utils";
 import { datatableHOption } from "./datableHOptions";
 import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
+import { IconButton, Tooltip } from "@mui/material";
+import { Link } from "react-router-dom";
+
+export type IEditarButton = {
+    icon: JSX.Element,
+    href: string,
+    title: string
+}
+
+export const EditarButton = ({ icon, href, title }: IEditarButton) => {
+    return (
+        <Tooltip title={title}>
+            <Link to={href}>
+                <IconButton sx={{ color: 'white' }}> {icon} </IconButton>
+            </Link>
+        </Tooltip>
+    )
+}
 
 export const DatatableDashboardOptions = {
     tableName: "seguros",
@@ -37,7 +55,7 @@ export const DatatableDashboardOptions = {
                 "Valor do Veículo": formatarDinheiro(seguro.veiculo?.valor) || "",
                 "Rastreador": seguro.rastreador?.serial_number || "",
                 "Operadora": seguro.rastreador_operadora?.nome || "",
-                'ação': <button> <ModeEditOutlinedIcon/> </button>
+                'ação': <EditarButton icon={<ModeEditOutlinedIcon />} title={"Editar"} href={`/editar/seguro/${seguro.id}`} />
             });
         });
 
@@ -86,6 +104,7 @@ export const DatatableClientesOptions = {
             { field: 'Valor Veiculo', headerName: 'Valor Veiculo', width: 150, ...datatableHOption },
             { field: 'Ultimo Seguro ID', headerName: 'Ultimo Seguro ID', width: 150, ...datatableHOption },
             { field: 'Valor Seguro', headerName: 'Valor Seguro', width: 150, ...datatableHOption },
+            { field: 'ação', headerName: 'ação', width: 100, ...datatableHOption },
         ],
 
     getRowsFN: getAllClientes,
@@ -99,9 +118,10 @@ export const DatatableClientesOptions = {
                 "Nome": user.nome,
                 "Entrou em": formatarData(user.created_at),
                 "Ultimo Veiculo": user.ultimo_veiculo?.nome || "",
-                'Valor Veiculo' : formatarDinheiro(user.ultimo_veiculo?.valor) || "",
-                "Ultimo Seguro ID" : user.ultimo_seguro?.id || "",
-                "Valor Seguro" : formatarDinheiro(user.ultimo_seguro?.valor) || ""
+                'Valor Veiculo': formatarDinheiro(user.ultimo_veiculo?.valor) || "",
+                "Ultimo Seguro ID": user.ultimo_seguro?.id || "",
+                "Valor Seguro": formatarDinheiro(user.ultimo_seguro?.valor) || "",
+                'ação': <EditarButton icon={<ModeEditOutlinedIcon />} title={"Editar"} href={`/editar/cliente/${user.id}`} />
             });
         });
 
@@ -131,7 +151,7 @@ export const DatatableVeiculosOptions = {
                 "id": veiculo.id,
                 "Nome": veiculo.nome,
                 "Tipo": veiculo.tipo?.tipo || "",
-                'Valor Veiculo' : formatarDinheiro(veiculo.valor),
+                'Valor Veiculo': formatarDinheiro(veiculo.valor),
                 "Cadastrado em": formatarData(veiculo.created_at),
                 "Nome Cliente": veiculo.cliente?.nome || ""
             });
