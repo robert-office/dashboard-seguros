@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { My404 } from "./pages/404";
 import { Adm } from "./pages/administradores/Adm";
 import { Cli } from "./pages/clientes/Cli";
 import { Conf } from "./pages/configuracoes/Conf";
@@ -25,6 +26,8 @@ export const Rotas = () => {
                 <Route path="/vendedores" element={<Vende/>} />
 
                 <Route path="/edit/:resource/:id" element={<Edit/>} />
+
+                <Route path="/*" element={<My404/>} />
             </Routes>
         </BrowserRouter>
     )
