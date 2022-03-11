@@ -7,7 +7,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 export interface IheaderMenuItens {
     text: string,
     href: string,
-    icon: JSX.Element,
+    icon: (color?: string) => JSX.Element,
     sub?: IheadeSubMenu[]
 }
 
@@ -21,12 +21,37 @@ export const menus: IheaderMenuItens[] = [
     {
         text: "Dashboard",
         href: "/",
-        icon: <DashboardIcon className="self-center" sx={{ color: "#C9D1D9" }} />
+        icon: (color) => <DashboardIcon className="self-center" sx={{ color: color }} />
+    },
+    {
+        text: "Dashboard",
+        href: "/",
+        icon: (color) => <DashboardIcon className="self-center" sx={{ color: color }} />
+    },
+    {
+        text: "Dashboard",
+        href: "/",
+        icon: (color) => <DashboardIcon className="self-center" sx={{ color: color }} />
+    },
+    {
+        text: "Dashboard",
+        href: "/",
+        icon: (color) => <DashboardIcon className="self-center" sx={{ color: color }} />
+    },
+    {
+        text: "Dashboard",
+        href: "/",
+        icon: (color) => <DashboardIcon className="self-center" sx={{ color: color }} />
+    },
+    {
+        text: "Dashboard",
+        href: "/",
+        icon: (color) => <DashboardIcon className="self-center" sx={{ color: color }} />
     },
     {
         text: "Funcionarios",
         href: "#",
-        icon: <PeopleAltIcon className="self-center" sx={{ color: "#C9D1D9" }} />,
+        icon: (color) => <PeopleAltIcon className="self-center" sx={{ color: color }} />,
         sub: [
             {
                 text: "Administradores",
@@ -53,21 +78,21 @@ export const menus: IheaderMenuItens[] = [
     {
         text: "Clientes",
         href: "/clientes",
-        icon: <PeopleAltIcon className="self-center" sx={{ color: "#C9D1D9" }} />
+        icon: (color) => <PeopleAltIcon className="self-center" sx={{ color: color }} />
     },
     {
         text: "Veiculos",
         href: "/veiculos",
-        icon: <LocalShippingIcon className="self-center" sx={{ color: "#C9D1D9" }} />
+        icon: (color) => <LocalShippingIcon className="self-center" sx={{ color: color }} />
     },
     {
         text: "Seguros",
         href: "/seguros",
-        icon: <LocalPoliceIcon className="self-center" sx={{ color: "#C9D1D9" }} />
+        icon: (color) => <LocalPoliceIcon className="self-center" sx={{ color: color }} />
     },
     {
         text: "Configurações",
         href: "/configuracoes",
-        icon: <SettingsIcon className="self-center" sx={{ color: "#C9D1D9" }} />
+        icon: (color) => <SettingsIcon className="self-center" sx={{ color: color }} />
     }
 ]
