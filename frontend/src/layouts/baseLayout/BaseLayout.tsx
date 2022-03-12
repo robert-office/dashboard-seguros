@@ -1,11 +1,11 @@
 import { Header } from "../Header";
-import { MenuItens } from "../../components/menuItens/MenuItens";
+import { MenuListItens } from "../../components/menuItens/MenuItens";
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { Container } from "../../components/container/Container";
 import { menus } from "../../utils/MenuHeaderItens";
 import { useState } from "react";
-import { SearchBar } from "../../components/searchBar/SearchBar";
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
+import { SwipeableDrawer, List, ListSubheader } from "@mui/material";
 
 interface LayoutProps {
     children?: React.ReactNode;
@@ -13,18 +13,56 @@ interface LayoutProps {
 
 export const BaseLayout = ({ children }: LayoutProps) => {
     const LGmatches = useMediaQuery('(min-width:1024px)');
+    const [menuDrawer, setMenuDrawer] = useState(false);
 
-    const [searchValue, setSearchValue] = useState("");
+    const toglleDrawer = () => setMenuDrawer(!menuDrawer);
 
     return (
         <main className="relative">
+            <SwipeableDrawer
+                anchor={'left'}
+                open={menuDrawer}
+                onClose={() => setMenuDrawer(false)}
+                onOpen={() => setMenuDrawer(true)}
+                sx={{
+                    
+                    '& .MuiDrawer-paper': {
+                      backgroundColor: 'rgb(9 9 16 / 1)'
+                    },
+                  }}
+            >
+                <aside className="bg-primaryColor" style={{
+                    minWidth: "250px"
+                }}>
+                    <nav className="relative min-h-[56px] w-full flex justify-between px-8">
+                        <div className='relative w-auto self-center'>
+                            <DirectionsCarIcon sx={{ color: "#FF2D20" }} />
+                        </div>
+                        <div className='relative w-auto self-center'>
+                            <p className='text-sm font-semibold font-serif text-secundaryColor'> Acompany Seguros </p>
+                        </div>
+                    </nav>
+
+                    <List
+                        sx={{ width: '100%', bgcolor: '' }}
+                        component="nav"
+                        aria-labelledby="nested-list-subheader"
+
+                    >
+                        {menus.map((menuItem, id) => {
+                            return <MenuListItens key={`drawer_${id}`} text={menuItem.text} sub={menuItem.sub} href={menuItem.href} icon={menuItem.icon} ></MenuListItens>
+                        })}
+                    </List>
+                </aside>
+            </SwipeableDrawer>
+
             <main className="w-full flex flex-row">
-                <aside className="relative bg-primaryColor overflow-y-hidden" style={{
-                    minWidth: LGmatches ? "250px" : "100px",
+                <aside className="relative bg-primaryColor overflow-y-hidden lg:flex hidden" style={{
+                    minWidth: "250px",
                     minHeight: '100vh'
                 }}>
                     <div className='fixed flex flex-col max-h-full'>
-                        <nav className="relative h-14 lg:w-[250px] w-full flex justify-between px-8">
+                        <nav className="relative min-h-[56px] lg:w-[250px] w-full flex justify-between px-8">
                             <div className='relative w-auto self-center'>
                                 <DirectionsCarIcon sx={{ color: "#FF2D20" }} />
                             </div>
@@ -33,22 +71,22 @@ export const BaseLayout = ({ children }: LayoutProps) => {
                             </div>
                         </nav>
                         <div className="relative flex flex-col overflow-y-scroll max-h-full">
+                            <List
+                                sx={{ width: '100%', bgcolor: '' }}
+                                component="nav"
+                                aria-labelledby="nested-list-subheader"
 
-                            <div className="w-full lg:block hidden">
-                                <SearchBar value={searchValue} setSearchValue={setSearchValue} />
-                            </div>
-
-                            {menus.filter((value) => {
-                                return value.text?.toLowerCase().startsWith(searchValue.toLowerCase())
-                            }).map((menuItem, id) => {
-                                return <MenuItens key={id} text={menuItem.text} sub={menuItem.sub} href={menuItem.href} icon={menuItem.icon} ></MenuItens>
-                            })}
+                            >
+                                {menus.map((menuItem, id) => {
+                                    return <MenuListItens key={`menu_${id}`} text={menuItem.text} sub={menuItem.sub} href={menuItem.href} icon={menuItem.icon} ></MenuListItens>
+                                })}
+                            </List>
                         </div>
                     </div>
                 </aside>
                 <section className="relative w-full flex flex-col">
-                    <Header />
-                    <section className="relative w-full pl-2 sm:pl-3 lg:pl-7 sm:pt-2 pt-1">
+                    <Header toggle={toglleDrawer} />
+                    <section className="relative w-full">
                         <Container>
                             {children}
                         </Container>

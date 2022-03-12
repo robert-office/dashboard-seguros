@@ -7,14 +7,16 @@ import SettingsIcon from '@mui/icons-material/Settings';
 export interface IheaderMenuItens {
     text: string,
     href: string,
-    icon: (color?: string) => JSX.Element,
-    sub?: IheadeSubMenu[]
+    icon: (color?: string) => JSX.Element | JSX.Element,
+    sub?: IheadeSubMenu[],
+    isSub?: boolean
 }
 
 export interface IheadeSubMenu {
     text: string,
     href: string,
     icon: JSX.Element,
+    sub?: IheadeSubMenu[]
 }
 
 export const menus: IheaderMenuItens[] = [
@@ -24,29 +26,112 @@ export const menus: IheaderMenuItens[] = [
         icon: (color) => <DashboardIcon className="self-center" sx={{ color: color }} />
     },
     {
-        text: "Dashboard",
-        href: "/",
-        icon: (color) => <DashboardIcon className="self-center" sx={{ color: color }} />
+        text: "Funcionarios",
+        href: "#",
+        icon: (color) => <PeopleAltIcon className="self-center" sx={{ color: color }} />,
+        sub: [
+            {
+                text: "Administradores",
+                href: "/administradores",
+                icon: <PeopleAltIcon className="self-center" sx={{ color: "#C9D1D9" }} />
+            },
+            {
+                text: "Vendedores",
+                href: "/vendedores",
+                icon: <PeopleAltIcon className="self-center" sx={{ color: "#C9D1D9" }} />
+            },
+            {
+                text: "Telemarketing",
+                href: "/telemarketing",
+                icon: <PeopleAltIcon className="self-center" sx={{ color: "#C9D1D9" }} />
+            },
+            {
+                text: "Desenvolvedores",
+                href: "/desenvolvedores",
+                icon: <PeopleAltIcon className="self-center" sx={{ color: "#C9D1D9" }} />
+            }
+        ]
     },
     {
-        text: "Dashboard",
-        href: "/",
-        icon: (color) => <DashboardIcon className="self-center" sx={{ color: color }} />
+        text: "Funcionarios",
+        href: "#",
+        icon: (color) => <PeopleAltIcon className="self-center" sx={{ color: color }} />,
+        sub: [
+            {
+                text: "Administradores",
+                href: "/administradores",
+                icon: <PeopleAltIcon className="self-center" sx={{ color: "#C9D1D9" }} />
+            },
+            {
+                text: "Vendedores",
+                href: "/vendedores",
+                icon: <PeopleAltIcon className="self-center" sx={{ color: "#C9D1D9" }} />
+            },
+            {
+                text: "Telemarketing",
+                href: "/telemarketing",
+                icon: <PeopleAltIcon className="self-center" sx={{ color: "#C9D1D9" }} />
+            },
+            {
+                text: "Desenvolvedores",
+                href: "/desenvolvedores",
+                icon: <PeopleAltIcon className="self-center" sx={{ color: "#C9D1D9" }} />
+            }
+        ]
     },
     {
-        text: "Dashboard",
-        href: "/",
-        icon: (color) => <DashboardIcon className="self-center" sx={{ color: color }} />
+        text: "Funcionarios",
+        href: "#",
+        icon: (color) => <PeopleAltIcon className="self-center" sx={{ color: color }} />,
+        sub: [
+            {
+                text: "Administradores",
+                href: "/administradores",
+                icon: <PeopleAltIcon className="self-center" sx={{ color: "#C9D1D9" }} />
+            },
+            {
+                text: "Vendedores",
+                href: "/vendedores",
+                icon: <PeopleAltIcon className="self-center" sx={{ color: "#C9D1D9" }} />
+            },
+            {
+                text: "Telemarketing",
+                href: "/telemarketing",
+                icon: <PeopleAltIcon className="self-center" sx={{ color: "#C9D1D9" }} />
+            },
+            {
+                text: "Desenvolvedores",
+                href: "/desenvolvedores",
+                icon: <PeopleAltIcon className="self-center" sx={{ color: "#C9D1D9" }} />
+            }
+        ]
     },
     {
-        text: "Dashboard",
-        href: "/",
-        icon: (color) => <DashboardIcon className="self-center" sx={{ color: color }} />
-    },
-    {
-        text: "Dashboard",
-        href: "/",
-        icon: (color) => <DashboardIcon className="self-center" sx={{ color: color }} />
+        text: "Funcionarios",
+        href: "#",
+        icon: (color) => <PeopleAltIcon className="self-center" sx={{ color: color }} />,
+        sub: [
+            {
+                text: "Administradores",
+                href: "/administradores",
+                icon: <PeopleAltIcon className="self-center" sx={{ color: "#C9D1D9" }} />
+            },
+            {
+                text: "Vendedores",
+                href: "/vendedores",
+                icon: <PeopleAltIcon className="self-center" sx={{ color: "#C9D1D9" }} />
+            },
+            {
+                text: "Telemarketing",
+                href: "/telemarketing",
+                icon: <PeopleAltIcon className="self-center" sx={{ color: "#C9D1D9" }} />
+            },
+            {
+                text: "Desenvolvedores",
+                href: "/desenvolvedores",
+                icon: <PeopleAltIcon className="self-center" sx={{ color: "#C9D1D9" }} />
+            }
+        ]
     },
     {
         text: "Funcionarios",

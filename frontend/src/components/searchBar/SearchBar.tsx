@@ -4,7 +4,7 @@ interface Props {
 }
 export const SearchBar = ({ value, setSearchValue }: Props) => {
     return (
-        <div className="w-full relative flex justify-between">
+        <div className="w-full sticky top-0 flex justify-between">
             <div className="relative flex justify-between bg-gray-100 p-4 pl-8" style={{ width: "100%" }}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
