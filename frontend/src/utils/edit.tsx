@@ -1,6 +1,7 @@
 import { Ecliente } from '../pages/editPages/Ecliente';
 import { Eseguro } from '../pages/editPages/Eseguro';
 import { Euser } from '../pages/editPages/Euser';
+import { Eveiculo } from '../pages/editPages/Eveiculo';
 
 export type Epages = {
     id: number
@@ -23,5 +24,9 @@ export const editPages: Iedit[] = [
     {
         name: 'user',
         page: (id) => <Euser id={id}/>
+    },
+    {
+        name: 'veiculo',
+        page: (id) => <Eveiculo id={id}/>
     }
 ];

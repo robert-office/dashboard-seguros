@@ -5,7 +5,7 @@ import { Container } from "../../components/container/Container";
 import { menus } from "../../utils/MenuHeaderItens";
 import { useState } from "react";
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
-import { SwipeableDrawer, List, ListSubheader } from "@mui/material";
+import { SwipeableDrawer, List, Divider } from "@mui/material";
 
 interface LayoutProps {
     children?: React.ReactNode;
@@ -42,6 +42,8 @@ export const BaseLayout = ({ children }: LayoutProps) => {
                             <p className='text-sm font-semibold font-serif text-secundaryColor'> Acompany Seguros </p>
                         </div>
                     </nav>
+                    
+                    <Divider sx={{borderColor: '#FF2D20'}}/>
 
                     <List
                         sx={{ width: '100%', bgcolor: '' }}
@@ -70,6 +72,9 @@ export const BaseLayout = ({ children }: LayoutProps) => {
                                 <p className='text-sm font-semibold font-serif text-secundaryColor lg:flex hidden'> Acompany Seguros </p>
                             </div>
                         </nav>
+
+                        <Divider sx={{borderColor: '#FF2D20'}}/>
+
                         <div className="relative flex flex-col overflow-y-scroll max-h-full">
                             <List
                                 sx={{ width: '100%', bgcolor: '' }}
@@ -86,7 +91,7 @@ export const BaseLayout = ({ children }: LayoutProps) => {
                 </aside>
                 <section className="relative w-full flex flex-col">
                     <Header toggle={toglleDrawer} />
-                    <section className="relative w-full">
+                    <section className="relative w-full pt-4 pl-4">
                         <Container>
                             {children}
                         </Container>

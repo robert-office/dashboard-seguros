@@ -1,6 +1,6 @@
 .listItemAtiva {
     border-radius: 0px;
-    background   : linear-gradient(145deg, #0a0a11, #08080e);
-    box-shadow   : 5px 5px 10px #06060b,
-        -5px -5px 10px #0c0c15;
+    background: linear-gradient(315deg, #08080e, #0a0a11);
+    box-shadow:  -7px -7px 9px #050508,
+                 7px 7px 9px #0d0d18;
 }
