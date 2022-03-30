@@ -20,6 +20,7 @@ class User extends Authenticatable
     protected $fillable = [
         'nome',
         'email',
+        'data_aniversario',
         'password',
     ];
 
@@ -41,6 +42,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function seguros() {
+        return $this->hasMany(seguro::class, 'id_vendedor', 'id');
+    }
 
     public function roles(){
         return $this->belongsToMany(role::class, 'user_roles', 'id_user', 'id_role');

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\veiculo;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +10,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class veiculoFactory extends Factory
 {
+    protected $model = veiculo::class;
+
     /**
      * Define the model's default state.
      *
@@ -17,8 +20,9 @@ class veiculoFactory extends Factory
     public function definition()
     {
         return [
-            'nome' => $this->faker->name(),
-            'valor' => $this->faker->lcg_value,
+            'nome'  => $this->faker->name(),
+            'valor' => $this->faker->numberBetween(5000, 60000),
+            'tipo'  => $this->faker->numberBetween(1, 3),
         ];
     }
 }

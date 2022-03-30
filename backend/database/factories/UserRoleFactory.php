@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\userRole;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +10,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class UserRoleFactory extends Factory
 {
+    protected $model = userRole::class;
+
     /**
      * Define the model's default state.
      *
@@ -16,6 +19,8 @@ class UserRoleFactory extends Factory
      */
     public function definition()
     {
-        //
+        return [
+            'id_role' => $this->faker->numberBetween(1, 4)
+        ];
     }
 }

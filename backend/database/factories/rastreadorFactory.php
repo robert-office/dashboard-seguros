@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\rastreador;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +10,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class rastreadorFactory extends Factory
 {
+
+    protected $model = rastreador::class;
+
     /**
      * Define the model's default state.
      *
@@ -17,7 +21,8 @@ class rastreadorFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'id_operadora' => $this->faker->numberBetween(1, 3),
+            'serial_number' => $this->faker->ipv6()
         ];
     }
 }

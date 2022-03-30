@@ -37,7 +37,7 @@ class seguro extends Model
             'id',
             'id',
             'id_rastreador',
-            'id_operadora'
+            'id_operadora',
         );
     }
 

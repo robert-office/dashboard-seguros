@@ -16,13 +16,17 @@ class veiculo extends Model
      */
     protected $fillable = [
         'id_cliente',
+        'nome',
         'tipo',
-        'valor',
-        'nome'
+        'valor'
     ];
 
     public function cliente() {
         return $this->hasOne(cliente::class, 'id', 'id_cliente');
+    }
+
+    public function seguro() {
+        return $this->hasOne(seguro::class, 'id_veiculo', 'id');
     }
 
     public function tipo() {

@@ -15,16 +15,18 @@ class cliente extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'nome'
+        'nome',
+        'nome_fantasia',
+        'data_aniversario'
     ];
 
-    public function ultimoVeiculo()
+    public function UltimoVeiculo()
     {
-        return $this->hasOne(veiculo::class, 'id_cliente')->latest();
+        return $this->hasMany(veiculo::class, 'id_cliente')->latest();
     }
 
-    public function ultimoSeguro()
+    public function UltimoSeguro()
     {
-        return $this->hasOne(seguro::class, 'id_cliente')->latest();
+        return $this->hasMany(seguro::class, 'id_cliente')->latest();
     }
 }
