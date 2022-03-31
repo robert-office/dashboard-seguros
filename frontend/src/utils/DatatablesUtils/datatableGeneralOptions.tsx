@@ -8,6 +8,7 @@ import { datatableHOption } from "./datableHOptions";
 import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
 import { IconButton, Tooltip } from "@mui/material";
 import { Link } from "react-router-dom";
+import { getCliente } from "../LaravelUtils/requests/cliente/getCliente";
 
 export type IEditarButton = {
     icon: JSX.Element,
@@ -107,7 +108,8 @@ export const DatatableClientesOptions = {
             { field: 'ação', headerName: 'ação', width: 100, ...datatableHOption },
         ],
 
-    getRowsFN: getAllClientes,
+    getRowsFN:  getAllClientes,
+    getInfos:   (id: number) => getCliente(id),
 
     formatData: (data: LaravelClienteSeguroVeiculo[]) => {
         let finalData: any[] = [];

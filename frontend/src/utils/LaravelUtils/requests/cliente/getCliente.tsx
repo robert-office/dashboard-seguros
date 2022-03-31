@@ -1,7 +1,7 @@
 import { httpService } from "../../http"
-import { IPaginateClientes } from "../../LaravelTypes";
+import { Icliente } from "../../LaravelTypes";
 
-export const getAllClientes = ( PageAtual: number ) => {
+export const getCliente = ( id: number ) => {
 
     const config = {
         headers: {
@@ -10,5 +10,5 @@ export const getAllClientes = ( PageAtual: number ) => {
         }
     }
 
-    return httpService.get<IPaginateClientes>(`/clientes/showAll/${PageAtual}`, config);
+    return httpService.get<Icliente>(`/clientes/show/${id}`, config);
 }

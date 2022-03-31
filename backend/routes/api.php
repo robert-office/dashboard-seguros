@@ -12,6 +12,7 @@ Route::get('/rastreadores/showAll/{page}', [RastreadorController::class, 'index'
 
 /// users
 Route::get('/users/showAll/{page}', [UserController::class, 'getAllUsers']);
+
 /// users by role
 Route::get('/users/showAllByRole/{page}/{role}', [UserController::class, 'getUsersByRole']);
 
@@ -23,3 +24,4 @@ Route::get('/seguros/showAll/{page}', [SeguroController::class, 'index']);
 
 /// clientes
 Route::get('/clientes/showAll/{page}', [ClienteController::class, 'index']);
+Route::get('/clientes/show/{id}', [ClienteController::class, 'show']);

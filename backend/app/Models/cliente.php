@@ -22,11 +22,21 @@ class cliente extends Model
 
     public function UltimoVeiculo()
     {
-        return $this->hasMany(veiculo::class, 'id_cliente')->latest();
+        return $this->hasOne(veiculo::class, 'id_cliente')->latest();
     }
 
     public function UltimoSeguro()
     {
-        return $this->hasMany(seguro::class, 'id_cliente')->latest();
+        return $this->hasOne(seguro::class, 'id_cliente')->latest();
+    }
+
+    public function veiculos()
+    {
+        return $this->hasMany(veiculo::class, 'id_cliente');
+    }
+
+    public function seguros()
+    {
+        return $this->hasMany(seguro::class, 'id_cliente');
     }
 }

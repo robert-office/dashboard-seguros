@@ -95,6 +95,8 @@ export interface IPaginateRastreadores {
 export interface LaravelCliente {
     "id": number,
     "nome": string,
+    "nome_fantasia": string,
+    "data_aniversario": string,
     "created_at": string,
     "updated_at": string
 }
@@ -192,4 +194,9 @@ export interface IPaginateClientes {
         "to": number,
         "total": number
     } 
+}
+
+export interface Icliente extends LaravelCliente {
+    "veiculos" : LaravelVeiculo[],
+    "seguros" : LaravelSeguro[]
 }

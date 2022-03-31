@@ -9,6 +9,7 @@ import { Subtitle } from '../../components/typografy/Subtitle';
 
 export const Cli = () => {
     ///// TABELA //////
+    
 
     /// rows da tabela
     const [rows, setRows] = useState<any[]>([]);

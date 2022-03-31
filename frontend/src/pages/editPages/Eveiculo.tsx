@@ -7,7 +7,7 @@ import { Epages } from "../../utils/edit";
 
 export const Eveiculo = ({ id }: Epages) => {
 
-    const currencies = [
+    const types = [
         {
             value: '1',
             label: 'veiculo',
@@ -19,10 +19,6 @@ export const Eveiculo = ({ id }: Epages) => {
         {
             value: '3',
             label: 'caminhão',
-        },
-        {
-            value: '4',
-            label: 'outros',
         }
     ];
 
@@ -44,7 +40,7 @@ export const Eveiculo = ({ id }: Epages) => {
                         spacing={2}>
                         <CssTextField className="w-1/2" label="Nome veículo" />
                         <CssTextField className="w-1/2" sx={{color: 'white'}} select label="Tipo" >
-                            {currencies.map((option) => (
+                            {types.map((option) => (
                                 <option className="text-secundaryColor font-bold pl-4 mt-0 hover:saturate-0 cursor-pointer hover:bg-slate-100" key={option.value} value={option.value}>
                                     {option.label}
                                 </option>

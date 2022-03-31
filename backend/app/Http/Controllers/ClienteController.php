@@ -18,4 +18,16 @@ class ClienteController extends Controller
 
         return response(['result' => $response], 200);
     }
+
+    /**
+    * Display the infos of the resource where id equals id in db.
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function show($id)
+    {
+        $response = cliente::with('veiculos')->with('seguros')->where('id', '=', $id)->get()->first();
+
+        return response($response, 200);
+    }
 }

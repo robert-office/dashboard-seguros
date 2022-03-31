@@ -7,17 +7,7 @@ export const CssTextField = styled(TextField)({
             borderColor: '#FF2D20',
         },
         '& input': {
-            '-webkit-text-fill-color': 'rgba(255,255,255,0.4)',
-        },
-    },
-
-    '& .MuiOutlinedInput-root.MuiSelect-select': {
-        '& fieldset': {
-            borderColor: '#FF2D20',
-        },
-        '& input': {
-            '-webkit-text-fill-color': 'rgba(255,255,255,0.4)',
-            color: 'white'
+            WebkitTextFillColor: 'rgba(255,255,255,0.4)',
         },
     },
 
@@ -37,7 +27,7 @@ export const CssTextField = styled(TextField)({
     },
 
     '& label': {
-        color: 'white',
+        color: '#FF2D20',
     },
 
     /// on hover
