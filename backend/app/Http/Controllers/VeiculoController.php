@@ -19,69 +19,29 @@ class VeiculoController extends Controller
         return response(['result' => $result], 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
+   /**
+     * Update the veiculo in db with the infos in request
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function update($id, Request $request)
     {
-        //
-    }
+        // valida os campos
+        $filds = $request->validate([
+            'nome' => 'string|nullable',
+            'tipo' => 'int|nullable',
+            'valor' => 'float|nullable',
+        ]);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $cliente = veiculo::where('id', $id)->update([
+            'nome' => $filds['nome'],
+            'nome_fantasia' => $filds['nome_fantasia'],
+            'data_aniversario' => $filds['data_aniversario']
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\veiculo  $veiculo
-     * @return \Illuminate\Http\Response
-     */
-    public function show(veiculo $veiculo)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\veiculo  $veiculo
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(veiculo $veiculo)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\veiculo  $veiculo
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, veiculo $veiculo)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\veiculo  $veiculo
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(veiculo $veiculo)
-    {
-        //
+        if ($cliente) {
+            $response = veiculo::where('id', $id)->get();
+            return response($response);
+        }
     }
 }

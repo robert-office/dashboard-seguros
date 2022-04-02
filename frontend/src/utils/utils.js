@@ -9,3 +9,18 @@ export function formatarData(data) {
     anoF = data.getFullYear();
     return diaF + "/" + mesF + "/" + anoF;
 }
+
+/// serialize a form and return all data, key => value
+/// to send a API
+export const serializeForm = (form) => {
+    var obj = {};
+    var formData = new FormData(form);
+    for (var key of formData.keys()) {
+        obj[key] = formData.get(key);
+    }
+    return obj;
+}
+
+export function compareObjects(obj1, obj2) {
+    return JSON.stringify(obj1) === JSON.stringify(obj2);
+  }

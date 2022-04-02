@@ -7,10 +7,12 @@ import { CssTextField } from '../cssTextField';
 interface idatePicker {
   label?: string,
   className?: string,
-  valor?: string
+  valor?: string,
+  name?: string,
+  disabled?: boolean
 }
 
-export default function BasicDatePicker({ className, label = 'Data', valor }: idatePicker) {
+export default function BasicDatePicker({ className, label = 'Data', valor, name, disabled }: idatePicker) {
   const [value, setValue] = React.useState<Date | null>(null);
 
   React.useEffect(() => {
@@ -22,13 +24,17 @@ export default function BasicDatePicker({ className, label = 'Data', valor }: id
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DatePicker
+        inputFormat="yyyy-MM-dd"
+
         label={label}
         value={value}
         onChange={(newValue) => {
           setValue(newValue);
         }}
-        
-        renderInput={(params) => <CssTextField className={className} {...params} />}
+
+        disabled={disabled}
+
+        renderInput={(params) => <CssTextField name={name} className={className} {...params} />}
       />
     </LocalizationProvider>
   );

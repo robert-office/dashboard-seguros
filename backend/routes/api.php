@@ -25,3 +25,4 @@ Route::get('/seguros/showAll/{page}', [SeguroController::class, 'index']);
 /// clientes
 Route::get('/clientes/showAll/{page}', [ClienteController::class, 'index']);
 Route::get('/clientes/show/{id}', [ClienteController::class, 'show']);
+Route::post('/clientes/edit/{id}', [ClienteController::class, 'update']);
