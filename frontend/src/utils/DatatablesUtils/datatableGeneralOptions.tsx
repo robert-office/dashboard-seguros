@@ -109,7 +109,6 @@ export const DatatableClientesOptions = {
         ],
 
     getRowsFN:  getAllClientes,
-    getInfos:   (id: number) => getCliente(id),
 
     formatData: (data: LaravelClienteSeguroVeiculo[]) => {
         let finalData: any[] = [];

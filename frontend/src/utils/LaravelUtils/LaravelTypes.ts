@@ -12,8 +12,11 @@ export interface IPaginateLinks {
 export interface LaravelUser {
     "id": number,
     "nome": string,
+    "nome_fantasia": string,
+    "data_aniversario": string,
     "email": string,
     "created_at": string,
+    "update_at": string,
     "roles": LaravelUserRoles[]
 }
 
