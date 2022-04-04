@@ -4,7 +4,7 @@ import { DatatableClientesOptions } from "../../utils/DatatablesUtils/datatableG
 import { Epages } from "../../utils/edit";
 import { Icliente } from "../../utils/LaravelUtils/LaravelTypes";
 import { editCliente } from "../../utils/LaravelUtils/requests/cliente/editCliente";
-import { compareObjects, serializeForm } from "../../utils/utils";
+import { compareObjects, formatarDataInvertida, serializeForm } from "../../utils/utils";
 import { ButtonSubbmit } from "../buttonSubbmit";
 import { CssTextField } from "../cssTextField";
 import BasicDatePicker from "../datePicker";
@@ -41,8 +41,8 @@ export const EditCliente = ({ id }: Epages) => {
         e.preventDefault();
         
         const form: any = document.querySelector('#form_edit_user')!;
-        let data = serializeForm(form);
-        
+        let data = formatarDataInvertida(serializeForm(form));
+
         if (compareObjects(defaultInfos, data)) {
             
             enqueueSnackbar('mude as informações primeiro!', { variant: 'warning' });

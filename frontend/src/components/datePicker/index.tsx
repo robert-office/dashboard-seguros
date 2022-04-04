@@ -24,8 +24,8 @@ export default function BasicDatePicker({ className, label = 'Data', valor, name
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DatePicker
-        inputFormat="yyyy-MM-dd"
-
+        inputFormat="dd/MM/yyyy"
+        mask='__/__/____'
         label={label}
         value={value}
         onChange={(newValue) => {
@@ -34,7 +34,7 @@ export default function BasicDatePicker({ className, label = 'Data', valor, name
 
         disabled={disabled}
 
-        renderInput={(params) => <CssTextField name={name} className={className} {...params} />}
+        renderInput={(params) => <CssTextField name={name} value={value} className={className} {...params} />}
       />
     </LocalizationProvider>
   );
