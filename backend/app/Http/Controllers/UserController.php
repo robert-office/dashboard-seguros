@@ -17,4 +17,37 @@ class UserController extends Controller
         $result = role::with('rolesUsersRoles')->where('id', '=', $role)->paginate(100, ['*'], 'page', $page);
         return response(['result' => $result], 200);
     }
+
+    public function show($id){
+        $result = User::where('id', $id)->get()->first();
+        return response($result, 200);
+    }
+
+     /**
+     * Update the User in db with the infos in request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update($id, Request $request)
+    {
+        // valida os campos
+        $filds = $request->validate([
+            'nome' => 'string|nullable',
+            'nome_fantasia' => 'string|nullable',
+            'data_aniversario' => 'string|nullable',
+            'email' => 'string|nullable',
+        ]);
+
+        $user = User::where('id', $id)->update([
+            'nome' => $filds['nome'],
+            'nome_fantasia' => $filds['nome_fantasia'],
+            'data_aniversario' => $filds['data_aniversario'],
+            'email' => $filds['email']
+        ]);
+
+        if ($user) {
+            $response = User::where('id', $id)->get();
+            return response($response);
+        }
+    }
 }

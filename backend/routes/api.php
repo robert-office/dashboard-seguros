@@ -11,8 +11,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/rastreadores/showAll/{page}', [RastreadorController::class, 'index']);
 
 /// users
+Route::get('/users/show/{id}', [UserController::class, 'show']);
+Route::post('/users/edit/{id}', [UserController::class, 'update']);
 Route::get('/users/showAll/{page}', [UserController::class, 'getAllUsers']);
-/// users by role
 Route::get('/users/showAllByRole/{page}/{role}', [UserController::class, 'getUsersByRole']);
 
 /// veiculos
