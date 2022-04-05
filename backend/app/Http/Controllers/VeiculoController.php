@@ -19,8 +19,19 @@ class VeiculoController extends Controller
         return response(['result' => $result], 200);
     }
 
-   /**
-     * Update the veiculo in db with the infos in request
+    /**
+     * show the Veiculo
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $result = veiculo::where('id', $id)->with('cliente')->with('tipo')->get()->first();
+        return response($result, 200);
+    }
+
+    /**
+     * Update the Veiculo in db with the infos in request
      *
      * @return \Illuminate\Http\Response
      */
@@ -29,17 +40,17 @@ class VeiculoController extends Controller
         // valida os campos
         $filds = $request->validate([
             'nome' => 'string|nullable',
-            'tipo' => 'int|nullable',
-            'valor' => 'float|nullable',
+            'valor' => 'string|nullable',
+            'tipo' => 'between:1,3|nullable',
         ]);
 
-        $cliente = veiculo::where('id', $id)->update([
+        $veiculo = veiculo::where('id', $id)->update([
             'nome' => $filds['nome'],
-            'nome_fantasia' => $filds['nome_fantasia'],
-            'data_aniversario' => $filds['data_aniversario']
+            'valor' => $filds['valor'],
+            'tipo' => $filds['tipo']
         ]);
 
-        if ($cliente) {
+        if ($veiculo) {
             $response = veiculo::where('id', $id)->get();
             return response($response);
         }

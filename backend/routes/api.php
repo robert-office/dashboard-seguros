@@ -18,6 +18,8 @@ Route::get('/users/showAllByRole/{page}/{role}', [UserController::class, 'getUse
 
 /// veiculos
 Route::get('/veiculos/showAll/{page}', [VeiculoController::class, 'index']);
+Route::get('/veiculos/show/{id}', [VeiculoController::class, 'show']);
+Route::post('/veiculos/edit/{id}', [VeiculoController::class, 'update']);
 
 // seguros
 Route::get('/seguros/showAll/{page}', [SeguroController::class, 'index']);
