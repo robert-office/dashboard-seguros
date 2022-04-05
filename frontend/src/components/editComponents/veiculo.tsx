@@ -1,7 +1,7 @@
-import { Backdrop, CircularProgress, Divider, Stack } from "@mui/material";
+import { Backdrop, CircularProgress, Divider, MenuItem, Stack } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Epages } from "../../utils/edit";
-import { LaravelUser } from "../../utils/LaravelUtils/LaravelTypes";
+import { LaravelVeiculo } from "../../utils/LaravelUtils/LaravelTypes";
 import { compareObjects, formatarDataInvertida, serializeForm } from "../../utils/utils";
 import { ButtonSubbmit } from "../buttonSubbmit";
 import { CssTextField } from "../cssTextField";
@@ -9,22 +9,37 @@ import BasicDatePicker from "../datePicker";
 import { SectionTitle } from "../typografy/SectionTitle";
 import { Subtitle } from "../typografy/Subtitle";
 import { useSnackbar } from 'notistack';
-import { getUser } from "../../utils/LaravelUtils/requests/user/getUser";
-import { editUser } from "../../utils/LaravelUtils/requests/user/editUser";
+import { getVeiculo } from "../../utils/LaravelUtils/requests/veiculo/getVeiculo";
+import { editVeiculo } from "../../utils/LaravelUtils/requests/veiculo/editVeiculo";
+import { EditCliente } from "./cliente";
 
-export const EditUser = ({ id }: Epages) => {
-    const [info, setInfo] = useState<LaravelUser>()
+export const EditVeiculo = ({ id }: Epages) => {
+    const [info, setInfo] = useState<LaravelVeiculo>()
     const [defaultInfos, setDefaultInfos] = useState({})
     const { enqueueSnackbar } = useSnackbar()
     const [open, setOpen] = useState(false)
+    const types = [
+        {
+            value: '1',
+            label: 'veiculo',
+        },
+        {
+            value: '2',
+            label: 'moto',
+        },
+        {
+            value: '3',
+            label: 'caminhão',
+        }
+    ];
 
     /// puxando dados da tabela
     useEffect(() => {
-        getUser(id).then((response) => {
+        getVeiculo(id).then((response) => {
             setInfo(response.data);
 
             /// seta os dados principais defaults
-            const form: any = document.querySelector('#form_edit_user')!;
+            const form: any = document.querySelector('#form_edit_veiculo')!;
             const data = serializeForm(form);
             setDefaultInfos(data);
         });
@@ -37,10 +52,10 @@ export const EditUser = ({ id }: Epages) => {
         )
     }
 
-    const onSubmit = (e: any) => {
+    const onSubmitV = (e: any) => {
         e.preventDefault();
 
-        const form: any = document.querySelector('#form_edit_user')!;
+        const form: any = document.querySelector('#form_edit_veiculo')!;
         let data = formatarDataInvertida(serializeForm(form));
 
         if (compareObjects(defaultInfos, data)) {
@@ -51,8 +66,8 @@ export const EditUser = ({ id }: Epages) => {
 
         setOpen(true);
 
-        /// edita o cliente
-        editUser(data, id).then((response) => {
+        /// edita o veiculo
+        editVeiculo(data, id).then((response) => {
 
             enqueueSnackbar('informações alterados com sucesso!', { variant: 'success' });
 
@@ -75,9 +90,8 @@ export const EditUser = ({ id }: Epages) => {
                 <CircularProgress color="inherit" />
             </Backdrop>
 
-            <SectionTitle text={`Editando User de id: ${id}`} />
-            
-            <form onSubmit={onSubmit} id={'form_edit_user'}>
+            <form onSubmit={onSubmitV} id={'form_edit_veiculo'}>
+                <SectionTitle text={`Editando Veiculo de id: ${id}`} />
                 <Stack
                     className="my-10"
                     direction="column"
@@ -86,37 +100,34 @@ export const EditUser = ({ id }: Epages) => {
                     <Stack
                         direction="column"
                         spacing={2}>
-                        <Subtitle text='Dados do Usuario' />
+                        <Subtitle text='Dados do Veículo' />
                         <Stack
                             direction={{ xs: 'column', sm: 'row' }}
-                            divider={<Divider orientation="vertical" flexItem />}
-                            spacing={2}
-                        >
-                            <CssTextField className="sm:w-1/2" defaultValue={info.nome} name="nome" label="Nome completo" />
-                            <CssTextField className="sm:w-1/2" defaultValue={info.nome_fantasia} name="nome_fantasia" label="nome fantasia" />
+                            spacing={2}>
+                            <CssTextField className="sm:w-1/2 w-full" defaultValue={info.nome} name="nome" label="Nome veículo" />
+                            <CssTextField className="sm:w-1/2 w-full" sx={{ color: 'white' }} defaultValue={info.tipo.id} name="tipo" select label="Tipo">
+                                {types.map((option) => (
+                                    <MenuItem key={option.value} value={option.value}>
+                                        {option.label}
+                                    </MenuItem>
+                                ))}
+                            </CssTextField>
                         </Stack>
                     </Stack>
-                    <Stack
-                        direction="column"
-                        spacing={2}>
-
-                        <CssTextField defaultValue={info.email} name="email" className="w-full" label="e-mail" />
-                    </Stack>
-
                     <Stack
                         direction={{ xs: 'column', sm: 'row' }}
                         divider={<Divider orientation="vertical" flexItem />}
                         spacing={2}
                     >
-                        <BasicDatePicker valor={info.data_aniversario} name="data_aniversario" label='Data de aniversário' className="sm:w-1/3 w-full" />
-                        <BasicDatePicker disabled valor={info.created_at} label='Data de entrada' className="sm:w-1/3 w-full" />
-                        <BasicDatePicker disabled valor={info.update_at} label='Ultima modifição' className="sm:w-1/3 w-full" />
+                        <BasicDatePicker disabled={true} valor={info.created_at} label='Data de entrada' className="sm:w-1/3 w-full" />
+                        <BasicDatePicker disabled={true} valor={info.updated_at} label='Ultima modificação' className="sm:w-1/3 w-full" />
+                        <CssTextField defaultValue={info.valor} name="valor" className="sm:w-1/3" label="Valor" />
                     </Stack>
                 </Stack>
-                
-                <ButtonSubbmit title={'Salvar Alterações (Usuario)'} />
-
+                <ButtonSubbmit title={'Salvar Alterações (Veículo)'} />
             </form>
+
+            <EditCliente id={info.id_cliente} />
         </div>
     );
 }
