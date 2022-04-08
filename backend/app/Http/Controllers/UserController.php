@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\role;
 use App\Models\User;
+use App\Models\userRole;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -23,11 +24,11 @@ class UserController extends Controller
         return response($result, 200);
     }
 
-     /**
-     * Update the User in db with the infos in request
-     *
-     * @return \Illuminate\Http\Response
-     */
+    /**
+    * Update the User in db with the infos in request
+    *
+    * @return \Illuminate\Http\Response
+    */
     public function update($id, Request $request)
     {
         // valida os campos
@@ -48,6 +49,40 @@ class UserController extends Controller
         if ($user) {
             $response = User::where('id', $id)->get();
             return response($response);
+        }
+    }
+
+    /**
+    * Update the User in db with the infos in request
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function create(Request $request)
+    {
+        // valida os campos
+        $filds = $request->validate([
+            'nome' => 'string|nullable',
+            'nome_fantasia' => 'string|nullable',
+            'data_aniversario' => 'string|nullable',
+            'email' => 'string|nullable',
+            'role' => 'string|nullable',
+        ]);
+
+        $user = User::create([
+            'nome' => $filds['nome'],
+            'nome_fantasia' => $filds['nome_fantasia'],
+            'data_aniversario' => $filds['data_aniversario'],
+            'email' => $filds['email']
+        ]);
+
+        if ($user) {
+            $role = userRole::create(['id_role' => $filds['role'], 'id_user' => $user->id]);
+            
+            if( $role ){
+                return response($role, 200);
+            }
+
+            return response($user, 400);
         }
     }
 }
