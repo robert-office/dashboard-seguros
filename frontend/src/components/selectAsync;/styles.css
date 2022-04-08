@@ -1,0 +1,13 @@
+.react_select_prefix__control {
+    height: 55px;
+    border: 1px solid #FF2D20 !important;
+    background-color: transparent !important;
+}
+
+.react_select_prefix__control:focus{
+    border: 1px solid #FF2D20 !important;
+}
+
+.react_select_prefix__single-value{
+    color: white !important;
+}

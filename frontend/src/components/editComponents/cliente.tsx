@@ -93,8 +93,8 @@ export const EditCliente = ({ id }: Epages) => {
                             divider={<Divider orientation="vertical" flexItem />}
                             spacing={2}
                         >
-                            <CssTextField className="sm:w-1/2" name="nome" defaultValue={info.nome} label="Nome completo" />
-                            <CssTextField className="sm:w-1/2" name="nome_fantasia" defaultValue={info.nome_fantasia} label="nome fantasia" />
+                            <CssTextField className="sm:w-1/2 w-full" name="nome" defaultValue={info.nome} label="Nome completo" />
+                            <CssTextField className="sm:w-1/2 w-full" name="nome_fantasia" defaultValue={info.nome_fantasia} label="nome fantasia" />
                         </Stack>
                     </Stack>
 

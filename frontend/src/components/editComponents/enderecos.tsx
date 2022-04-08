@@ -19,10 +19,10 @@ export const EditEnderecos = ({id} : Epages) => {
                     divider={<Divider orientation="vertical" flexItem />}
                     spacing={2}
                 >
-                    <CssTextField className="sm:w-1/4" label="Cidade / Estado" />
-                    <CssTextField className="sm:w-1/4" label="Avenida / Rua" />
-                    <CssTextField className="sm:w-1/4" label="Número" />
-                    <CssTextField className="sm:w-1/4" label="Complemento" />
+                    <CssTextField className="sm:w-1/4 w-full" label="Cidade / Estado" />
+                    <CssTextField className="sm:w-1/4 w-full" label="Avenida / Rua" />
+                    <CssTextField className="sm:w-1/4 w-full" label="Número" />
+                    <CssTextField className="sm:w-1/4 w-full" label="Complemento" />
                 </Stack>
             </Stack>
         </Stack>

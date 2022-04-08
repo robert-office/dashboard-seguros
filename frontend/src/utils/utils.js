@@ -10,6 +10,35 @@ export function formatarData(data) {
     return diaF + "/" + mesF + "/" + anoF;
 }
 
+
+export function formatarValor(obj) {
+
+    //retornará 1234.53
+    const formatNumber = (value) => parseFloat(value);
+
+    const testValorFormatado = (valor) => {
+        let first3chars = valor.substring(0,3);
+        return first3chars === 'R$ '
+    }
+
+    /// percorre os pares do obj e testa eles
+    const array = Object.entries(obj)
+    array.map((array_key_value) => {
+        const value = array_key_value[1]
+        const key = array_key_value[0]
+
+        /// se é uma data valida
+        if (testValorFormatado(value)) {
+            let valueSemSufixo = value.substr(3);
+            
+            /// formata a data e coloca seu novo valor formatado no lugar do antigo
+            obj[key] = formatNumber(valueSemSufixo)
+        }
+    })
+
+    return obj
+}
+
 export function formatarDataInvertida(obj) {
     /// testa pra saber se a string é uma data no padrão dd/mm/YYYY
     function testDate(str) {
@@ -41,9 +70,9 @@ export function formatarDataInvertida(obj) {
     array.map((array_key_value) => {
         const value = array_key_value[1]
         const key = array_key_value[0]
-        
+
         /// se é uma data valida
-        if(testDate(value)){
+        if (testDate(value)) {
             /// formata a data e coloca seu novo valor formatado no lugar do antigo
             obj[key] = FormataStringData(value)
         }

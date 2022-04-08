@@ -3,6 +3,7 @@ import { My404 } from "./pages/404";
 import { Adm } from "./pages/administradores/Adm";
 import { Cli } from "./pages/clientes/Cli";
 import { Conf } from "./pages/configuracoes/Conf";
+import { Create } from "./pages/create";
 import { Dev } from "./pages/desenvolvedores/Dev";
 import { Edit } from "./pages/edit";
 import { Home } from "./pages/home/Home";
@@ -26,6 +27,7 @@ export const Rotas = () => {
                 <Route path="/vendedores" element={<Vende/>} />
 
                 <Route path="/editar/:resource/:id" element={<Edit/>} />
+                <Route path="/criar/:resource" element={<Create/>} />
 
                 <Route path="/*" element={<My404/>} />
             </Routes>

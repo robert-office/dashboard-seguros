@@ -12,6 +12,7 @@ import { useSnackbar } from 'notistack';
 import { getVeiculo } from "../../utils/LaravelUtils/requests/veiculo/getVeiculo";
 import { editVeiculo } from "../../utils/LaravelUtils/requests/veiculo/editVeiculo";
 import { EditCliente } from "./cliente";
+import { NumberFormatt } from "../numberFormat";
 
 export const EditVeiculo = ({ id }: Epages) => {
     const [info, setInfo] = useState<LaravelVeiculo>()
@@ -121,13 +122,11 @@ export const EditVeiculo = ({ id }: Epages) => {
                     >
                         <BasicDatePicker disabled={true} valor={info.created_at} label='Data de entrada' className="sm:w-1/3 w-full" />
                         <BasicDatePicker disabled={true} valor={info.updated_at} label='Ultima modificação' className="sm:w-1/3 w-full" />
-                        <CssTextField defaultValue={info.valor} name="valor" className="sm:w-1/3" label="Valor" />
+                        <NumberFormatt className="sm:w-1/3 w-full" value={info.valor} name="valor"/>
                     </Stack>
                 </Stack>
                 <ButtonSubbmit title={'Salvar Alterações (Veículo)'} />
             </form>
-
-            <EditCliente id={info.id_cliente} />
         </div>
     );
 }

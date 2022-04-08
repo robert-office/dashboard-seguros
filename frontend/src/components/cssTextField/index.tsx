@@ -11,6 +11,10 @@ export const CssTextField = styled(TextField)({
         },
     },
 
+    div: {
+        color: 'white !important'
+    },
+
     /// svg of calendar
     svg: {
         color: 'white'
