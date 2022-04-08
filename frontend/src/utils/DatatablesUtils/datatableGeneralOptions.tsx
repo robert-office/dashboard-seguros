@@ -1,4 +1,4 @@
-import { LaravelClienteSeguroVeiculo, LaravelSeguro, LaravelUser, LaravelUserByRole, LaravelVeiculo } from "../LaravelUtils/LaravelTypes";
+import { LaravelClienteSeguroVeiculo, LaravelSeguro, LaravelUserByRole, LaravelVeiculo } from "../LaravelUtils/LaravelTypes";
 import { getAllClientes } from "../LaravelUtils/requests/cliente/getAllClientes";
 import { getAllSeguros } from "../LaravelUtils/requests/seguro/getAllSeguros";
 import { getAllUserByRole } from "../LaravelUtils/requests/user/getAllUserByRole";
@@ -8,7 +8,6 @@ import { datatableHOption } from "./datableHOptions";
 import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
 import { IconButton, Tooltip } from "@mui/material";
 import { Link } from "react-router-dom";
-import { getCliente } from "../LaravelUtils/requests/cliente/getCliente";
 
 export type IEditarButton = {
     icon: JSX.Element,
@@ -72,6 +71,7 @@ export const DatatableUsersByRolesOptions = {
             { field: 'Nome', headerName: 'Nome', width: 130, ...datatableHOption },
             { field: 'E-mail', headerName: 'E-mail', width: 150, ...datatableHOption },
             { field: 'Criado em', headerName: 'Criado em', width: 150, ...datatableHOption },
+            { field: 'ação', headerName: 'ação', width: 100, ...datatableHOption },
         ],
 
     getRowsFN: getAllUserByRole,
@@ -85,7 +85,8 @@ export const DatatableUsersByRolesOptions = {
                     "id": user.id,
                     "Nome": user.nome,
                     "E-mail": user.email,
-                    "Criado em": formatarData(user.created_at)
+                    "Criado em": formatarData(user.created_at),
+                    'ação': <EditarButton icon={<ModeEditOutlinedIcon />} title={"Editar"} href={`/editar/user/${user.id}`} />
                 });
             })
         });
@@ -99,11 +100,11 @@ export const DatatableClientesOptions = {
     columns:
         [
             { field: 'id', headerName: 'id', width: 70, ...datatableHOption },
-            { field: 'Nome', headerName: 'Nome', width: 130, ...datatableHOption },
+            { field: 'Nome', headerName: 'Nome', width: 200, ...datatableHOption },
             { field: 'Entrou em', headerName: 'Entrou em', width: 150, ...datatableHOption },
             { field: 'Ultimo Veiculo', headerName: 'Ultimo Veiculo', width: 150, ...datatableHOption },
-            { field: 'Valor Veiculo', headerName: 'Valor Veiculo', width: 150, ...datatableHOption },
-            { field: 'Ultimo Seguro ID', headerName: 'Ultimo Seguro ID', width: 150, ...datatableHOption },
+            { field: 'Valor Veiculo', headerName: 'Valor Veiculo', width: 200, ...datatableHOption },
+            { field: 'Ultimo Seguro ID', headerName: 'Ultimo Seguro ID', width: 100, ...datatableHOption },
             { field: 'Valor Seguro', headerName: 'Valor Seguro', width: 150, ...datatableHOption },
             { field: 'ação', headerName: 'ação', width: 100, ...datatableHOption },
         ],
@@ -134,12 +135,13 @@ export const DatatableVeiculosOptions = {
     tableName: "veiculos",
     columns:
         [
-            { field: 'id', headerName: 'id', width: 70, ...datatableHOption },
-            { field: 'Nome', headerName: 'Nome', width: 130, ...datatableHOption },
-            { field: 'Tipo', headerName: 'Tipo', width: 130, ...datatableHOption },
-            { field: 'Valor Veiculo', headerName: 'Valor Veiculo', width: 150, ...datatableHOption },
-            { field: 'Cadastrado em', headerName: 'Cadastrado em', width: 150, ...datatableHOption },
-            { field: 'Nome Cliente', headerName: 'Nome Cliente', width: 150, ...datatableHOption },
+            { field: 'id', headerName: 'id',  ...datatableHOption },
+            { field: 'Nome', headerName: 'Nome', flex: 1,  ...datatableHOption },
+            { field: 'Tipo', headerName: 'Tipo',  ...datatableHOption },
+            { field: 'Valor Veiculo', headerName: 'Valor Veiculo',  ...datatableHOption },
+            { field: 'Cadastrado em', headerName: 'Cadastrado em',  ...datatableHOption },
+            { field: 'Nome Cliente', headerName: 'Nome Cliente', flex: 1, ...datatableHOption },
+            { field: 'ação', headerName: 'ação',  ...datatableHOption },
         ],
 
     getRowsFN: getAllVeiculos,
@@ -154,7 +156,8 @@ export const DatatableVeiculosOptions = {
                 "Tipo": veiculo.tipo?.tipo || "",
                 'Valor Veiculo': formatarDinheiro(veiculo.valor),
                 "Cadastrado em": formatarData(veiculo.created_at),
-                "Nome Cliente": veiculo.cliente?.nome || ""
+                "Nome Cliente": veiculo.cliente?.nome || "",
+                'ação': <EditarButton icon={<ModeEditOutlinedIcon />} title={"Editar"} href={`/editar/veiculo/${veiculo.id}`} />
             });
         });
 

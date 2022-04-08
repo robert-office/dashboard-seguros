@@ -56,4 +56,31 @@ class ClienteController extends Controller
             return response($response);
         }
     }
+
+    /**
+     * Create the cliente in db with the infos in request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create(Request $request)
+    {
+        // valida os campos
+        $filds = $request->validate([
+            'nome' => 'string|nullable',
+            'nome_fantasia' => 'string|nullable',
+            'data_aniversario' => 'string|nullable',
+        ]);
+
+        $cliente = cliente::create([
+            'nome' => $filds['nome'],
+            'nome_fantasia' => $filds['nome_fantasia'],
+            'data_aniversario' => $filds['data_aniversario']
+        ]);
+
+        if ($cliente) {
+            return response($cliente, 201);
+        }
+
+        return response(['error' => 'não conseguiu criar o cliente'], 400);
+    }
 }

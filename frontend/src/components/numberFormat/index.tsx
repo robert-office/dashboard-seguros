@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import NumberFormat from 'react-number-format';
 
 type InumberFormat = {
@@ -9,6 +9,11 @@ type InumberFormat = {
 
 export const NumberFormatt = ({ value, name, className }: InumberFormat) => {
     const [valor, setValor] = useState('')
+
+    /// na primeira vez já seta o valor por default se tiver algum
+    useEffect(() => {
+        if (value) { setValor(String(value)) }
+    }, []);
 
     return (
         <div className={`flex ${className}`}>

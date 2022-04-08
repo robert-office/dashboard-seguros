@@ -1,4 +1,4 @@
-export function formatarDinheiro(valor) { return valor.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }) }
+export function formatarDinheiro(valor) { if( valor ) { return valor.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }) } return valor; }
 
 export function formatarData(data) {
     var data = new Date(data),
