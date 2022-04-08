@@ -6,6 +6,7 @@ import { BaseLayout } from "../../layouts/baseLayout/BaseLayout";
 import { DatatableVeiculosOptions } from "../../utils/DatatablesUtils/datatableGeneralOptions";
 import { useEffect, useState } from "react";
 import { Subtitle } from '../../components/typografy/Subtitle';
+import { ButtonCreate } from '../../components/buttonCreate';
 
 export const Veic = () => {
     /// rows da tabela
@@ -28,17 +29,10 @@ export const Veic = () => {
     return (
         <>
             <BaseLayout>
-                <SectionTitle text="Veículos" />
-
-                <Stack
-                    direction="row"
-                    divider={<Divider orientation="vertical" flexItem />}
-                    className="mt-4"
-                    spacing={2}
-                    justifyContent="space-between"
-                >
-
-                </Stack>
+                <div className='flex w-full justify-between'>
+                    <SectionTitle text="Veículos" />
+                    <ButtonCreate href='/criar/veiculo' title='novo veiculo' />
+                </div>
 
                 <Subtitle text='Todos os Veiculos' />
 

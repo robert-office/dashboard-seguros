@@ -6,6 +6,7 @@ import { BaseLayout } from "../../layouts/baseLayout/BaseLayout";
 import { DatatableUsersByRolesOptions } from "../../utils/DatatablesUtils/datatableGeneralOptions";
 import { useEffect, useState } from "react";
 import { Subtitle } from '../../components/typografy/Subtitle';
+import { ButtonCreate } from '../../components/buttonCreate';
 
 export const Telem = () => {
     ///// TABELA //////
@@ -30,17 +31,10 @@ export const Telem = () => {
     return (
         <>
             <BaseLayout>
-                <SectionTitle text="Telemarketing" />
-
-                <Stack
-                    direction="row"
-                    divider={<Divider orientation="vertical" flexItem />}
-                    className="mt-4"
-                    spacing={2}
-                    justifyContent="space-between"
-                >
-
-                </Stack>
+                <div className='flex w-full justify-between'>
+                    <SectionTitle text="Telemarketing" />
+                    <ButtonCreate href='/criar/user' title='novo operador' />
+                </div>
 
                 <Subtitle text='Todos os Operadores de Telemarketing' />
 

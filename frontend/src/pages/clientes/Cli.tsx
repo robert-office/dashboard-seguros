@@ -6,10 +6,11 @@ import { BaseLayout } from "../../layouts/baseLayout/BaseLayout";
 import { DatatableClientesOptions } from "../../utils/DatatablesUtils/datatableGeneralOptions";
 import { useEffect, useState } from "react";
 import { Subtitle } from '../../components/typografy/Subtitle';
+import { ButtonCreate } from '../../components/buttonCreate';
 
 export const Cli = () => {
     ///// TABELA //////
-    
+
 
     /// rows da tabela
     const [rows, setRows] = useState<any[]>([]);
@@ -31,17 +32,11 @@ export const Cli = () => {
     return (
         <>
             <BaseLayout>
-                <SectionTitle text="Clientes" />
 
-                <Stack
-                    direction="row"
-                    divider={<Divider orientation="vertical" flexItem />}
-                    className="mt-4"
-                    spacing={2}
-                    justifyContent="space-between"
-                >
-
-                </Stack>
+                <div className='flex w-full justify-between'>
+                    <SectionTitle text="Clientes" />
+                    <ButtonCreate href='/criar/cliente' title='novo cliente' />
+                </div>
 
                 <Subtitle text='Todos os Clientes' />
 
