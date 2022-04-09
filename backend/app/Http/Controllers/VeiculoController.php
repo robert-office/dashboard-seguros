@@ -84,4 +84,24 @@ class VeiculoController extends Controller
             return response($response);
         }
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showIfCarsIsFree($id)
+    {
+        $result = [];
+
+        veiculo::where('id_cliente', $id)->each(function( $veiculo ){
+            if( $veiculo->seguro()->exists() ) {
+                return;
+            }
+
+            array_push($result, $veiculo);
+        });
+
+        return response(['result' => $result], 200);
+    }
 }
