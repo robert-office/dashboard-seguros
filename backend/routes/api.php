@@ -12,15 +12,15 @@ Route::get('/rastreadores/showAll/{page}', [RastreadorController::class, 'index'
 
 /// users
 Route::get('/users/showAll/{page}/{query?}', [UserController::class, 'getAllUsers']);
+Route::get('/users/showAllByRole/{page}/{role}/{query?}', [UserController::class, 'getUsersByRole']);
 Route::get('/users/show/{id}', [UserController::class, 'show']);
 Route::post('/users/create', [UserController::class, 'create']);
 Route::post('/users/edit/{id}', [UserController::class, 'update']);
-Route::get('/users/showAllByRole/{page}/{role}', [UserController::class, 'getUsersByRole']);
 
 /// veiculos
 Route::get('/veiculos/showAll/{page}/{query?}', [VeiculoController::class, 'index']);
 Route::get('/veiculos/show/{id}', [VeiculoController::class, 'show']);
-Route::get('/veiculos/showFreeCars/{id}', [VeiculoController::class, 'showIfCarsIsFree']);
+Route::get('/veiculos/showFreeCars/{id}/{query?}', [VeiculoController::class, 'showIfCarsIsFree']);
 Route::post('/veiculos/create', [VeiculoController::class, 'create']);
 Route::post('/veiculos/edit/{id}', [VeiculoController::class, 'update']);
 
@@ -32,3 +32,4 @@ Route::post('/clientes/edit/{id}', [ClienteController::class, 'update']);
 
 // seguros
 Route::get('/seguros/showAll/{page}/{query?}', [SeguroController::class, 'index']);
+Route::post('/seguros/create', [SeguroController::class, 'create']);

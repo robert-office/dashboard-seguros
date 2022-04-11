@@ -90,17 +90,9 @@ class VeiculoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showIfCarsIsFree($id)
+    public function showIfCarsIsFree($id, $query = '')
     {
-        $result = [];
-
-        veiculo::where('id_cliente', $id)->each(function( $veiculo ){
-            if( $veiculo->seguro()->exists() ) {
-                return;
-            }
-
-            array_push($result, $veiculo);
-        });
+        $result = veiculo::where('id_cliente', $id)->doesnthave('seguro')->paginate(100, ['*'], 'page', 1);
 
         return response(['result' => $result], 200);
     }

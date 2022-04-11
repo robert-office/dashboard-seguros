@@ -9,26 +9,33 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function getAllUsers($page = 1){
-        $result = User::with('roles')->paginate(100, ['*'], 'page', $page);
+    public function getAllUsers($page = 1, $query = '')
+    {
+        $result = User::where('nome', 'like', '%' . $query . '%')->orWhere('nome_fantasia', 'like', '%' . $query . '%')->with('roles')->paginate(100, ['*'], 'page', $page);
         return response(['result' => $result], 200);
     }
 
-    public function getUsersByRole($page = 1, $role = 2){
-        $result = role::with('rolesUsersRoles')->where('id', '=', $role)->paginate(100, ['*'], 'page', $page);
+    public function getUsersByRole($page = 1, $role = 2, $query = '')
+    {
+        $result = User::whereHas('roles', function ($user) use ($role) {
+            $user->where('roles.id', '=', $role);
+        })->where('nome', 'like', '%' . $query . '%')->orWhere('nome_fantasia', 'like', '%' . $query . '%')
+        ->paginate(100, ['*'], 'page', $page);
+
         return response(['result' => $result], 200);
     }
 
-    public function show($id){
+    public function show($id)
+    {
         $result = User::where('id', $id)->get()->first();
         return response($result, 200);
     }
 
     /**
-    * Update the User in db with the infos in request
-    *
-    * @return \Illuminate\Http\Response
-    */
+     * Update the User in db with the infos in request
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function update($id, Request $request)
     {
         // valida os campos
@@ -53,10 +60,10 @@ class UserController extends Controller
     }
 
     /**
-    * Update the User in db with the infos in request
-    *
-    * @return \Illuminate\Http\Response
-    */
+     * Update the User in db with the infos in request
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create(Request $request)
     {
         // valida os campos
@@ -77,8 +84,8 @@ class UserController extends Controller
 
         if ($user) {
             $role = userRole::create(['id_role' => $filds['role'], 'id_user' => $user->id]);
-            
-            if( $role ){
+
+            if ($role) {
                 return response($role, 200);
             }
 

@@ -26,4 +26,31 @@ class SeguroController extends Controller
 
         return response(['result' => $result], 200);
     }
+
+    /**
+     * Create a seguro in db with the infos in request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create(Request $request)
+    {
+        // valida os campos
+        $filds = $request->validate([
+            'valor' => 'string',
+            'id_veiculo' => 'string',
+            'id_cliente' => 'string',
+            'id_vendedor' => 'string'
+        ]);
+
+        $seguro = seguro::create([
+            'valor' => $filds['valor'],
+            'id_veiculo' => $filds['id_veiculo'],
+            'id_cliente' => $filds['id_cliente'],
+            'id_vendedor' => $filds['id_vendedor']
+        ]);
+
+        if ($seguro) {
+            return response($seguro, 200);
+        }
+    }
 }
