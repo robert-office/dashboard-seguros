@@ -1,27 +1,44 @@
-import { Backdrop, CircularProgress, Stack, Divider } from "@mui/material";
+import { Backdrop, CircularProgress, Stack } from "@mui/material";
 import { useSnackbar } from "notistack";
 import { useState } from "react";
 import { ButtonSubbmit } from "../../components/buttonSubbmit";
 import { CssTextField } from "../../components/cssTextField";
-import BasicDatePicker from "../../components/datePicker";
+import { NumberFormatt } from "../../components/numberFormat";
+import { AsyncSelect } from "../../components/selectAsync;";
 import { SectionTitle } from "../../components/typografy/SectionTitle";
 import { Subtitle } from "../../components/typografy/Subtitle";
-import { createCliente } from "../../utils/LaravelUtils/requests/cliente/createCliente";
+import { clienteLoadOptions } from "../../utils/LaravelUtils/requests/cliente/getAllClientes";
+import { createSeguro } from "../../utils/LaravelUtils/requests/seguro/createSeguro";
+import { vendedorLoadOptions } from "../../utils/LaravelUtils/requests/user/getAllUserByRole";
+import { veiculoFreeLoadOptions } from "../../utils/LaravelUtils/requests/veiculo/getAllVeiculos";
 import { formatarDataInvertida, serializeForm } from "../../utils/utils";
 
 export const Cseguro = () => {
     const { enqueueSnackbar } = useSnackbar()
     const [open, setOpen] = useState(false)
 
+    const [cliente, setCliente] = useState('')
+    const clienteOnChange = (e: { value: string, label: string } | undefined) => {
+        if (e) {
+            setCliente(e.value);
+        }
+    }
+
     const onSubmit = (e: any) => {
         e.preventDefault();
         /// recupera os dados do form
         const form: any = document.querySelector('#form_create_seguro')!;
         let data = formatarDataInvertida(serializeForm(form));
+
+        if(cliente == '') {
+            enqueueSnackbar('insira corretamente as informações!', { variant: 'warning' });
+            return;
+        }
+        
         // abre o backdrop
         setOpen(true);
         /// cria o cliente
-        createCliente(data).then((response) => {
+        createSeguro(data).then((response) => {
             enqueueSnackbar('seguro criado com sucesso!', { variant: 'success' });
         }).catch((response) => {
             enqueueSnackbar('erro ao persistir as informações!', { variant: 'error' });
@@ -50,20 +67,31 @@ export const Cseguro = () => {
                         direction="column"
                         spacing={3}>
                         <Subtitle text='Dados do Cliente' />
+                        
                         <Stack
                             direction={{ xs: 'column', sm: 'row' }}
-                            divider={<Divider orientation="vertical" flexItem />}
-                            spacing={2}
-                        >
-                            <CssTextField className="sm:w-1/2 w-full" name="nome" label="Nome completo" />
-                            <CssTextField className="sm:w-1/2 w-full" name="nome_fantasia" label="nome fantasia" />
+                            spacing={2}>
+
+                            <AsyncSelect onchangeEx={clienteOnChange} className="sm:w-1/2 w-full" name="id_cliente" loadOptions={clienteLoadOptions} placeholder={'selecione o cliente'} />
+
+                            {cliente !== '' ? (
+                                <AsyncSelect key={cliente} add={{ id: Number(cliente) }} className="sm:w-1/2 w-full" name="id_veiculo" loadOptions={veiculoFreeLoadOptions} placeholder={'selecione o veiculo'} />
+                            ) : (
+                                <CssTextField className="sm:w-1/2 w-full" sx={{ color: 'white' }} defaultValue={''} name="tipo" disabled label="veiculo" />
+                            )}
                         </Stack>
 
-                        <BasicDatePicker name={'data_aniversario'} label='Data de aniversário' className="sm:w-1/3 w-full" />
+                        <Stack
+                            direction={{ xs: 'column', sm: 'row' }}
+                            spacing={2}>
+                            <AsyncSelect className="sm:w-1/2 w-full" name="id_vendedor" loadOptions={vendedorLoadOptions} placeholder={'selecione o vendedor'} />
+
+                            <NumberFormatt className="sm:w-1/2 w-full" name="valor" />
+                        </Stack>
                     </Stack>
                 </Stack>
 
-                <ButtonSubbmit title={'Criar Cliente'} />
+                <ButtonSubbmit title={'Criar novo seguro'} />
             </form>
         </div>
     );

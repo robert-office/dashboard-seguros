@@ -1,4 +1,4 @@
-import { LaravelClienteSeguroVeiculo, LaravelSeguro, LaravelUserByRole, LaravelVeiculo } from "../LaravelUtils/LaravelTypes";
+import { LaravelClienteSeguroVeiculo, LaravelSeguro, LaravelUser, LaravelVeiculo } from "../LaravelUtils/LaravelTypes";
 import { getAllClientes } from "../LaravelUtils/requests/cliente/getAllClientes";
 import { getAllSeguros } from "../LaravelUtils/requests/seguro/getAllSeguros";
 import { getAllUserByRole } from "../LaravelUtils/requests/user/getAllUserByRole";
@@ -76,19 +76,17 @@ export const DatatableUsersByRolesOptions = {
 
     getRowsFN: getAllUserByRole,
 
-    formatData: (data: LaravelUserByRole[]) => {
+    formatData: (data: LaravelUser[]) => {
         let finalData: any[] = [];
 
-        data.map((users) => {
-            users.roles_users_roles?.map((user) => {
-                finalData.push({
-                    "id": user.id,
-                    "Nome": user.nome,
-                    "E-mail": user.email,
-                    "Criado em": formatarData(user.created_at),
-                    'ação': <EditarButton icon={<ModeEditOutlinedIcon />} title={"Editar"} href={`/editar/user/${user.id}`} />
-                });
-            })
+        data.map((user) => {
+            finalData.push({
+                "id": user.id,
+                "Nome": user.nome,
+                "E-mail": user.email,
+                "Criado em": formatarData(user.created_at),
+                'ação': <EditarButton icon={<ModeEditOutlinedIcon />} title={"Editar"} href={`/editar/user/${user.id}`} />
+            });
         });
 
         return finalData;
@@ -109,7 +107,7 @@ export const DatatableClientesOptions = {
             { field: 'ação', headerName: 'ação', width: 100, ...datatableHOption },
         ],
 
-    getRowsFN:  getAllClientes,
+    getRowsFN: getAllClientes,
 
     formatData: (data: LaravelClienteSeguroVeiculo[]) => {
         let finalData: any[] = [];
@@ -135,13 +133,13 @@ export const DatatableVeiculosOptions = {
     tableName: "veiculos",
     columns:
         [
-            { field: 'id', headerName: 'id',  ...datatableHOption },
-            { field: 'Nome', headerName: 'Nome', flex: 1,  ...datatableHOption },
-            { field: 'Tipo', headerName: 'Tipo',  ...datatableHOption },
-            { field: 'Valor Veiculo', headerName: 'Valor Veiculo',  ...datatableHOption },
-            { field: 'Cadastrado em', headerName: 'Cadastrado em',  ...datatableHOption },
+            { field: 'id', headerName: 'id', ...datatableHOption },
+            { field: 'Nome', headerName: 'Nome', flex: 1, ...datatableHOption },
+            { field: 'Tipo', headerName: 'Tipo', ...datatableHOption },
+            { field: 'Valor Veiculo', headerName: 'Valor Veiculo', ...datatableHOption },
+            { field: 'Cadastrado em', headerName: 'Cadastrado em', ...datatableHOption },
             { field: 'Nome Cliente', headerName: 'Nome Cliente', flex: 1, ...datatableHOption },
-            { field: 'ação', headerName: 'ação',  ...datatableHOption },
+            { field: 'ação', headerName: 'ação', ...datatableHOption },
         ],
 
     getRowsFN: getAllVeiculos,

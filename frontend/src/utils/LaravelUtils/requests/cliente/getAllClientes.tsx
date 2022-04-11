@@ -2,7 +2,7 @@ import { LoadOptions } from "react-select-async-paginate";
 import { httpService } from "../../http"
 import { IPaginateClientes } from "../../LaravelTypes";
 
-export const getAllClientes = ( PageAtual: number, query?: string ) => {
+export const getAllClientes = ( PageAtual: number, query: string = '' ) => {
 
     const config = {
         headers: {

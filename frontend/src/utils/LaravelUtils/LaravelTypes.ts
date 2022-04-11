@@ -27,11 +27,6 @@ export interface LaravelUserRoles {
     "updated_at": string
 }
 
-export interface LaravelUserByRole {
-    "id": 1,
-    "roles_users_roles": LaravelUser[],
-}
-
 export interface IPaginateUsers {
     "result": {
         "current_page": number,
@@ -49,7 +44,7 @@ export interface IPaginateUsers {
 export interface IPaginateUsersByRole {
     "result": {
         "current_page": number,
-        "data": LaravelUserByRole[],
+        "data": LaravelUser[],
         "from": number,
         "last_page": number,
         "links": IPaginateLinks[],
