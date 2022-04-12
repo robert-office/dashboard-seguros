@@ -41,7 +41,7 @@ export const EditUser = ({ id }: Epages) => {
         e.preventDefault();
 
         const form: any = document.querySelector('#form_edit_user')!;
-        let data = formatarDataInvertida(serializeForm(form));
+        let data = serializeForm(form);
 
         if (compareObjects(defaultInfos, data)) {
 

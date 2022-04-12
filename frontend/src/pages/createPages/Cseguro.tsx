@@ -28,7 +28,7 @@ export const Cseguro = () => {
         e.preventDefault();
         /// recupera os dados do form
         const form: any = document.querySelector('#form_create_seguro')!;
-        let data = formatarDataInvertida(serializeForm(form));
+        let data = serializeForm(form);
 
         if(cliente == '') {
             enqueueSnackbar('insira corretamente as informações!', { variant: 'warning' });
@@ -66,7 +66,7 @@ export const Cseguro = () => {
                     <Stack
                         direction="column"
                         spacing={3}>
-                        <Subtitle text='Dados do Cliente' />
+                        <Subtitle text='Dados do seguro' />
                         
                         <Stack
                             direction={{ xs: 'column', sm: 'row' }}

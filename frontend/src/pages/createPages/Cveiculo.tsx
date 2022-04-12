@@ -34,7 +34,7 @@ export const Cveiculo = () => {
         e.preventDefault();
         /// recupera os dados do form
         const form: any = document.querySelector('#form_create_veiculo')!;
-        let data = formatarValor(formatarDataInvertida(serializeForm(form)));
+        let data = serializeForm(form);
 
         // abre o backdrop
         setOpen(true);

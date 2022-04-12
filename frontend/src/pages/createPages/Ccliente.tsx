@@ -18,7 +18,7 @@ export const Ccliente = () => {
         e.preventDefault();
         /// recupera os dados do form
         const form: any = document.querySelector('#form_create_cliente')!;
-        let data = formatarDataInvertida(serializeForm(form));
+        let data = serializeForm(form);
         // abre o backdrop
         setOpen(true);
         /// cria o cliente

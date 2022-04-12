@@ -89,7 +89,7 @@ export const serializeForm = (form) => {
     for (var key of formData.keys()) {
         obj[key] = formData.get(key);
     }
-    return obj;
+    return formatarDataInvertida(formatarValor(obj));
 }
 
 export function compareObjects(obj1, obj2) {

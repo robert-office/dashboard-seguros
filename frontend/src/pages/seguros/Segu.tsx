@@ -16,6 +16,7 @@ import {
 import { DatatableDashboardOptions } from "../../utils/DatatablesUtils/datatableGeneralOptions";
 import { useEffect, useState } from "react";
 import { Subtitle } from '../../components/typografy/Subtitle';
+import { ButtonCreate } from '../../components/buttonCreate';
 
 export const Segu = () => {
 
@@ -42,17 +43,11 @@ export const Segu = () => {
     return (
         <>
             <BaseLayout>
-                <SectionTitle text="Seguros" />
 
-                <Stack
-                    direction="row"
-                    divider={<Divider orientation="vertical" flexItem />}
-                    className="mt-4"
-                    spacing={2}
-                    justifyContent="space-between"
-                >
-
-                </Stack>
+                <div className='flex w-full justify-between'>
+                    <SectionTitle text="Seguros" />
+                    <ButtonCreate href='/criar/seguro' title='novo seguro' />
+                </div>
 
                 <Subtitle text='Todos os Seguros' />
 

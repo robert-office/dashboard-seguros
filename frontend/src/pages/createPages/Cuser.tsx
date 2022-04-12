@@ -36,7 +36,7 @@ export const Cuser = () => {
         e.preventDefault();
         /// recupera os dados do form
         const form: any = document.querySelector('#form_create_user')!;
-        let data = formatarDataInvertida(serializeForm(form));
+        let data = serializeForm(form);
         // abre o backdrop
         setOpen(true);
         /// cria o user

@@ -57,7 +57,7 @@ export const EditVeiculo = ({ id }: Epages) => {
         e.preventDefault();
 
         const form: any = document.querySelector('#form_edit_veiculo')!;
-        let data = formatarDataInvertida(serializeForm(form));
+        let data = serializeForm(form);
 
         if (compareObjects(defaultInfos, data)) {
 
