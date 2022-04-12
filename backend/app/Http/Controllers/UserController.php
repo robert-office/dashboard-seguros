@@ -68,11 +68,11 @@ class UserController extends Controller
     {
         // valida os campos
         $filds = $request->validate([
-            'nome' => 'string|nullable',
-            'nome_fantasia' => 'string|nullable',
-            'data_aniversario' => 'string|nullable',
-            'email' => 'string|nullable',
-            'role' => 'string|nullable',
+            'nome' => 'string',
+            'nome_fantasia' => 'string',
+            'data_aniversario' => 'string',
+            'email' => 'string',
+            'role' => 'string',
         ]);
 
         $user = User::create([

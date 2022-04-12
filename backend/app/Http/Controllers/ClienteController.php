@@ -14,7 +14,7 @@ class ClienteController extends Controller
      */
     public function index($page, $query = '')
     {
-        $response = cliente::where('nome', 'like', '%'.$query.'%')->orWhere('nome_fantasia', 'like', '%'.$query.'%')->with('UltimoVeiculo')->with('UltimoSeguro')->paginate(100, ['*'], 'page', $page);
+        $response = cliente::where('nome', 'like', '%' . $query . '%')->orWhere('nome_fantasia', 'like', '%' . $query . '%')->with('UltimoVeiculo')->with('UltimoSeguro')->paginate(100, ['*'], 'page', $page);
 
         return response(['result' => $response], 200);
     }
@@ -32,32 +32,6 @@ class ClienteController extends Controller
     }
 
     /**
-     * Update the cliente in db with the infos in request
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function update($id, Request $request)
-    {
-        // valida os campos
-        $filds = $request->validate([
-            'nome' => 'string|nullable',
-            'nome_fantasia' => 'string|nullable',
-            'data_aniversario' => 'string|nullable',
-        ]);
-
-        $cliente = cliente::where('id', $id)->update([
-            'nome' => $filds['nome'],
-            'nome_fantasia' => $filds['nome_fantasia'],
-            'data_aniversario' => $filds['data_aniversario']
-        ]);
-
-        if ($cliente) {
-            $response = cliente::where('id', $id)->get();
-            return response($response);
-        }
-    }
-
-    /**
      * Create the cliente in db with the infos in request
      *
      * @return \Illuminate\Http\Response
@@ -66,9 +40,9 @@ class ClienteController extends Controller
     {
         // valida os campos
         $filds = $request->validate([
-            'nome' => 'string|nullable',
-            'nome_fantasia' => 'string|nullable',
-            'data_aniversario' => 'string|nullable',
+            'nome' => 'string',
+            'nome_fantasia' => 'string',
+            'data_aniversario' => 'string',
         ]);
 
         $cliente = cliente::create([
@@ -82,5 +56,31 @@ class ClienteController extends Controller
         }
 
         return response(['error' => 'não conseguiu criar o cliente'], 400);
+    }
+
+    /**
+     * Update the cliente in db with the infos in request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update($id, Request $request)
+    {
+        // valida os campos
+        $filds = $request->validate([
+            'nome' => 'string',
+            'nome_fantasia' => 'string',
+            'data_aniversario' => 'string',
+        ]);
+
+        $cliente = cliente::where('id', $id)->update([
+            'nome' => $filds['nome'],
+            'nome_fantasia' => $filds['nome_fantasia'],
+            'data_aniversario' => $filds['data_aniversario']
+        ]);
+
+        if ($cliente) {
+            $response = cliente::where('id', $id)->get();
+            return response($response);
+        }
     }
 }

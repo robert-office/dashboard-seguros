@@ -21,6 +21,7 @@ Route::post('/users/edit/{id}', [UserController::class, 'update']);
 Route::get('/veiculos/showAll/{page}/{query?}', [VeiculoController::class, 'index']);
 Route::get('/veiculos/show/{id}', [VeiculoController::class, 'show']);
 Route::get('/veiculos/showFreeCars/{id}/{query?}', [VeiculoController::class, 'showIfCarsIsFree']);
+Route::get('/veiculos/showFreeCarsEx/{id}/{id_veiculo}/{query?}', [VeiculoController::class, 'showIfCarsIsFreeAndOneException']);
 Route::post('/veiculos/create', [VeiculoController::class, 'create']);
 Route::post('/veiculos/edit/{id}', [VeiculoController::class, 'update']);
 
@@ -32,4 +33,6 @@ Route::post('/clientes/edit/{id}', [ClienteController::class, 'update']);
 
 // seguros
 Route::get('/seguros/showAll/{page}/{query?}', [SeguroController::class, 'index']);
+Route::get('/seguros/show/{id}', [SeguroController::class, 'show']);
 Route::post('/seguros/create', [SeguroController::class, 'create']);
+Route::post('/seguros/edit/{id}', [SeguroController::class, 'update']);

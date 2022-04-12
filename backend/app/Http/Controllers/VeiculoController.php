@@ -39,8 +39,8 @@ class VeiculoController extends Controller
     {
         // valida os campos
         $filds = $request->validate([
-            'nome' => 'string|nullable',
-            'valor' => 'string|nullable',
+            'nome' => 'string',
+            'valor' => 'string',
             'tipo' => 'between:1,3',
             'id_cliente' => 'string',
         ]);
@@ -68,9 +68,9 @@ class VeiculoController extends Controller
     {
         // valida os campos
         $filds = $request->validate([
-            'nome' => 'string|nullable',
-            'valor' => 'string|nullable',
-            'tipo' => 'between:1,3|nullable',
+            'nome' => 'string',
+            'valor' => 'string',
+            'tipo' => 'between:1,3',
         ]);
 
         $veiculo = veiculo::where('id', $id)->update([
@@ -93,6 +93,18 @@ class VeiculoController extends Controller
     public function showIfCarsIsFree($id, $query = '')
     {
         $result = veiculo::where('id_cliente', $id)->doesnthave('seguro')->paginate(100, ['*'], 'page', 1);
+
+        return response(['result' => $result], 200);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showIfCarsIsFreeAndOneException($id, $id_veiculo, $query = '')
+    {
+        $result = veiculo::where('id_cliente', $id)->doesnthave('seguro')->orWhere('id', $id_veiculo)->paginate(100, ['*'], 'page', 1);
 
         return response(['result' => $result], 200);
     }
