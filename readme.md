@@ -17,12 +17,12 @@
 
 <!--About session-->
 <h1 align="center">
-    Dashboard criado para treinar minhas minhas skills nos frameworks ReactJS e Laravel como API
+    Dashboard criado para treinar minhas minhas skills nos frameworks ReactJS e Laravel como API.
 </h1>
 
 Esse dashboard foi feito através de um modelo que eu utilizava no meu antigo emprego, porém naquele sistema eu só fazia manutenções, então resolvi
 aproveitar que estava precisando treinar minhas skills e resolvi utilizar todo meu empenho e habilidade para criar o sistema de seguros mais parecido
-e funcional possivel com o do meu antigo e primeiro emprego na seguradora.
+e funcional possivel com o do meu antigo e primeiro emprego na seguradora JL System.
 
 <h3>🏠 Projeto hospedado na Netilify: </h3>
 
