@@ -6,7 +6,7 @@ export const getAllClientes = ( PageAtual: number, query: string = '' ) => {
 
     const config = {
         headers: {
-            'Content-type': 'application/json; charset=UTF-8',
+            'Content-Type': 'application/x-www-form-urlencoded',
             'Accept': 'application/json',
         }
     }
