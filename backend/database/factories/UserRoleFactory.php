@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\UserRole>
  */
-class UserRoleFactory extends Factory
+class userRoleFactory extends Factory
 {
     protected $model = userRole::class;
 
