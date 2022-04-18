@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    {   
+        ///
         /// cria 300 clientes
         cliente::factory()->count(300)->create()
             ->each(
