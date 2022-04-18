@@ -18,7 +18,6 @@
 <!--About session-->
 <h1 align="center">
     Dashboard criado para treinar minhas minhas skills nos frameworks ReactJS e Laravel como API.
-    <br>Dashboard
 </h1>
 
 Esse dashboard foi feito através de um modelo que eu ultilizava no meu antigo emprego, porém naquele sistema eu só fazia manutenções, então resolvi
