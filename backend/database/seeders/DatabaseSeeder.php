@@ -8,7 +8,6 @@ use App\Models\seguro;
 use App\Models\User;
 use App\Models\userRole;
 use App\Models\veiculo;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
