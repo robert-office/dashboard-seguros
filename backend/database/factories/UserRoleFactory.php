@@ -20,6 +20,7 @@ class UserRoleFactory extends Factory
     public function definition()
     {
         return [
+            /// id role
             'id_role' => $this->faker->numberBetween(1, 4)
         ];
     }
