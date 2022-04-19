@@ -12,13 +12,9 @@ class ClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($page, $query = null)
+    public function index($page, $query = '')
     {
         $response = cliente::with('UltimoVeiculo')->with('UltimoSeguro')->paginate(100, ['*'], 'page', $page);
-
-        if( $query ) {
-            $response = cliente::where('nome', 'like', '%' . $query . '%')->orWhere('nome_fantasia', 'like', '%' . $query . '%')->with('UltimoVeiculo')->with('UltimoSeguro')->paginate(100, ['*'], 'page', $page);
-        }
 
         return response(['result' => $response], 200);
     }

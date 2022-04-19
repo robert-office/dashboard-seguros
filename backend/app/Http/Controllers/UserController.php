@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function getAllUsers($page = 1, $query = '')
     {
-        $result = User::where('nome', 'like', '%' . $query . '%')->orWhere('nome_fantasia', 'like', '%' . $query . '%')->with('roles')->paginate(100, ['*'], 'page', $page);
+        $result = User::with('roles')->paginate(100, ['*'], 'page', $page);
         return response(['result' => $result], 200);
     }
 
