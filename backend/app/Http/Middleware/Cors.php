@@ -20,8 +20,8 @@ class Cors
 
         //Acrescente as 3 linhas abaixo
         $response->headers->set('Access-Control-Allow-Origin', "*");
-        $response->headers->set('Access-Control-Allow-Methods', "PUT, POST, DELETE, GET, OPTIONS");
-        $response->headers->set('Access-Control-Allow-Headers', "Content-Type, Accept, Authorization, X-Requested-With, Application");
+        $response->headers->set('Access-Control-Allow-Methods', "*");
+        $response->headers->set('Access-Control-Allow-Headers', "*");
 
         return $response;
     }
