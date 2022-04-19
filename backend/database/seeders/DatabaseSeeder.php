@@ -3,8 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\cliente;
+use App\Models\operadoras;
 use App\Models\rastreador;
+use App\Models\role;
 use App\Models\seguro;
+use App\Models\tipo_veiculo;
 use App\Models\User;
 use App\Models\userRole;
 use App\Models\veiculo;
@@ -18,7 +21,30 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {   
+    {
+        /// cria as operadoras
+        operadoras::factory()->createMany([
+            ["nome" => 'VIVO'],
+            ["nome" => 'TIM'],
+            ["nome" => 'OI'],
+            ["nome" => 'CLARO']
+        ]);
+
+        /// cria as tipos dos veiculos
+        tipo_veiculo::factory()->createMany([
+            ["tipo" => 'carro'],
+            ["tipo" => 'moto'],
+            ["tipo" => 'caminhão']
+        ]);
+
+        /// cria as tipos dos roles
+        role::factory()->createMany([
+            ["role" => 'administrador'],
+            ["role" => 'vendedor'],
+            ["role" => 'telemarketing'],
+            ["role" => 'desenvolvedor']
+        ]);
+
         /// cria 300 clientes
         cliente::factory()->count(300)->create()
             ->each(
@@ -30,6 +56,7 @@ class DatabaseSeeder extends Seeder
 
                     /// cria um user do sistema
                     $user = User::factory()->create();
+
                     /// adiciona a sua role no db
                     $role = userRole::factory()->create([
                         'id_user' => $user->id
@@ -54,7 +81,7 @@ class DatabaseSeeder extends Seeder
 
 
         // cria um user do sistema com lore automatica
-        User::factory()->count(50)->create()->each(function($user) {
+        User::factory()->count(50)->create()->each(function ($user) {
             /// adiciona a sua role no db
             userRole::factory()->create([
                 'id_user' => $user->id
