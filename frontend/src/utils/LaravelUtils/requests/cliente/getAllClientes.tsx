@@ -11,7 +11,7 @@ export const getAllClientes = ( PageAtual: number, query: string = '' ) => {
         }
     }
 
-    return httpService.get<IPaginateClientes>(`/clientes/showAll/${PageAtual}/${query}`, config);
+    return httpService.get<IPaginateClientes>(`/clientes/showAll/${PageAtual}`, config);
 }
 
 export const clienteLoadOptions: LoadOptions<any, any, { page: number }> = async (searchQuery, loadedOptions, { page }: any) => {

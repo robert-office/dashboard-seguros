@@ -11,7 +11,7 @@ export const getAllUsers = ( PageAtual: number, query: string = ''  ) => {
         }
     }
 
-    return httpService.get<IPaginateUsers>(`/users/showAll/${PageAtual}/${query}`, config);
+    return httpService.get<IPaginateUsers>(`/users/showAll/${PageAtual}`, config);
 }
 
 export const userLoadOptions: LoadOptions<any, any, { page: number }> = async (searchQuery, loadedOptions, { page }: any) => {

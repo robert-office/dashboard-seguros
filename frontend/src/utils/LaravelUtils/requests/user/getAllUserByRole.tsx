@@ -11,7 +11,7 @@ export const getAllUserByRole = ( PageAtual: number, Role: number, query: string
         }
     }
 
-    return httpService.get<IPaginateUsersByRole>(`/users/showAllByRole/${PageAtual}/${Role}/${query}`, config);
+    return httpService.get<IPaginateUsersByRole>(`/users/showAllByRole/${PageAtual}/${Role}`, config);
 }
 
 export const vendedorLoadOptions: LoadOptions<any, any, { page: number }> = async (searchQuery, loadedOptions, { page }: any) => {
