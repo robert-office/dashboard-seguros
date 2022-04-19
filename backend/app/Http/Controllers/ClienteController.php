@@ -14,7 +14,7 @@ class ClienteController extends Controller
      */
     public function index($page, $query = null)
     {
-        $response = cliente::all()->with('UltimoVeiculo')->with('UltimoSeguro')->paginate(100, ['*'], 'page', $page)->get();
+        $response = cliente::with('UltimoVeiculo')->with('UltimoSeguro')->paginate(100, ['*'], 'page', $page);
 
         if( $query ) {
             $response = cliente::where('nome', 'like', '%' . $query . '%')->orWhere('nome_fantasia', 'like', '%' . $query . '%')->with('UltimoVeiculo')->with('UltimoSeguro')->paginate(100, ['*'], 'page', $page);
