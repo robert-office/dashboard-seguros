@@ -9,18 +9,17 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function getAllUsers($page = 1, $query = '')
+    public function getAllUsers($page = 1)
     {
         $result = User::with('roles')->paginate(100, ['*'], 'page', $page);
         return response(['result' => $result], 200);
     }
 
-    public function getUsersByRole($page = 1, $role = 2, $query = '')
+    public function getUsersByRole($page = 1, $role = 2)
     {
         $result = User::whereHas('roles', function ($user) use ($role) {
             $user->where('roles.id', '=', $role);
-        })->where('nome', 'like', '%' . $query . '%')->orWhere('nome_fantasia', 'like', '%' . $query . '%')
-        ->paginate(100, ['*'], 'page', $page);
+        })->paginate(100, ['*'], 'page', $page);
 
         return response(['result' => $result], 200);
     }
