@@ -26,7 +26,7 @@ e funcional possivel com o do meu antigo e primeiro emprego na seguradora JL Sys
 
 <h3>🏠 Projeto hospedado na Netilify: </h3>
 
-[Clique aqui, e veja como o projeto está ficando...](https://acompanyon.netlify.app/)
+[Clique aqui, e veja como o projeto está ficando...](https://acompany-dashboard.netlify.app/)
 
 <h3>🤓 Database planejada e arquiteturada</h3>
 <p align="center"><img src="./frontend/public/database.png" title="database img"></p>
