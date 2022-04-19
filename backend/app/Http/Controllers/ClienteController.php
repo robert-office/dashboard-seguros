@@ -12,7 +12,7 @@ class ClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($page, $query)
+    public function index($page, $query = null)
     {
         $response = cliente::all()->with('UltimoVeiculo')->with('UltimoSeguro')->paginate(100, ['*'], 'page', $page)->get();
 
