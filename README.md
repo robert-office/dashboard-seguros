@@ -26,7 +26,7 @@ e funcional possivel com o do meu antigo e primeiro emprego na seguradora JL Sys
 
 <h3>🏠 Projeto hospedado na Netilify: </h3>
 
-[Clique aqui, e veja como o projeto está ficando...](https://acompanyon.netlify.app/)
+[Clique aqui, e veja como o projeto está ficando...](https://acompany-dashboard.netlify.app/)
 
 <h3>🤓 Database planejada e arquiteturada</h3>
 <p align="center"><img src="./frontend/public/database.png" title="database img"></p>
@@ -72,4 +72,4 @@ e funcional possivel com o do meu antigo e primeiro emprego na seguradora JL Sys
 - Campos de pesquisa nas tabelas para o dados ficarem mais dinamicos e faceis de encontrar
 
 <!--Bottom session-->
-<br><h4 align=center>Feito por <a target="_blank" href="https://robert-office.github.io/robert-curriculum" >Robert Uillians</a></h4>
+<br><h4 align=center>Feito por <a target="_blank" href="https://robert-curriculo.netlify.app/">Robert Uillians</a></h4>
