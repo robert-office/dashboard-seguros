@@ -3,6 +3,7 @@ import { Divider, Stack } from "@mui/material";
 import DataTable from "../../components/datatable/Datatable";
 import { SectionTitle } from "../../components/typografy/SectionTitle";
 import { BaseLayout } from "../../layouts/baseLayout/BaseLayout";
+import './seguroStyles.css';
 
 import {
     XYPlot,
@@ -19,6 +20,9 @@ import { Subtitle } from '../../components/typografy/Subtitle';
 import { ButtonCreate } from '../../components/buttonCreate';
 
 export const Segu = () => {
+
+    const greenData = [{ x: 'A', y: 10 }, { x: 'B', y: 5 }, { x: 'C', y: 15 }];
+    const blueData = [{ x: 'A', y: 12 }, { x: 'B', y: 2 }, { x: 'C', y: 11 }];
 
 
     ///// TABELA //////
@@ -49,8 +53,50 @@ export const Segu = () => {
                     <ButtonCreate href='/criar/seguro' title='novo seguro' />
                 </div>
 
-                <Subtitle text='Todos os Seguros' />
+                <Stack
+                    direction="row"
+                    divider={<Divider orientation="horizontal" flexItem />}
+                    className="lg:my-6 my-2 w-full space-x-2"
+                >
+                    <Stack
+                        direction="column"
+                        className="my-2 w-full p-2 rounded-lg"
+                        style={{
+                            boxShadow: '0px 0px 14px 5px rgba(0,0,0,0.30)'
+                        }}
+                    >
+                        <Subtitle text='Todos os Seguros' />
+                        <XYPlot className={'text-white'} xType="ordinal" width={400} height={300} xDistance={100}>
+                            <VerticalGridLines />
+                            <HorizontalGridLines />
+                            <XAxis />
+                            <YAxis />
+                            <VerticalBarSeries barWidth={0.5} className="" data={greenData} />
+                            <VerticalBarSeries barWidth={0.5} data={blueData} />
+                        </XYPlot>
+                    </Stack>
+                    <Stack
+                        direction="column"
+                        className="my-2 w-full p-2 rounded-lg"
+                        style={{
+                            boxShadow: '0px 0px 14px 5px rgba(0,0,0,0.30)'
+                        }}
+                    >
+                        <Subtitle text='Todos os Seguros' />
+                        <XYPlot xType="ordinal" width={400} height={300} xDistance={100}>
+                            <VerticalGridLines />
+                            <HorizontalGridLines />
+                            <XAxis />
+                            <YAxis />
+                            <VerticalBarSeries barWidth={0.5} className="" data={greenData} />
+                            <VerticalBarSeries barWidth={0.5} data={blueData} />
 
+                        </XYPlot>
+                    </Stack>
+                </Stack>
+
+
+                <Subtitle text='Todos os Seguros' />
                 <Stack
                     direction="row"
                     divider={<Divider orientation="vertical" flexItem />}
