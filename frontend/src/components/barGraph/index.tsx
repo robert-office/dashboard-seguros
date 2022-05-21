@@ -31,7 +31,7 @@ export const BarGraph = ({ data }: IbarGraph) => {
                         <HorizontalGridLines />
                         <XAxis />
                         <YAxis />
-                        <VerticalBarSeries animation barWidth={!matches ? 0.3 : 0.5} data={data} />
+                        <VerticalBarSeries animation barWidth={!matches ? 0.15 : 0.3} data={data} />
                     </XYPlot>
                 )}
             </AutoSizer>

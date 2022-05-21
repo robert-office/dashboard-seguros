@@ -12,11 +12,12 @@ import { RadialGraph } from '../../components/radialGraph';
 
 export const Segu = () => {
 
-    const blueData = [{ x: 'A', y: 12 }, { x: 'B', y: 2 }, { x: 'C', y: 11 }];
+    const blueData = [{ x: '2022', y: 12 }, { x: '2021', y: 2 }, { x: '2020', y: 11 }, { x: '2019', y: 12 }, { x: '2018', y: 2 }, { x: '2017', y: 11 }];
     const greenData = [
-        {angle: 1, radius: 10, label: 'jorge'},
-        {angle: 1, radius: 10, label: 'rodolfo'},
-        {angle: 1, radius: 10, label: 'criana'},
+        {angle: 17, radius: 100, label: 'VIVO'},
+        {angle: 32, radius: 100, label: 'OI'},
+        {angle: 45, radius: 100, label: 'CLARO'},
+        {angle: 67, radius: 100, label: 'TIM'},
     ];
 
 
@@ -55,23 +56,33 @@ export const Segu = () => {
                 >
                     <Stack
                         direction="column"
-                        className="my-2 w-full md:p-4 p-2 rounded-lg space-y-4 h-96"
+                        className="my-2 w-full md:p-4 p-2 rounded-lg space-y-4 h-60"
                         style={{
                             boxShadow: '0px 0px 14px 5px rgba(0,0,0,0.30)'
                         }}
                     >
-                        <Subtitle text='Todos os Seguros' />
+                        <Subtitle text='Vendas por ano' />
                         <BarGraph data={blueData} />
                     </Stack>
                     <Stack
                         direction="column"
-                        className="my-2 w-full md:p-4 p-2 rounded-lg space-y-4 h-96"
+                        className="my-2 w-full md:p-4 p-2 rounded-lg space-y-4 h-60"
                         style={{
                             boxShadow: '0px 0px 14px 5px rgba(0,0,0,0.30)'
                         }}
                     >
-                        <Subtitle text='Todos os Seguros' />
+                        <Subtitle text='Distribuição de Operadoras' />
                         <RadialGraph data={greenData} />
+                    </Stack>
+                    <Stack
+                        direction="column"
+                        className="my-2 w-full md:p-4 p-2 rounded-lg space-y-4 h-60"
+                        style={{
+                            boxShadow: '0px 0px 14px 5px rgba(0,0,0,0.30)'
+                        }}
+                    >
+                        <Subtitle text='Maiores vendedores (todos os tempos)' />
+                        <BarGraph data={blueData} />
                     </Stack>
                 </Stack>
 
