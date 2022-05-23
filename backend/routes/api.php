@@ -36,3 +36,5 @@ Route::get('/seguros/showAll/{page}/{query?}', [SeguroController::class, 'index'
 Route::get('/seguros/show/{id}', [SeguroController::class, 'show']);
 Route::post('/seguros/create', [SeguroController::class, 'create']);
 Route::post('/seguros/edit/{id}', [SeguroController::class, 'update']);
+
+Route::get('/seguros/showSalesPerYear', [SeguroController::class, 'showSalesPerYear']);

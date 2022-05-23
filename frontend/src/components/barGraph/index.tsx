@@ -7,7 +7,8 @@ import {
     YAxis,
     VerticalGridLines,
     HorizontalGridLines,
-    VerticalBarSeries
+    VerticalBarSeries,
+    Hint
 } from 'react-vis';
 
 type IdataGraph = {
@@ -31,6 +32,9 @@ export const BarGraph = ({ data }: IbarGraph) => {
                         <HorizontalGridLines />
                         <XAxis />
                         <YAxis />
+
+                       
+
                         <VerticalBarSeries animation barWidth={!matches ? 0.15 : 0.3} data={data} />
                     </XYPlot>
                 )}

@@ -59,6 +59,19 @@ class SeguroController extends Controller
         return response(['erro' => 'não foi achado o registro'], 400);
     }
 
+    public function showSalesPerYear()
+    {
+        $result = seguro::selectRaw('year(created_at) year, count(id) vendas')
+                ->orderBy('year', 'asc')
+                ->limit(5)
+                ->get();
+
+
+        return response(['result' => $result]);
+
+        return response(['erro' => 'não foi achado o registro'], 400);
+    }
+
     /**
      * Create a seguro in db with the infos in request
      *
