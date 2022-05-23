@@ -66,7 +66,6 @@ class SeguroController extends Controller
                 ->limit(5)
                 ->get();
 
-
         return response(['result' => $result]);
 
         return response(['erro' => 'não foi achado o registro'], 400);
