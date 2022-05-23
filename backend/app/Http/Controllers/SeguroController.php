@@ -61,7 +61,7 @@ class SeguroController extends Controller
 
     public function showSalesPerYear()
     {
-        $result = seguro::selectRaw('year(created_at) year, count(id) vendas')->orderBy('year', 'asc')->get();
+        $result = seguro::selectRaw('year(created_at) year, count(*) vendas')->orderBy('year', 'asc')->get();
         
         if( $result ) {
             return response($result);
