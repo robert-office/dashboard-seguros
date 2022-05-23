@@ -64,7 +64,7 @@ class SeguroController extends Controller
     public function showSalesPerYear()
     {
         $result = seguro::all()->groupBy(function ($val) {
-            return Carbon::parse($val->created_at)->format('F Y');
+            return Carbon::parse($val->created_at)->format('Y');
         });
 
         return response($result);
