@@ -63,7 +63,6 @@ class SeguroController extends Controller
     {
         $result = seguro::selectRaw('year(created_at) year, count(id) vendas')
                 ->orderBy('year', 'asc')
-                ->limit(5)
                 ->get();
 
         return response(['result' => $result]);
