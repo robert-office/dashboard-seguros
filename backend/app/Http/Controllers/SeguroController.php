@@ -67,11 +67,9 @@ class SeguroController extends Controller
         ->groupBy('ANO')
         ->get();
         
-        if( $result ) {
-            return response($result);
-        }
+        dd($result);
 
-        return response(['erro' => 'não foi achado o registro'], 400);
+        
     }
 
     /**
