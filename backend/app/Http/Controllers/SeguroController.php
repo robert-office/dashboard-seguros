@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\seguro;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -53,7 +54,7 @@ class SeguroController extends Controller
     {
         $seguro = seguro::where('id', $id)->with('vendedor')->with('veiculo')->with('cliente')->first();
 
-        if( $seguro ){
+        if ($seguro) {
             return response($seguro, 200);
         }
 
@@ -62,11 +63,10 @@ class SeguroController extends Controller
 
     public function showSalesPerYear()
     {
-        $result = seguro::selectRaw('year(created_at) year, monthname(created_at) month, count(*) data')
-        ->groupBy('year', 'month')
-        ->orderBy('year', 'desc')
-        ->get();
-        
+        $result = seguro::all()->groupBy(function ($val) {
+            return Carbon::parse($val->created_at)->format('Y');
+        });
+
         return response($result);
     }
 
