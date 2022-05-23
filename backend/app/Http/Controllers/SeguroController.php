@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\seguro;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SeguroController extends Controller
 {
@@ -61,13 +62,15 @@ class SeguroController extends Controller
 
     public function showSalesPerYear()
     {
+        $result = seguro::select(DB::raw('count(id) as `data`'), DB::raw("DATE_FORMAT(created_at, '%m-%Y') new_date"),  DB::raw('YEAR(created_at) year'))
+        ->groupby('year')
+        ->get();
         
-        
-       
-        return response('vaitomarnmoooooooocuuuuuuu');
-        
+        if( $result ) {
+            return response($result);
+        }
 
-        
+        return response(['erro' => 'não foi achado o registro'], 400);
     }
 
     /**
