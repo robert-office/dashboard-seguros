@@ -62,12 +62,10 @@ class SeguroController extends Controller
 
     public function showSalesPerYear()
     {
-        $result = DB::table('seguros')->selectRaw("
-        count(id) AS data, 
-        DATE_FORMAT(created_at, '%Y-%m') AS new_date, 
-        YEAR(created_at) AS year, 
-        MONTH(created_at) AS month
-        ");
+        $result =  seguro::selectRaw('year(created_at) year, monthname(created_at) month, count(*) data')
+        ->groupBy('year', 'month')
+        ->orderBy('year', 'desc')
+        ->get();
         
         dd($result);
 
