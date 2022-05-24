@@ -6,7 +6,6 @@ use App\Models\seguro;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use PhpParser\Node\Expr\Cast\String_;
 
 class SeguroController extends Controller
 {
@@ -64,24 +63,12 @@ class SeguroController extends Controller
 
     public function showSalesPerYear()
     {
-        $resultados = [];
+        $result = seguro::all(['id', 'created_at'])
+        ->countBy(function ($val) {
+            return Carbon::parse($val->created_at)->format('Y');
+        });
 
-        /// percorre por 5 anos atrás e traz a contagem de seguros
-        /// o selectRaw não está funcionando
-        /// por isso estou utilizando esse método
-        for ( $anoSubstrainte = 0; $anoSubstrainte <= 4; $anoSubstrainte++ ){
-            $anoAtual = Carbon::now()->year() - $anoSubstrainte;
-
-            dd($anoAtual);
-
-            $CountOfSearchByYear = seguro::all(['id', 'created_at'])->filter(function ($value) use ($anoAtual) {
-                return $value->created_at->year === $anoAtual; // assuming, that your timestamp gets converted to a Carbon object.
-            })->count();
-
-            array_push($resultados, [$anoAtual => $CountOfSearchByYear]);
-        }
-
-        return response($resultados);
+        return response($result);
     }
 
     /**
