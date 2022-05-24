@@ -66,7 +66,8 @@ class SeguroController extends Controller
         $result = seguro::all(['id', 'created_at'])
             ->countBy(function ($val) {
                 return Carbon::parse($val->created_at)->format('Y');
-            });
+            })
+            ->sortKeysDesc();
 
         return response($result);
     }
