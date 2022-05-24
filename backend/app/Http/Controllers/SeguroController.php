@@ -66,7 +66,8 @@ class SeguroController extends Controller
         $result = seguro::all(['id', 'created_at'])
         ->groupBy(function ($val) {
             return Carbon::parse($val->created_at)->format('Y');
-        });
+        })
+        ->count();
 
         return response($result);
     }
