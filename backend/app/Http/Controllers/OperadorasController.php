@@ -9,7 +9,7 @@ class OperadorasController extends Controller
 {
     public function showOperadorasPercentageBySeguro()
     {
-        $result = operadoras::with('seguro')->get();
+        $result = operadoras::with('seguros')->get();
 
         return response($result);
     }
