@@ -22,7 +22,11 @@ class operadoras extends Model
     public function seguros(){
         return $this->HasManyThrough(
             seguro::class,
-            rastreador::class
+            rastreador::class,
+            'id_operadora',
+            'id_rastreador',
+            'id',
+            'id'
         );
     }
 }
