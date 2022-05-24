@@ -64,11 +64,24 @@ class SeguroController extends Controller
     public function showSalesPerYear()
     {
         $result = seguro::all(['id', 'created_at'])
-        ->countBy(function ($val) {
-            return Carbon::parse($val->created_at)->format('Y');
-        });
+            ->countBy(function ($val) {
+                return Carbon::parse($val->created_at)->format('Y');
+            });
 
         return response($result);
+    }
+
+    public function showSalesValuePerYear()
+    {
+        $yearlyAmount = seguro::all()
+            ->groupBy(function ($proj) {
+                return $proj->created_at->format('Y');
+            })
+            ->map(function ($year) {
+                return $year->sum('valor');
+            });
+
+        return response($yearlyAmount);
     }
 
     /**
