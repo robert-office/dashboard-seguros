@@ -22,9 +22,9 @@ class operadoras extends Model
         return $this->hasOneThrough(
             seguro::class,
             rastreador::class,
+            'id',
             'id_rastreador',
             'id_operadora',
-            'id',
             'id',
         );
     }
