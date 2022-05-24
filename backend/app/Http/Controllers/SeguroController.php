@@ -77,10 +77,10 @@ class SeguroController extends Controller
             ->groupBy(function ($proj) {
                 return $proj->created_at->format('Y');
             })
-            ->orderBy('created_at', 'desc')
             ->map(function ($year) {
                 return $year->sum('valor');
-            });
+            })
+            ->sortKeysDesc();
 
         return response($yearlyAmount);
     }
