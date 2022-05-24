@@ -72,6 +72,8 @@ class SeguroController extends Controller
         for ( $anoSubstrainte = 0; $anoSubstrainte <= 4; $anoSubstrainte++ ){
             $anoAtual = Carbon::now()->year() - $anoSubstrainte;
 
+            dd($anoAtual);
+
             $CountOfSearchByYear = seguro::all(['id', 'created_at'])->filter(function ($value) use ($anoAtual) {
                 return $value->created_at->year === $anoAtual; // assuming, that your timestamp gets converted to a Carbon object.
             })->count();
