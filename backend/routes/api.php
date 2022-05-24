@@ -5,7 +5,7 @@ use App\Http\Controllers\SeguroController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VeiculoController;
 use App\Http\Controllers\ClienteController;
-use App\Models\operadoras;
+use App\Http\Controllers\OperadorasController;
 use Illuminate\Support\Facades\Route;
 
 /// rastreadores
@@ -40,4 +40,4 @@ Route::post('/seguros/edit/{id}', [SeguroController::class, 'update']);
 Route::get('/seguros/showSalesPerYear', [SeguroController::class, 'showSalesPerYear']);
 
 /// operadora
-Route::get('/operadoras/showOperadorasPercentageBySeguro', [operadoras::class, 'showOperadorasPercentageBySeguro']);
+Route::get('/operadoras/showOperadorasPercentageBySeguro', [OperadorasController::class, 'showOperadorasPercentageBySeguro']);
