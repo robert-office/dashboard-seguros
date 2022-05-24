@@ -21,6 +21,7 @@ class seguroFactory extends Factory
     public function definition()
     {
         return [
+            'created_at' => $this->faker->dateTimeBetween('-1825 days', now()),
             'valor' => $this->faker->numberBetween(1500, 4000)
         ];
     }
