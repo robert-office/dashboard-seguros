@@ -17,4 +17,15 @@ class operadoras extends Model
     protected $fillable = [
         'nome'
     ];
+
+    public function seguro(){
+        return $this->hasOneThrough(
+            seguro::class,
+            rastreador::class,
+            'id',
+            'id',
+            'id_rastreador',
+            'id_operadora'
+        );
+    }
 }

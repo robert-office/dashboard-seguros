@@ -5,6 +5,7 @@ use App\Http\Controllers\SeguroController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VeiculoController;
 use App\Http\Controllers\ClienteController;
+use App\Models\operadoras;
 use Illuminate\Support\Facades\Route;
 
 /// rastreadores
@@ -36,5 +37,7 @@ Route::get('/seguros/showAll/{page}/{query?}', [SeguroController::class, 'index'
 Route::get('/seguros/show/{id}', [SeguroController::class, 'show']);
 Route::post('/seguros/create', [SeguroController::class, 'create']);
 Route::post('/seguros/edit/{id}', [SeguroController::class, 'update']);
-
 Route::get('/seguros/showSalesPerYear', [SeguroController::class, 'showSalesPerYear']);
+
+/// operadora
+Route::get('/operadoras/showOperadorasPercentageBySeguro', [operadoras::class, 'showOperadorasPercentageBySeguro']);
