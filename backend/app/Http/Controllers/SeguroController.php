@@ -63,7 +63,9 @@ class SeguroController extends Controller
 
     public function showSalesPerYear()
     {
-        $result = seguro::all()->groupBy(function ($val) {
+        $result = seguro::all(['id', 'created_at'])
+        ->selectRaw('count(*) as total')
+        ->groupBy(function ($val) {
             return Carbon::parse($val->created_at)->format('Y');
         });
 
