@@ -4,25 +4,16 @@ import DataTable from "../../components/datatable/Datatable";
 import { SectionTitle } from "../../components/typografy/SectionTitle";
 import { BaseLayout } from "../../layouts/baseLayout/BaseLayout";
 import { DatatableDashboardOptions } from "../../utils/DatatablesUtils/datatableGeneralOptions";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Subtitle } from '../../components/typografy/Subtitle';
 import { ButtonCreate } from '../../components/buttonCreate';
-import { BarGraph } from '../../components/barGraph';
-import { RadialGraph } from '../../components/radialGraph';
+import { VendasPorAnoGrafico } from '../../components/barGraph';
+import { OperadorasCountGrafico } from '../../components/radialGraph';
+import { ValorVendasPorAno } from '../../components/lineGraph';
 
 export const Segu = () => {
 
-    const blueData = [{ x: '2022', y: 12 }, { x: '2021', y: 2 }, { x: '2020', y: 11 }, { x: '2019', y: 12 }, { x: '2018', y: 2 }, { x: '2017', y: 11 }];
-    const greenData = [
-        {angle: 17, radius: 100, label: 'VIVO'},
-        {angle: 32, radius: 100, label: 'OI'},
-        {angle: 45, radius: 100, label: 'CLARO'},
-        {angle: 67, radius: 100, label: 'TIM'},
-    ];
-
-
     ///// TABELA //////
-
     /// rows da tabela
     const [rows, setRows] = useState<any[]>([]);
     const [totalPages, setTotalPages] = useState(0);
@@ -50,8 +41,8 @@ export const Segu = () => {
                 </div>
 
                 <Stack
-                    direction={{xs: 'column', md: 'row' }}
-                    
+                    direction={{ xs: 'column', md: 'row' }}
+
                     className="lg:my-6 my-2 w-full sm:space-x-2"
                 >
                     <Stack
@@ -61,8 +52,8 @@ export const Segu = () => {
                             boxShadow: '0px 0px 14px 5px rgba(0,0,0,0.30)'
                         }}
                     >
-                        <Subtitle text='Vendas por ano' />
-                        <BarGraph data={blueData} />
+                        <Subtitle text='Total de Vendas (por ano)' />
+                        <VendasPorAnoGrafico />
                     </Stack>
                     <Stack
                         direction="column"
@@ -72,7 +63,7 @@ export const Segu = () => {
                         }}
                     >
                         <Subtitle text='Distribuição de Operadoras' />
-                        <RadialGraph data={greenData} />
+                        <OperadorasCountGrafico />
                     </Stack>
                     <Stack
                         direction="column"
@@ -81,8 +72,8 @@ export const Segu = () => {
                             boxShadow: '0px 0px 14px 5px rgba(0,0,0,0.30)'
                         }}
                     >
-                        <Subtitle text='Maiores vendedores (todos os tempos)' />
-                        <BarGraph data={blueData} />
+                        <Subtitle text='Valor das Vendas (por ano)' />
+                        <ValorVendasPorAno />
                     </Stack>
                 </Stack>
 
