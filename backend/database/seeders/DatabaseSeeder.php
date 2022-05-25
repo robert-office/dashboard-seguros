@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
                     /// se é um vendedor
                     if ($role->id_role == 2) {
                         /// pode ser 1 até 5 carros/seguros/rastreadores para 1 cliente e 1 vendedor só
-                        $numberOfSeguros = range(1, 5);
+                        $numberOfSeguros = rand(1, 5);
 
                         /// pode ser mais de um seguro/carro/rastreador
                         for ( $i = 0; $i < $numberOfSeguros; $i++ ){
