@@ -25,11 +25,11 @@ export const BaseLayout = ({ children }: LayoutProps) => {
                 onClose={() => setMenuDrawer(false)}
                 onOpen={() => setMenuDrawer(true)}
                 sx={{
-                    
+
                     '& .MuiDrawer-paper': {
-                      backgroundColor: 'rgb(9 9 16 / 1)'
+                        backgroundColor: 'rgb(9 9 16 / 1)'
                     },
-                  }}
+                }}
             >
                 <aside className="bg-primaryColor" style={{
                     minWidth: "250px"
@@ -42,8 +42,8 @@ export const BaseLayout = ({ children }: LayoutProps) => {
                             <p className='text-sm font-semibold font-serif text-secundaryColor'> Acompany Seguros </p>
                         </div>
                     </nav>
-                    
-                    <Divider sx={{borderColor: '#FF2D20'}}/>
+
+                    <Divider sx={{ borderColor: '#FF2D20' }} />
 
                     <List
                         sx={{ width: '100%', bgcolor: '' }}
@@ -65,7 +65,7 @@ export const BaseLayout = ({ children }: LayoutProps) => {
                 }}>
                     <div className='fixed flex flex-col max-h-full'>
                         <nav className="relative min-h-[56px] lg:w-[250px] w-full flex justify-between px-8">
-                            <div className='relative w-auto self-center'>
+                            <div className='relative w-auto self-center ml-1'>
                                 <DirectionsCarIcon sx={{ color: "#FF2D20" }} />
                             </div>
                             <div className='relative w-auto self-center'>
@@ -73,19 +73,21 @@ export const BaseLayout = ({ children }: LayoutProps) => {
                             </div>
                         </nav>
 
-                        <Divider sx={{borderColor: '#FF2D20'}}/>
+                        
+                        <div className="relative flex flex-row max-h-full w-full">
+                            <div className="relative w-1 max-h-full bg-secundaryColor z-10"></div>
+                            <div className="relative flex flex-col overflow-y-auto h-full w-full">
+                                <List
+                                    sx={{ width: '100%', bgcolor: '' }}
+                                    component="nav"
+                                    aria-labelledby="nested-list-subheader"
 
-                        <div className="relative flex flex-col overflow-y-scroll max-h-full">
-                            <List
-                                sx={{ width: '100%', bgcolor: '' }}
-                                component="nav"
-                                aria-labelledby="nested-list-subheader"
-
-                            >
-                                {menus.map((menuItem, id) => {
-                                    return <MenuListItens key={`menu_${id}`} text={menuItem.text} sub={menuItem.sub} href={menuItem.href} icon={menuItem.icon} ></MenuListItens>
-                                })}
-                            </List>
+                                >
+                                    {menus.map((menuItem, id) => {
+                                        return <MenuListItens key={`menu_${id}`} text={menuItem.text} sub={menuItem.sub} href={menuItem.href} icon={menuItem.icon} ></MenuListItens>
+                                    })}
+                                </List>
+                            </div>
                         </div>
                     </div>
                 </aside>
