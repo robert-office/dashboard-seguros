@@ -9,7 +9,7 @@ import { Subtitle } from '../../components/typografy/Subtitle';
 import { ButtonCreate } from '../../components/buttonCreate';
 import { VendasPorAnoGrafico } from '../../components/barGraph';
 import { OperadorasCountGrafico } from '../../components/radialGraph';
-import { ValorVendasPorAno } from '../../components/lineGraph';
+import { ValorVendasPorAnoGrafico } from '../../components/lineGraph';
 
 export const Segu = () => {
 
@@ -73,7 +73,7 @@ export const Segu = () => {
                         }}
                     >
                         <Subtitle text='Valor das Vendas (por ano)' />
-                        <ValorVendasPorAno />
+                        <ValorVendasPorAnoGrafico />
                     </Stack>
                 </Stack>
 

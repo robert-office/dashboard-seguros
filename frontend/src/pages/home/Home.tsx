@@ -3,19 +3,12 @@ import { Divider, Stack } from "@mui/material";
 import DataTable from "../../components/datatable/Datatable";
 import { SectionTitle } from "../../components/typografy/SectionTitle";
 import { BaseLayout } from "../../layouts/baseLayout/BaseLayout";
-
-import {
-    XYPlot,
-    XAxis,
-    YAxis,
-    VerticalGridLines,
-    HorizontalGridLines,
-    VerticalBarSeries
-} from 'react-vis';
-
 import { DatatableDashboardOptions } from "../../utils/DatatablesUtils/datatableGeneralOptions";
 import { useEffect, useState } from "react";
 import { Subtitle } from '../../components/typografy/Subtitle';
+import { VendasPorAnoGrafico } from '../../components/barGraph';
+import { ValorVendasPorAnoGrafico } from '../../components/lineGraph';
+import { OperadorasCountGrafico } from '../../components/radialGraph';
 
 export const Home = () => {
 
@@ -43,6 +36,43 @@ export const Home = () => {
         <>
             <BaseLayout>
                 <SectionTitle text="Dashboard" />
+
+                <Stack
+                    direction={{ xs: 'column', md: 'row' }}
+
+                    className="lg:my-6 my-2 w-full sm:space-x-2"
+                >
+                    <Stack
+                        direction="column"
+                        className="my-2 w-full md:p-4 p-2 rounded-lg space-y-4 h-60"
+                        style={{
+                            boxShadow: '0px 0px 14px 5px rgba(0,0,0,0.30)'
+                        }}
+                    >
+                        <Subtitle text='Total de Vendas (por ano)' />
+                        <VendasPorAnoGrafico />
+                    </Stack>
+                    <Stack
+                        direction="column"
+                        className="my-2 w-full md:p-4 p-2 rounded-lg space-y-4 h-60"
+                        style={{
+                            boxShadow: '0px 0px 14px 5px rgba(0,0,0,0.30)'
+                        }}
+                    >
+                        <Subtitle text='Distribuição de Operadoras' />
+                        <OperadorasCountGrafico />
+                    </Stack>
+                    <Stack
+                        direction="column"
+                        className="my-2 w-full md:p-4 p-2 rounded-lg space-y-4 h-60"
+                        style={{
+                            boxShadow: '0px 0px 14px 5px rgba(0,0,0,0.30)'
+                        }}
+                    >
+                        <Subtitle text='Valor das Vendas (por ano)' />
+                        <ValorVendasPorAnoGrafico />
+                    </Stack>
+                </Stack>
 
                 <Stack
                     direction="row"

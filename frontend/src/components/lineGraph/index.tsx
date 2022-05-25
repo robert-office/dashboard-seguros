@@ -21,7 +21,7 @@ type IbarGraph = {
     data: IdataGraph[]
 }
 
-export const ValorVendasPorAno = () => {
+export const ValorVendasPorAnoGrafico = () => {
     const [totalVendas, setTotalVendas] = useState<IdataGraph[]>();
 
     //// FAZENDO A CHAMADA PARA API RECUPERAR OS DADOS DOS GRAFICOS
@@ -39,6 +39,7 @@ export const ValorVendasPorAno = () => {
             });
 
             setTotalVendas(Sales);
+            console.log(Sales);
         });
 
     }, []);
@@ -56,22 +57,23 @@ export const ValorVendasPorAno = () => {
 
 export const LineGraph = ({ data }: IbarGraph) => {
 
+    const yDomain = data.reduce(
+        (res, row) => {
+            return {
+                max: Math.max(res.max, row.y),
+                min: Math.min(res.min, row.y)
+            };
+        },
+        { max: -Infinity, min: Infinity }
+    );
+
     return (
         <div className='relative w-full h-full'>
             <AutoSizer>
                 {({ height, width }) => (
-                    <XYPlot width={width} height={height} xType="ordinal">
+                    <XYPlot width={width} height={height} xType="ordinal" yDomain={[yDomain.min, yDomain.max]}>
                         <HorizontalGridLines style={{ stroke: '#B7E9ED' }} />
                         <VerticalGridLines style={{ stroke: '#B7E9ED' }} />
-                        <XAxis
-
-                            style={{
-                                line: { stroke: '#ADDDE1' },
-                                ticks: { stroke: '#ADDDE1' },
-                                text: { stroke: 'none', fill: '#6b6b76', fontWeight: 600 }
-                            }}
-                        />
-                        <YAxis />
                         <LineSeries
                             xType='ordinal'
                             animation
@@ -79,6 +81,19 @@ export const LineGraph = ({ data }: IbarGraph) => {
                             curve={'curveMonotoneX'}
                             data={data}
                         />
+                        <XAxis
+                            style={{
+                                line: { stroke: '#ADDDE1' },
+                                ticks: { stroke: '#ADDDE1' },
+                                text: { stroke: 'none', fill: '#6b6b76', fontWeight: 600, fontSize: '10px' }
+                            }}
+                        />
+                        <YAxis
+                            style={{
+                                line: { stroke: '#ADDDE1' },
+                                ticks: { stroke: '#ADDDE1' },
+                                text: { stroke: 'none', fill: '#6b6b76', fontWeight: 600, fontSize: '8px' }
+                            }} />
                     </XYPlot>
                 )}
             </AutoSizer>
