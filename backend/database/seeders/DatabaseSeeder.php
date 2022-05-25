@@ -46,13 +46,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         /// cria 300 clientes
-        cliente::factory()->count(300)->create()
+        cliente::factory()->count(2500)->create()
             ->each(
                 function ($cliente) {
-                    /// para cada cliente cria-se um veiculo
-                    $veiculo = veiculo::factory()->create([
-                        'id_cliente' => $cliente->id
-                    ]);
 
                     /// cria um user do sistema
                     $user = User::factory()->create();
@@ -62,19 +58,30 @@ class DatabaseSeeder extends Seeder
                         'id_user' => $user->id
                     ]);
 
-                    /// se é vendedor
+                    /// se é um vendedor
                     if ($role->id_role == 2) {
+                        /// pode ser 1 até 5 carros/seguros/rastreadores para 1 cliente e 1 vendedor só
+                        $numberOfSeguros = range(1, 5);
 
-                        /// cria o rastreador
-                        $rastreador = rastreador::factory()->create();
+                        /// pode ser mais de um seguro/carro/rastreador
+                        for ( $i = 0; $i < $numberOfSeguros; $i++ ){
 
-                        /// cria o seguro
-                        seguro::factory()->create([
-                            'id_vendedor'       => $user->id,
-                            'id_rastreador'     => $rastreador->id,
-                            'id_veiculo'        => $veiculo->id,
-                            'id_cliente'        => $cliente->id,
-                        ]);
+                            /// para cada cliente cria-se um veiculo
+                            $veiculo = veiculo::factory()->create([
+                                'id_cliente' => $cliente->id
+                            ]);
+    
+                            /// cria o rastreador
+                            $rastreador = rastreador::factory()->create();
+    
+                            /// cria o seguro
+                            seguro::factory()->create([
+                                'id_vendedor'       => $user->id,
+                                'id_rastreador'     => $rastreador->id,
+                                'id_veiculo'        => $veiculo->id,
+                                'id_cliente'        => $cliente->id,
+                            ]);
+                        }
                     }
                 }
             );
