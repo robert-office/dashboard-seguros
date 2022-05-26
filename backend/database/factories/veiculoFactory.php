@@ -49,7 +49,7 @@ class veiculoFactory extends Factory
         );
 
         return [
-            'nome'  => $VEICULOS[rand(0, count($VEICULOS))],
+            'nome'  => $VEICULOS[rand(0, (count($VEICULOS) - 1))],
             'valor' => $this->faker->numberBetween(5000, 60000),
             'tipo'  => $this->faker->numberBetween(1, 3),
         ];
