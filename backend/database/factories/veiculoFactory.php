@@ -48,7 +48,6 @@ class veiculoFactory extends Factory
             "Zafira (2001)",
         );
 
-
         return [
             'nome'  => $VEICULOS[rand(0, count($VEICULOS))],
             'valor' => $this->faker->numberBetween(5000, 60000),
