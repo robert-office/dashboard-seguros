@@ -9,6 +9,7 @@ import { Subtitle } from '../../components/typografy/Subtitle';
 import { VendasPorAnoGrafico } from '../../components/barGraph';
 import { ValorVendasPorAnoGrafico } from '../../components/lineGraph';
 import { OperadorasCountGrafico } from '../../components/radialGraph';
+import { ShortCutsSection } from '../../components/shortCuts';
 
 export const Home = () => {
 
@@ -37,6 +38,8 @@ export const Home = () => {
             <BaseLayout>
                 <SectionTitle text="Dashboard" />
 
+                <ShortCutsSection />
+
                 <Stack
                     direction={{ xs: 'column', md: 'row' }}
 
@@ -46,7 +49,7 @@ export const Home = () => {
                         direction="column"
                         className="my-2 w-full md:p-4 p-2 rounded-lg space-y-4 h-60"
                         style={{
-                            boxShadow: '0px 0px 14px 5px rgba(0,0,0,0.30)'
+                            boxShadow: '0px 3px 3px 2px rgba(0,0,0,0.30)'
                         }}
                     >
                         <Subtitle text='Total de Vendas (por ano)' />
@@ -56,7 +59,7 @@ export const Home = () => {
                         direction="column"
                         className="my-2 w-full md:p-4 p-2 rounded-lg space-y-4 h-60"
                         style={{
-                            boxShadow: '0px 0px 14px 5px rgba(0,0,0,0.30)'
+                            boxShadow: '0px 3px 3px 2px rgba(0,0,0,0.30)'
                         }}
                     >
                         <Subtitle text='Distribuição de Operadoras' />
@@ -66,7 +69,7 @@ export const Home = () => {
                         direction="column"
                         className="my-2 w-full md:p-4 p-2 rounded-lg space-y-4 h-60"
                         style={{
-                            boxShadow: '0px 0px 14px 5px rgba(0,0,0,0.30)'
+                            boxShadow: '0px 3px 3px 2px rgba(0,0,0,0.30)'
                         }}
                     >
                         <Subtitle text='Valor das Vendas (por ano)' />

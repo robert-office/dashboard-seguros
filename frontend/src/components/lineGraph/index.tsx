@@ -71,7 +71,7 @@ export const LineGraph = ({ data }: IbarGraph) => {
         <div className='relative w-full h-full'>
             <AutoSizer>
                 {({ height, width }) => (
-                    <XYPlot width={width} height={height} xType="ordinal" yDomain={[yDomain.min, yDomain.max]}>
+                    <XYPlot width={width} height={height} xType="ordinal" margin={{left: 55}} yDomain={[yDomain.min, yDomain.max]}>
                         <HorizontalGridLines style={{ stroke: '#B7E9ED' }} />
                         <VerticalGridLines style={{ stroke: '#B7E9ED' }} />
                         <LineSeries
@@ -92,7 +92,7 @@ export const LineGraph = ({ data }: IbarGraph) => {
                             style={{
                                 line: { stroke: '#ADDDE1' },
                                 ticks: { stroke: '#ADDDE1' },
-                                text: { stroke: 'none', fill: '#6b6b76', fontWeight: 600, fontSize: '8px' }
+                                text: { stroke: 'none', fill: '#6b6b76', fontWeight: 600, fontSize: '8px', }
                             }} />
                     </XYPlot>
                 )}
