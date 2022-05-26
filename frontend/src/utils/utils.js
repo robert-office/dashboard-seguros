@@ -1,4 +1,10 @@
-export function formatarDinheiro(valor) { if( valor ) { return valor.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }) } return valor; }
+export function formatarDinheiro(valueToBeFormated) { 
+    if (valueToBeFormated) { 
+        return Number(valueToBeFormated).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+    } 
+    
+    return "";
+}
 
 export function formatarData(data) {
     var data = new Date(data),
@@ -24,10 +30,10 @@ export function formatarValor(obj) {
     /// percorre os pares do obj e testa eles
     const array = Object.entries(obj)
     array.map((array_key_value) => {
-        const value = array_key_value[1]
         const key = array_key_value[0]
+        const value = array_key_value[1]
 
-        /// se é uma data valida
+        /// se é valor valido como esperado, do tipo R$ 20.000,00
         if (testValorFormatado(value)) {
             let valueSemSufixo = value.substr(3);
             

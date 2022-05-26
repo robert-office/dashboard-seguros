@@ -9,6 +9,7 @@ import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
 import { IconButton, Tooltip } from "@mui/material";
 import { Link } from "react-router-dom";
 
+
 export type IEditarButton = {
     icon: JSX.Element,
     href: string,
@@ -43,10 +44,8 @@ export const DatatableDashboardOptions = {
     getRowsFN: getAllSeguros,
 
     formatData: (data: LaravelSeguro[]) => {
-        let finalData: any[] = [];
-
-        data.map((seguro) => {
-            finalData.push({
+        return data.map((seguro) => {
+            return {
                 "id": seguro.id,
                 "Valor": formatarDinheiro(seguro.valor),
                 "Criado em": formatarData(seguro.created_at),
@@ -56,10 +55,8 @@ export const DatatableDashboardOptions = {
                 "Rastreador": seguro.rastreador?.serial_number || "",
                 "Operadora": seguro.rastreador_operadora?.nome || "",
                 'ação': <EditarButton icon={<ModeEditOutlinedIcon />} title={"Editar"} href={`/editar/seguro/${seguro.id}`} />
-            });
+            };
         });
-
-        return finalData;
     }
 }
 
@@ -68,8 +65,8 @@ export const DatatableUsersByRolesOptions = {
     columns:
         [
             { field: 'id', headerName: 'id', width: 70, ...datatableHOption },
-            { field: 'Nome', headerName: 'Nome', width: 130, ...datatableHOption },
-            { field: 'E-mail', headerName: 'E-mail', width: 150, ...datatableHOption },
+            { field: 'Nome', headerName: 'Nome', width: 300, ...datatableHOption },
+            { field: 'E-mail', headerName: 'E-mail', width: 280, ...datatableHOption },
             { field: 'Criado em', headerName: 'Criado em', width: 150, ...datatableHOption },
             { field: 'ação', headerName: 'ação', width: 100, ...datatableHOption },
         ],
@@ -77,19 +74,15 @@ export const DatatableUsersByRolesOptions = {
     getRowsFN: getAllUserByRole,
 
     formatData: (data: LaravelUser[]) => {
-        let finalData: any[] = [];
-
-        data.map((user) => {
-            finalData.push({
+        return data.map((user) => {
+            return {
                 "id": user.id,
                 "Nome": user.nome,
                 "E-mail": user.email,
                 "Criado em": formatarData(user.created_at),
                 'ação': <EditarButton icon={<ModeEditOutlinedIcon />} title={"Editar"} href={`/editar/user/${user.id}`} />
-            });
+            };
         });
-
-        return finalData;
     }
 }
 
@@ -110,10 +103,8 @@ export const DatatableClientesOptions = {
     getRowsFN: getAllClientes,
 
     formatData: (data: LaravelClienteSeguroVeiculo[]) => {
-        let finalData: any[] = [];
-
-        data.map((user) => {
-            finalData.push({
+        return data.map((user) => {
+            return {
                 "id": user.id,
                 "Nome": user.nome,
                 "Entrou em": formatarData(user.created_at),
@@ -122,10 +113,8 @@ export const DatatableClientesOptions = {
                 "Ultimo Seguro ID": user.ultimo_seguro?.id || "",
                 "Valor Seguro": formatarDinheiro(user.ultimo_seguro?.valor) || "",
                 'ação': <EditarButton icon={<ModeEditOutlinedIcon />} title={"Editar"} href={`/editar/cliente/${user.id}`} />
-            });
-        });
-
-        return finalData;
+            }
+        })
     }
 }
 
@@ -145,10 +134,8 @@ export const DatatableVeiculosOptions = {
     getRowsFN: getAllVeiculos,
 
     formatData: (data: LaravelVeiculo[]) => {
-        let finalData: any[] = [];
-
-        data.map((veiculo) => {
-            finalData.push({
+        return data.map((veiculo) => {
+            return {
                 "id": veiculo.id,
                 "Nome": veiculo.nome,
                 "Tipo": veiculo.tipo?.tipo || "",
@@ -156,9 +143,7 @@ export const DatatableVeiculosOptions = {
                 "Cadastrado em": formatarData(veiculo.created_at),
                 "Nome Cliente": veiculo.cliente?.nome || "",
                 'ação': <EditarButton icon={<ModeEditOutlinedIcon />} title={"Editar"} href={`/editar/veiculo/${veiculo.id}`} />
-            });
+            };
         });
-
-        return finalData;
     }
 }
