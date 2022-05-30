@@ -9,5 +9,5 @@ export const editCliente = ( data: any, id: number ) => {
         }
     }
 
-    return httpService.post(`/clientes/edit/${String(id)}}`, data, config)
+    return httpService.post(`/clientes/edit/${id}`, data, config)
 }
