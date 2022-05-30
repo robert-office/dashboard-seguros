@@ -9,5 +9,5 @@ export const editSeguro = ( id: number, data: any ) => {
         }
     }
 
-    return httpService.post(`/seguros/edit/${id}}`, data, config)
+    return httpService.post(`/seguros/edit/${id}`, data, config)
 }
