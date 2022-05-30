@@ -79,7 +79,7 @@ class ClienteController extends Controller
         ]);
 
         if ($cliente) {
-            $response = cliente::where('id', $id)->get();
+            $response = cliente::where('id', $id)->first();
             return response($response);
         }
 
