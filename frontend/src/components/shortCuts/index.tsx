@@ -4,52 +4,59 @@ import seguroSVG from '../../assets/svgs/secure.svg';
 import clienteSVG from '../../assets/svgs/client.svg';
 import carroSVG from '../../assets/svgs/car.svg';
 import userSVG from '../../assets/svgs/enterprise.svg';
+import { NavLink } from "react-router-dom";
 
 export const shortcuts = [
     {
         svg: seguroSVG,
-        text: 'Seguro'
+        text: 'Seguro',
+        href: '/criar/seguro'
     },
     {
         svg: clienteSVG,
-        text: 'Cliente'
+        text: 'Cliente',
+        href: '/criar/cliente'
     },
     {
         svg: carroSVG,
-        text: 'Carro'
+        text: 'Veiculo',
+        href: '/criar/veiculo'
     },
     {
         svg: userSVG,
-        text: 'Usuario'
+        text: 'Usuario',
+        href: '/criar/user'
     },
 ]
 
 type Ishortcut = {
     svg: string,
     text: string,
-    href?: string
+    href: string
 }
-const ShortCut = ( { svg, text, href } : Ishortcut ) => {
+const ShortCut = ({ svg, text, href }: Ishortcut) => {
     return (
-        <Paper elevation={4} sx={{ backgroundColor: '#1F2230' }} className="relative h-40 w-full z-10 group cursor-pointer overflow-hidden">
-            <img src={svg} className="absolute h-full w-full bg-cover object-cover opacity-20 object-center group-hover:scale-110 transition-all " />
+        <NavLink to={href}>
+            <Paper elevation={4} sx={{ backgroundColor: '#1F2230' }} className="relative h-40 w-full z-10 group cursor-pointer overflow-hidden">
+                <img src={svg} className="absolute h-full w-full bg-cover object-cover opacity-20 object-center group-hover:scale-110 transition-all " />
 
-            <div className="relative w-full h-full overflow-hidden flex flex-col">
-                <div className="relative sm:translate-y-5 sm:group-hover:translate-y-0 group-hover:rotate-180 transition-all mx-auto">
-                    <AddCircleIcon sx={{ width: 122, height: 122, fill: 'rgb(74 222 128)' }} />
+                <div className="relative w-full h-full overflow-hidden flex flex-col">
+                    <div className="relative sm:translate-y-5 sm:group-hover:translate-y-0 group-hover:rotate-180 transition-all mx-auto">
+                        <AddCircleIcon sx={{ width: 122, height: 122, fill: 'rgb(74 222 128)' }} />
+                    </div>
+                    <span className="relative mx-auto w-full text-center text-base font-extrabold text-green-400 group-hover:scale-105 sm:translate-y-40 sm:group-hover:translate-y-0 transition-all">Novo {text}</span>
                 </div>
-                <span className="relative mx-auto w-full text-center text-base font-extrabold text-green-400 group-hover:scale-105 sm:translate-y-40 sm:group-hover:translate-y-0 transition-all">Novo {text}</span>
-            </div>
-        </Paper>
+            </Paper>
+        </NavLink>
     )
 }
 
 export const ShortCutsSection = () => {
     return (
         <section className="relative grid grid-cols-2 md:grid-cols-4 gap-4 lg:my-6 my-4 w-full">
-            { shortcuts.map( (shortcut) => {
-                return <ShortCut svg={shortcut.svg} text={shortcut.text} />
-            } ) }
+            {shortcuts.map((shortcut) => {
+                return <ShortCut svg={shortcut.svg} text={shortcut.text} href={shortcut.href} />
+            })}
         </section>
     );
 }
