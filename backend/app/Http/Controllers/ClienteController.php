@@ -83,6 +83,6 @@ class ClienteController extends Controller
             return response($response);
         }
 
-        return response(['error' => 'cliente não foi alterado com sucesso']);
+        return response(['error' => 'cliente não foi alterado com sucesso'], 400);
     }
 }
