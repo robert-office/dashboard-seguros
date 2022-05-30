@@ -82,5 +82,7 @@ class ClienteController extends Controller
             $response = cliente::where('id', $id)->get();
             return response($response);
         }
+
+        return response(['error' => 'cliente não foi alterado com sucesso']);
     }
 }
